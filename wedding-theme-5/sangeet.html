@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sangeet & Music Night</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Serif:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="common.css">
+  <style>
+    .sangeet-card {
+      background: linear-gradient(180deg, #1a0a2e 0%, #0d0515 35%, #110606 100%);
+      min-height: 100vh;
+    }
+
+    /* Header — sits above hero, not overlaid */
+    .sg-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 16px 8px; position: relative; z-index: 10;
+    }
+    .sg-header .hbtn {
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      color: #f1f5f9; text-decoration: none; font-size: 18px; background: none; border: none; cursor: pointer;
+    }
+    .sg-header .htitle {
+      font-family: 'Noto Serif', serif; font-weight: 700; font-size: 16px;
+      color: #f1f5f9; letter-spacing: 0.3px;
+    }
+
+    /* Hero — full width, no radius, no margin, edge to edge */
+    .sg-hero {
+      position: relative;
+      width: 100%;
+      height: clamp(380px, 55vh, 480px);
+      overflow: hidden;
+    }
+    .sg-hero img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center bottom;
+      display: block; opacity: 0.55;
+    }
+    .sg-hero .grad {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 55%;
+      background: linear-gradient(to top, #0d0515, transparent);
+    }
+    .sg-hero .content {
+      position: absolute; bottom: 24px; left: 24px; right: 24px;
+      text-align: center; z-index: 2;
+    }
+
+    /* "THE GRAND CELEBRATION" badge */
+    .grand-badge {
+      display: inline-block;
+      background: rgba(184, 20, 20, 0.3);
+      border: 1px solid rgba(202, 138, 4, 0.4);
+      padding: 5px 16px;
+      border-radius: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      color: #facc15;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .sg-title {
+      font-family: 'Abril Fatface', serif;
+      font-size: clamp(32px, 9vw, 40px);
+      color: #f1f5f9;
+      line-height: 1.1;
+    }
+
+    .sg-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      color: rgba(241, 245, 249, 0.5);
+      font-style: italic;
+      margin-top: 10px;
+    }
+
+    /* Stats — 3 icons, no circle bg */
+    .sg-stats {
+      display: flex;
+      justify-content: center;
+      gap: 36px;
+      padding: 24px 24px 8px;
+    }
+    .sg-stat {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+    }
+    .sg-stat .ss-icon {
+      color: #facc15;
+      font-size: 24px;
+    }
+    .sg-stat .ss-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      color: rgba(148, 163, 184, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* Evening Flow section */
+    .ef-head {
+      display: flex; align-items: center; gap: 12px;
+      padding: 24px 24px 20px;
+    }
+    .ef-head h2 {
+      font-family: 'Noto Serif', serif; font-weight: 700; font-style: italic;
+      font-size: 22px; color: #f1f5f9; margin: 0; white-space: nowrap;
+    }
+    .ef-head .ef-line {
+      flex: 1; height: 1px; background: rgba(184, 20, 20, 0.2);
+    }
+
+    /* Timeline */
+    .sg-timeline {
+      position: relative;
+      padding: 0 24px 24px 56px;
+    }
+
+    /* Vertical line */
+    .sg-timeline::before {
+      content: '';
+      position: absolute;
+      left: 40px; top: 0; bottom: 30px;
+      width: 2px;
+      background: linear-gradient(180deg, #facc15, #b81414, rgba(184,20,20,0.2));
+    }
+
+    .tl-item {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .tl-item:last-child { margin-bottom: 0; }
+
+    /* Icon on the timeline */
+    .tl-item .tl-icon {
+      position: absolute;
+      left: -32px; top: 0;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: #110606;
+      border: 2px solid #b81414;
+      display: flex; align-items: center; justify-content: center;
+      color: #facc15;
+      font-size: 12px;
+      z-index: 2;
+    }
+
+    /* Card background for some items */
+    .tl-item .tl-card {
+      background: rgba(184, 20, 20, 0.04);
+      border: 1px solid rgba(184, 20, 20, 0.08);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .tl-item .tl-card.highlight {
+      background: rgba(184, 20, 20, 0.08);
+      border: 1px solid rgba(184, 20, 20, 0.15);
+    }
+
+    .tl-item .tl-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 8px; margin-bottom: 6px;
+    }
+    .tl-item .tl-name {
+      font-family: 'Noto Serif', serif; font-weight: 700;
+      font-size: 16px; color: #f1f5f9;
+    }
+    .tl-item .tl-time {
+      font-family: 'Noto Serif', serif;
+      font-size: 13px; color: #b81414; font-weight: 700; white-space: nowrap;
+    }
+    .tl-item .tl-desc {
+      font-size: 14px; color: #94a3b8; line-height: 1.55;
+    }
+
+    /* RSVP button */
+    .rsvp-wrap {
+      padding: 16px 24px 24px;
+      text-align: center;
+    }
+    .rsvp-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; max-width: 380px; margin: 0 auto;
+      height: 54px;
+      background: linear-gradient(135deg, #c41919, #8b0000);
+      border: none; border-radius: 9999px;
+      color: #fff; font-family: 'Noto Serif', serif; font-weight: 700;
+      font-size: 16px; cursor: pointer;
+      box-shadow: 0 0 20px rgba(184, 20, 20, 0.4);
+      transition: transform 0.2s;
+    }
+    .rsvp-btn:hover { transform: scale(1.03); }
+
+    /* Bottom nav — 4 items */
+    .sg-nav {
+      display: flex; justify-content: space-around; align-items: center;
+      padding: 10px 0 max(14px, env(safe-area-inset-bottom));
+      background: rgba(10, 5, 5, 0.95);
+      border-top: 1px solid rgba(184, 20, 20, 0.1);
+      position: sticky; bottom: 0; z-index: 10; margin-top: auto;
+    }
+    .sg-nav a {
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+      text-decoration: none; color: rgba(148,163,184,0.4);
+      font-family: 'Noto Serif', serif; font-size: 10px; transition: color 0.2s;
+    }
+    .sg-nav a i { font-size: 20px; }
+    .sg-nav a.active, .sg-nav a:hover { color: #facc15; }
+  </style>
+</head>
+
+<body>
+  <div class="card-screen sangeet-card">
+    <!-- Header overlaid -->
+    <div class="sg-header">
+      <a href="haldi.html" class="hbtn"><i class="bi bi-arrow-left"></i></a>
+      <span class="htitle">Wedding Festivities</span>
+      <a href="#" class="hbtn"><i class="bi bi-share"></i></a>
+    </div>
+
+    <!-- Hero -->
+    <div class="sg-hero">
+      <img src="images/dance.png" alt="Sangeet Night">
+      <div class="grad"></div>
+      <div class="content">
+        <span class="grand-badge">The Grand Celebration</span>
+        <h1 class="sg-title">Sangeet aur<br>Music Night</h1>
+        <p class="sg-sub">Dance the night away under the stars</p>
+      </div>
+    </div>
+
+    <!-- Stats — JOY, BEATS, VIBE -->
+    <div class="sg-stats">
+      <div class="sg-stat">
+        <div class="ss-icon"><i class="bi bi-stars"></i></div>
+        <span class="ss-label">Joy</span>
+      </div>
+      <div class="sg-stat">
+        <div class="ss-icon"><i class="bi bi-music-note"></i></div>
+        <span class="ss-label">Beats</span>
+      </div>
+      <div class="sg-stat">
+        <div class="ss-icon"><i class="bi bi-moon"></i></div>
+        <span class="ss-label">Vibe</span>
+      </div>
+    </div>
+
+    <!-- Evening Flow -->
+    <div class="ef-head">
+      <h2>Evening Flow</h2>
+      <div class="ef-line"></div>
+    </div>
+
+    <div class="sg-timeline">
+      <!-- 1 -->
+      <div class="tl-item">
+        <div class="tl-icon"><i class="bi bi-star-fill"></i></div>
+        <div class="tl-card">
+          <div class="tl-head">
+            <span class="tl-name">Grand Entry of Couple</span>
+            <span class="tl-time">07:30 PM</span>
+          </div>
+          <p class="tl-desc mb-0">The evening begins with a spectacular entrance under a canopy of cold fire and floral glitz.</p>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="tl-item">
+        <div class="tl-icon"><i class="bi bi-tv"></i></div>
+        <div class="tl-card">
+          <div class="tl-head">
+            <span class="tl-name">Family Performances</span>
+            <span class="tl-time">08:45 PM</span>
+          </div>
+          <p class="tl-desc mb-0">Witness the battle of the sides! Beautifully choreographed dances by family and friends.</p>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="tl-item">
+        <div class="tl-icon"><i class="bi bi-disc"></i></div>
+        <div class="tl-card highlight">
+          <div class="tl-head">
+            <span class="tl-name">Dhol & Dance Floor</span>
+            <span class="tl-time">10:00 PM</span>
+          </div>
+          <p class="tl-desc mb-0">The beats drop! Traditional Dhol players take over the floor for a high-energy dance session.</p>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="tl-item">
+        <div class="tl-icon"><i class="bi bi-cup-straw"></i></div>
+        <div class="tl-card">
+          <div class="tl-head">
+            <span class="tl-name">Midnight Feast</span>
+            <span class="tl-time">11:00 PM</span>
+          </div>
+          <p class="tl-desc mb-0">A curated menu of gourmet street food and signature drinks to keep the energy high.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RSVP -->
+    <div class="rsvp-wrap">
+      <button class="rsvp-btn">
+        <i class="bi bi-heart"></i> RSVP for Sangeet
+      </button>
+    </div>
+
+    <!-- Bottom Nav — 4 items, Events active in yellow -->
+    <nav class="sg-nav">
+      <a href="index.html"><i class="bi bi-house"></i><span>Home</span></a>
+      <a href="engagement.html" class="active"><i class="bi bi-calendar-event"></i><span>Events</span></a>
+      <a href="jaimala.html"><i class="bi bi-images"></i><span>Gallery</span></a>
+      <a href="#"><i class="bi bi-envelope-heart"></i><span>RSVP</span></a>
+    </nav>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

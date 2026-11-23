@@ -1,0 +1,2697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Wedding Card - Slider</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Serif:wght@400;700&family=Noto+Sans+Devanagari&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <style>
+    /* ===== CSS CUSTOM PROPERTIES ===== */
+    :root {
+      /* --- Primary Red --- */
+      --color-red: #b81414;
+      --color-red-bright: #c41919;
+      --color-red-dark: #8b0000;
+      --color-red-04: rgba(184, 20, 20, 0.04);
+      --color-red-06: rgba(184, 20, 20, 0.06);
+      --color-red-08: rgba(184, 20, 20, 0.08);
+      --color-red-12: rgba(184, 20, 20, 0.12);
+      --color-red-15: rgba(184, 20, 20, 0.15);
+      --color-red-20: rgba(184, 20, 20, 0.2);
+      --color-red-25: rgba(184, 20, 20, 0.25);
+      --color-red-30: rgba(184, 20, 20, 0.3);
+      --color-red-35: rgba(184, 20, 20, 0.35);
+      --color-red-40: rgba(184, 20, 20, 0.4);
+      --color-red-50: rgba(184, 20, 20, 0.5);
+      --color-red-60: rgba(184, 20, 20, 0.6);
+
+      /* --- Gold --- */
+      --color-gold: #facc15;
+      --color-gold-dark: #ca8a04;
+      --color-gold-light: #fef08a;
+      --color-gold-amber: #e8a530;
+      --color-gold-40: rgba(202, 138, 4, 0.4);
+      --color-gold-50: rgba(202, 138, 4, 0.5);
+
+      /* --- Text & Slate --- */
+      --color-text-light: #f1f5f9;
+      --color-text-light-85: rgba(241, 245, 249, 0.85);
+      --color-text-light-60: rgba(241, 245, 249, 0.6);
+      --color-text-light-50: rgba(241, 245, 249, 0.5);
+      --color-text-light-35: rgba(241, 245, 249, 0.35);
+      --color-text-light-30: rgba(241, 245, 249, 0.3);
+      --color-text-light-25: rgba(241, 245, 249, 0.25);
+      --color-text-light-20: rgba(241, 245, 249, 0.2);
+      --color-text-light-15: rgba(241, 245, 249, 0.15);
+      --color-slate: #94a3b8;
+      --color-slate-45: rgba(148, 163, 184, 0.45);
+      --color-slate-50: rgba(148, 163, 184, 0.5);
+      --color-slate-60: rgba(148, 163, 184, 0.6);
+
+      /* --- Backgrounds (Dark) --- */
+      --color-bg-body: #0a0505;
+      --color-bg-dark: #0d0505;
+      --color-bg-maroon: #211111;
+      --color-bg-dark-alt: #0d0515;
+      --color-bg-maroon: #211111;
+      --color-bg-maroon-dark: #1a0808;
+      --color-bg-maroon-darker: #110606;
+      --color-bg-maroon-65: rgba(30, 12, 12, 0.65);
+      --color-bg-maroon-darker-40: rgba(17, 6, 6, 0.4);
+      --color-bg-engagement: #0d0505;
+      --color-bg-sangeet-purple: #1a0a2e;
+      --color-bg-pagination: rgba(10, 5, 5, 0.7);
+
+      /* --- Neutrals --- */
+      --color-white: #fff;
+      --color-white-06: rgba(255, 255, 255, 0.06);
+      --color-black: #000;
+      --color-black-25: rgba(0, 0, 0, 0.25);
+      --color-black-60: rgba(0, 0, 0, 0.6);
+      --color-black-80: rgba(0, 0, 0, 0.8);
+      --color-black-85: rgba(0, 0, 0, 0.85);
+      --color-transparent: transparent;
+
+      /* --- Misc --- */
+      --color-haldi-title: #cc4444;
+    }
+
+    /* ===== RESET & BASE ===== */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      background: var(--color-bg-body);
+      font-family: 'Noto Serif', serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow: hidden;
+    }
+
+    /* ===== CARD WRAPPER ===== */
+    .card-screen {
+      width: 100%;
+      max-width: 430px;
+      min-height: 100%;
+      position: relative;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== TOP BAR ===== */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px 8px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .top-bar.overlay-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .top-bar .bar-btn {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-light);
+      text-decoration: none;
+      font-size: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .top-bar .bar-btn:hover {
+      background: var(--color-white-06);
+    }
+
+    .top-bar .bar-title {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--color-text-light);
+      letter-spacing: -0.2px;
+      white-space: nowrap;
+    }
+
+    .top-bar .bar-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      color: var(--color-text-light-50);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn-gold {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--color-gold-dark), var(--color-gold) 50%, var(--color-gold-dark));
+      color: var(--color-bg-maroon);
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 14px 48px;
+      border-radius: 9999px;
+      border: none;
+      box-shadow: 0 0 20px var(--color-red-30);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn-gold:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 30px var(--color-gold-50);
+      color: var(--color-bg-maroon);
+    }
+
+    .btn-red {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--color-red-bright), var(--color-red-dark));
+      color: var(--color-white);
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 14px 40px;
+      border-radius: 9999px;
+      border: none;
+      box-shadow: 0 0 20px var(--color-red-40);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn-red:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 30px var(--color-red-60);
+      color: var(--color-white);
+    }
+
+    /* ===== GOLD TEXT ===== */
+    .gold-gradient {
+      background: linear-gradient(90deg, var(--color-gold-light), var(--color-gold) 50%, var(--color-gold-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ===== ICON CIRCLE ===== */
+    .icon-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--color-red-15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-red);
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    /* ===== INFO CARD ===== */
+    .info-card {
+      flex: 1;
+      min-width: 0;
+      background: var(--color-red-06);
+      border: 1px solid var(--color-red-12);
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .info-card .ic-icon {
+      color: var(--color-red);
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .info-card .ic-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text-light);
+      margin-bottom: 2px;
+    }
+
+    .info-card .ic-value {
+      font-size: 12px;
+      color: var(--color-slate);
+      word-break: break-word;
+    }
+
+    /* ===== NEXT EVENT LINK ===== */
+    .next-event {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      margin: 0 20px 16px;
+      background: var(--color-red-06);
+      border: 1px solid var(--color-red-12);
+      border-radius: 16px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      position: relative;
+      z-index: 2;
+    }
+
+    .next-event:hover {
+      background: var(--color-red-12);
+      transform: translateX(4px);
+    }
+
+    .next-event .ne-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      color: var(--color-slate-45);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .next-event .ne-title {
+      font-family: 'Noto Serif', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-text-light);
+      margin-top: 2px;
+    }
+
+    .next-event .ne-arrow {
+      color: var(--color-red);
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    /* ===== RESPONSIVE — MOBILE SMALL (< 360px) ===== */
+    @media (max-width: 359px) {
+      .card-screen {
+        max-width: 100%;
+      }
+
+      .top-bar .bar-title {
+        font-size: 14px;
+      }
+
+      .btn-gold,
+      .btn-red {
+        font-size: 14px;
+        padding: 12px 32px;
+      }
+
+      .next-event {
+        margin: 0 12px 12px;
+        padding: 14px 16px;
+      }
+
+      .next-event .ne-title {
+        font-size: 13px;
+      }
+    }
+
+    /* ===== RESPONSIVE — MOBILE (360-430px) ===== */
+    @media (min-width: 360px) and (max-width: 430px) {
+      .card-screen {
+        max-width: 100%;
+      }
+    }
+
+    /* ===== SWIPER LAYOUT ===== */
+    .swiper.main-slider {
+      max-width: 430px;
+      margin: 0 auto;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .swiper-slide {
+      height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .swiper-slide::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide all scrollbars */
+    *::-webkit-scrollbar {
+      display: none;
+    }
+
+    * {
+      scrollbar-width: none;
+    }
+
+    /* ===== PAGINATION DOTS ===== */
+    .swiper-pagination {
+      bottom: 16px !important;
+      left: 50% !important;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--color-bg-pagination);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 8px 14px;
+      border-radius: 20px;
+      z-index: 50 !important;
+      width: auto !important;
+    }
+
+    .swiper-pagination-bullet {
+      width: 7px;
+      height: 7px;
+      background: var(--color-text-light-30);
+      opacity: 1;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .swiper-pagination-bullet-active {
+      width: 20px;
+      height: 7px;
+      border-radius: 4px;
+      background: var(--color-red);
+    }
+
+    /* Desktop >480px */
+    @media (min-width: 481px) {
+      .swiper.main-slider {
+        border-radius: 20px;
+        margin-top: 16px;
+        height: calc(100vh - 32px);
+      }
+
+      .swiper-slide {
+        height: calc(100vh - 32px);
+      }
+
+    }
+
+    /* ===== SLIDE 0 — GANESH ===== */
+    .ganesh-card {
+      background: linear-gradient(180deg, var(--color-red-30) 0%, var(--color-bg-maroon) 100%);
+      min-height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ambient {
+      position: absolute;
+      inset: 0;
+      opacity: 0.1;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ambient .c {
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .ambient .c1 {
+      width: 256px;
+      height: 256px;
+      top: -88px;
+      left: -39px;
+      border: 2px solid var(--color-red);
+    }
+
+    .ambient .c2 {
+      width: 256px;
+      height: 256px;
+      top: -44px;
+      left: -19px;
+      border: 4px solid var(--color-red-50);
+    }
+
+    .ambient .c3 {
+      width: 320px;
+      height: 320px;
+      bottom: -88px;
+      right: -39px;
+      border: 2px solid var(--color-red);
+    }
+
+    .ambient .c4 {
+      width: 320px;
+      height: 320px;
+      bottom: -44px;
+      right: -19px;
+      border: 4px solid var(--color-red-50);
+    }
+
+    .g-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 16px 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .g-topbar .close-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .g-topbar .title {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--color-text-light);
+      letter-spacing: -0.27px;
+    }
+
+    .g-hero {
+      position: relative;
+      z-index: 1;
+      padding: 16px 24px;
+    }
+
+    .g-img-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: 24px;
+      border: 4px solid var(--color-red-20);
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px var(--color-black-25);
+    }
+
+    .g-img-frame .glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 256px;
+      height: 320px;
+      background: var(--color-red-20);
+      border-radius: 9999px;
+      filter: blur(32px);
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    .g-img-frame img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 2;
+      display: block;
+    }
+
+    .g-text {
+      position: relative;
+      z-index: 1;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .g-text .sanskrit {
+      font-family: 'Abril Fatface', 'Noto Sans Devanagari', serif;
+      font-size: 36px;
+      letter-spacing: 0.9px;
+      line-height: 45px;
+      text-align: center;
+      background: linear-gradient(90deg, var(--color-gold-light), var(--color-gold) 50%, var(--color-gold-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .g-text .translit {
+      font-family: 'Noto Serif', serif;
+      font-size: 18px;
+      color: var(--color-red-60);
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      line-height: 28px;
+      text-align: center;
+    }
+
+    .g-text .blessing {
+      font-family: 'Noto Serif', serif;
+      font-size: 16px;
+      color: var(--color-slate);
+      line-height: 26px;
+      text-align: center;
+    }
+
+    .g-cta {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 24px;
+      margin-top: auto;
+    }
+
+    .g-cta .gold-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 56px;
+      min-width: 240px;
+      max-width: 480px;
+      padding: 0 58px;
+      background: linear-gradient(90deg, var(--color-gold-dark), var(--color-gold) 50%, var(--color-gold-dark));
+      border-radius: 9999px;
+      border: none;
+      box-shadow: 0 0 20px var(--color-red-30);
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--color-bg-maroon);
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .g-cta .gold-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 30px var(--color-red-50);
+      color: var(--color-bg-maroon);
+    }
+
+    .g-decor {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      opacity: 0.3;
+      padding-top: 32px;
+    }
+
+    .g-decor .dline {
+      width: 48px;
+      height: 1px;
+      background: var(--color-red);
+    }
+
+    @media (max-width: 359px) {
+      .g-text .sanskrit {
+        font-size: 28px;
+        line-height: 36px;
+      }
+
+      .g-text .translit {
+        font-size: 14px;
+      }
+
+      .g-hero {
+        padding: 12px 16px;
+      }
+
+      .g-cta {
+        padding: 32px 16px;
+      }
+
+      .g-cta .gold-btn {
+        padding: 0 40px;
+        font-size: 16px;
+        height: 50px;
+      }
+    }
+
+    @media (min-width: 431px) {
+      .g-img-frame {
+        max-width: 342px;
+        margin: 0 auto;
+      }
+    }
+
+    /* ===== SLIDE 1 — ENGAGEMENT ===== */
+    .engagement-card {
+      background: var(--color-bg-engagement);
+      min-height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .eng-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .eng-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+    }
+
+    .eng-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 16px 8px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .eng-header .hdr-btn {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-light);
+      text-decoration: none;
+      font-size: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .eng-header .hdr-title {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--color-text-light);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .eng-content {
+      position: relative;
+      z-index: 2;
+      margin: 20px 24px 0;
+      padding: 40px 28px 36px;
+      background: var(--color-bg-maroon-65);
+      border: 1px solid var(--color-red-15);
+      border-radius: 20px;
+      text-align: center;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .eng-heart {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 20px;
+    }
+
+    .eng-heart svg {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: var(--color-red);
+      stroke-width: 1.8;
+    }
+
+    .invite-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      color: var(--color-red);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .eng-quote {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(24px, 6.5vw, 30px);
+      color: var(--color-text-light-85);
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+
+    .eng-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--color-red-35);
+      margin: 0 auto 24px;
+    }
+
+    .eng-title {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: clamp(24px, 7vw, 32px);
+      color: var(--color-text-light);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .eng-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      color: var(--color-slate);
+      line-height: 1.6;
+    }
+
+    .details-below {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      margin-top: auto;
+      padding: 32px 24px 20px;
+    }
+
+    .details-below .db-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      color: var(--color-text-light-35);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .details-below .db-arrow {
+      color: var(--color-text-light-30);
+      font-size: 20px;
+    }
+
+    /* ===== SLIDE 2 — MATA PUJAN ===== */
+    .mata-card {
+      background: var(--color-bg-maroon);
+      min-height: 100%;
+    }
+
+    .mp-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .mp-header .hbtn {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-light);
+      text-decoration: none;
+      font-size: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .mp-header .htitle {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--color-text-light);
+      letter-spacing: 0.3px;
+    }
+
+    .mp-hero {
+      position: relative;
+      margin: 4px 16px 0;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      max-height: 400px;
+    }
+
+    .mp-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mp-hero .grad {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(to top, var(--color-black-60), var(--color-transparent));
+    }
+
+    .mp-hero .badge-pos {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .badge-ritual {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--color-red), var(--color-red-dark));
+      color: var(--color-white);
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 8px 22px;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+
+    .mp-title {
+      font-family: 'Playfair Display', 'Abril Fatface', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: clamp(28px, 8vw, 36px);
+      line-height: 1.2;
+      background: linear-gradient(180deg, var(--color-gold-amber), var(--color-red));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .mp-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--color-red);
+      margin: 16px auto;
+      border-radius: 1px;
+    }
+
+    .mp-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: var(--color-slate);
+      line-height: 1.7;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .mp-info-row {
+      display: flex;
+      gap: 12px;
+      padding: 0 20px;
+      margin-top: 28px;
+    }
+
+    .mp-info-card {
+      flex: 1;
+      background: var(--color-red-08);
+      border: 1px solid var(--color-red-15);
+      border-radius: 16px;
+      padding: 18px 14px 16px;
+      text-align: center;
+    }
+
+    .mp-info-card .mic-icon {
+      color: var(--color-red);
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .mp-info-card .mic-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      color: var(--color-slate-50);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 4px;
+    }
+
+    .mp-info-card .mic-value {
+      font-family: 'Noto Serif', serif;
+      font-size: 14px;
+      color: var(--color-text-light);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 359px) {
+      .mp-title {
+        font-size: 26px;
+      }
+
+      .mp-info-row {
+        flex-direction: column;
+      }
+    }
+
+    /* ===== SLIDE 3 — HALDI ===== */
+    .haldi-card {
+      background: var(--color-bg-maroon);
+      min-height: 100%;
+    }
+
+    .h-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .h-header .hbtn {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-light);
+      text-decoration: none;
+      font-size: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .h-header .htitle {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--color-haldi-title);
+      letter-spacing: 0.5px;
+    }
+
+    .h-hero {
+      position: relative;
+      margin: 0 16px;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      max-height: 440px;
+    }
+
+    .h-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .h-hero .grad {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 65%;
+      background: linear-gradient(to top, var(--color-black-85), var(--color-transparent));
+    }
+
+    .h-hero .content {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      z-index: 2;
+    }
+
+    .badge-today {
+      display: inline-block;
+      background: var(--color-gold);
+      border: 1px solid var(--color-gold-40);
+      color: var(--color-black);
+      font-weight: 900;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .h-title {
+      font-family: 'Abril Fatface', serif;
+      font-size: clamp(26px, 7.5vw, 34px);
+      color: var(--color-text-light);
+      line-height: 1.1;
+    }
+
+    .h-loc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      color: var(--color-text-light-60);
+      margin-top: 10px;
+    }
+
+    .h-loc i {
+      color: var(--color-gold);
+      margin-right: 4px;
+      font-size: 12px;
+    }
+
+    .cat-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 24px 16px 8px;
+      gap: 10px;
+    }
+
+    .cat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cat-item .cat-img {
+      width: 100%;
+      /* aspect-ratio: 1; */
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .cat-item .cat-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .cat-item .cat-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      color: var(--color-slate);
+      text-align: center;
+    }
+
+    .sec-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 20px 16px;
+    }
+
+    .sec-head h2 {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--color-text-light);
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .sec-head .sec-line {
+      flex: 1;
+      height: 1px;
+      background: var(--color-red-25);
+    }
+
+    .detail-cards {
+      display: flex;
+      gap: 12px;
+      padding: 0 20px 16px;
+    }
+
+    .d-card {
+      flex: 1;
+      background: var(--color-red-06);
+      border: 1px solid var(--color-red-12);
+      border-radius: 16px;
+      padding: 18px 16px;
+    }
+
+    .d-card .d-icon {
+      color: var(--color-red);
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .d-card .d-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      color: var(--color-slate-50);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 4px;
+    }
+
+    .d-card .d-value {
+      font-family: 'Noto Serif', serif;
+      font-size: 15px;
+      color: var(--color-text-light);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .gallery-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 16px 20px 12px;
+    }
+
+    .gallery-head h2 {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--color-text-light);
+      margin: 0;
+    }
+
+    .gallery-head .view-all {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      color: var(--color-red);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .gallery-grid {
+      display: flex;
+      gap: 10px;
+      padding: 0 20px 24px;
+    }
+
+    .gallery-grid img {
+      flex: 1;
+      min-width: 0;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    @media (max-width: 359px) {
+      .cat-item .cat-img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .h-title {
+        font-size: 24px;
+      }
+    }
+
+    /* ===== SLIDE 4 — SANGEET ===== */
+    .sangeet-card {
+      background: var(--color-bg-maroon);
+      min-height: 100%;
+    }
+
+    .sg-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px 8px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .sg-header .hbtn {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-light);
+      text-decoration: none;
+      font-size: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .sg-header .htitle {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--color-text-light);
+      letter-spacing: 0.3px;
+    }
+
+    .sg-hero {
+      position: relative;
+      width: 100%;
+      height: clamp(380px, 55vh, 480px);
+      overflow: hidden;
+    }
+
+    .sg-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+      display: block;
+      opacity: 0.55;
+    }
+
+    .sg-hero .grad {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 55%;
+      background: linear-gradient(to top, var(--color-bg-dark-alt), var(--color-transparent));
+    }
+
+    .sg-hero .content {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .grand-badge {
+      display: inline-block;
+      background: var(--color-red-30);
+      border: 1px solid var(--color-gold-40);
+      padding: 5px 16px;
+      border-radius: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      color: var(--color-gold);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .sg-title {
+      font-family: 'Abril Fatface', serif;
+      font-size: clamp(32px, 9vw, 40px);
+      color: var(--color-text-light);
+      line-height: 1.1;
+    }
+
+    .sg-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      color: var(--color-text-light-50);
+      font-style: italic;
+      margin-top: 10px;
+    }
+
+    .sg-stats {
+      display: flex;
+      justify-content: center;
+      gap: 36px;
+      padding: 24px 24px 8px;
+    }
+
+    .sg-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sg-stat .ss-icon {
+      color: var(--color-gold);
+      font-size: 24px;
+    }
+
+    .sg-stat .ss-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      color: var(--color-slate-50);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .ef-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 24px 24px 20px;
+    }
+
+    .ef-head h2 {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--color-text-light);
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .ef-head .ef-line {
+      flex: 1;
+      height: 1px;
+      background: var(--color-red-20);
+    }
+
+    .sg-timeline {
+      position: relative;
+      padding: 0 24px 24px 56px;
+    }
+
+    .sg-timeline::before {
+      content: '';
+      position: absolute;
+      left: 40px;
+      top: 0;
+      bottom: 30px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--color-gold), var(--color-red), var(--color-red-20));
+    }
+
+    .tl-item {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .tl-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .tl-item .tl-icon {
+      position: absolute;
+      left: -32px;
+      top: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-bg-maroon-darker);
+      border: 2px solid var(--color-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-gold);
+      font-size: 12px;
+      z-index: 2;
+    }
+
+    .tl-item .tl-card {
+      background: var(--color-red-04);
+      border: 1px solid var(--color-red-08);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .tl-item .tl-card.highlight {
+      background: var(--color-red-08);
+      border: 1px solid var(--color-red-15);
+    }
+
+    .tl-item .tl-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .tl-item .tl-name {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--color-text-light);
+    }
+
+    .tl-item .tl-time {
+      font-family: 'Noto Serif', serif;
+      font-size: 13px;
+      color: var(--color-red);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tl-item .tl-desc {
+      font-size: 14px;
+      color: var(--color-slate);
+      line-height: 1.55;
+    }
+
+    .rsvp-wrap {
+      padding: 16px 24px 24px;
+      text-align: center;
+    }
+
+    .rsvp-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
+      height: 54px;
+      background: linear-gradient(135deg, var(--color-red-bright), var(--color-red-dark));
+      border: none;
+      border-radius: 9999px;
+      color: var(--color-white);
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 0 20px var(--color-red-40);
+      transition: transform 0.2s;
+    }
+
+    .rsvp-btn:hover {
+      transform: scale(1.03);
+    }
+
+    /* ===== SLIDE 5 — JAIMALA ===== */
+    .jm-card {
+      background: var(--color-bg-maroon);
+      min-height: 100%;
+    }
+
+    .jm-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px 8px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      background: none !important;
+      background-color: transparent !important;
+    }
+
+    .jm-header .hbtn,
+    .jm-header .hbtn:hover,
+    .jm-header .hbtn:focus,
+    .jm-header .hbtn:active {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-light);
+      text-decoration: none;
+      font-size: 18px;
+      background: none !important;
+      background-color: transparent !important;
+      border: none;
+      cursor: pointer;
+      box-shadow: none !important;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .jm-header .htitle {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 16px;
+      color: var(--color-text-light);
+      letter-spacing: 0.3px;
+    }
+
+    .jm-hero {
+      position: relative;
+      width: 100%;
+      min-height: 480px;
+      height: 65vh;
+      max-height: 600px;
+      overflow: hidden;
+    }
+
+    .jm-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .jm-hero .grad {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 55%;
+      background: linear-gradient(to top, var(--color-bg-maroon-darker), var(--color-bg-maroon-darker-40) 60%, var(--color-transparent));
+    }
+
+    .jm-hero .content {
+      position: absolute;
+      bottom: 24px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 2;
+      padding: 0 24px;
+    }
+
+    .jm-ceremony-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      color: var(--color-text-light-30);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .jm-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: clamp(32px, 9vw, 40px);
+      color: var(--color-text-light);
+      line-height: 1.15;
+    }
+
+    .jm-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: var(--color-text-light-50);
+      font-style: italic;
+      margin-top: 10px;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+
+    .jm-quote-icon {
+      color: var(--color-text-light-20);
+      font-size: 18px;
+      margin-top: 6px;
+    }
+
+    .bless-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      max-width: 340px;
+      margin: 16px auto 0;
+      height: 52px;
+      background: linear-gradient(135deg, var(--color-red-bright), var(--color-red-dark));
+      border: none;
+      border-radius: 9999px;
+      color: var(--color-white);
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .bless-btn:hover {
+      transform: scale(1.03);
+      color: var(--color-white);
+    }
+
+    .couple-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 24px 24px 16px;
+    }
+
+    .couple-avatar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .couple-avatar .av-img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--color-red-30);
+    }
+
+    .couple-avatar .av-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .couple-avatar .av-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      color: var(--color-text-light-50);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .couple-link {
+      color: var(--color-text-light-25);
+      font-size: 16px;
+      margin: 0 6px;
+      margin-bottom: 20px;
+    }
+
+    .about-sec {
+      padding: 8px 24px 20px;
+    }
+
+    .about-sec .red-bar {
+      width: 4px;
+      background: var(--color-red);
+      border-radius: 2px;
+      align-self: stretch;
+      flex-shrink: 0;
+    }
+
+    .about-sec h2 {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--color-text-light);
+      margin-bottom: 2px;
+    }
+
+    .about-sec .sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      color: var(--color-slate-60);
+      font-style: italic;
+    }
+
+    .about-sec .btxt {
+      font-size: 14px;
+      color: var(--color-slate);
+      line-height: 1.7;
+      margin-top: 16px;
+    }
+
+    .jm-cards {
+      display: flex;
+      gap: 12px;
+      padding: 0 24px 24px;
+    }
+
+    .jm-card-item {
+      flex: 1;
+      min-width: 0;
+      background: var(--color-red-06);
+      border: 1px solid var(--color-red-12);
+      border-radius: 16px;
+      padding: 16px 14px;
+    }
+
+    .jm-card-item .jci-icon {
+      color: var(--color-red);
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .jm-card-item .jci-label {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--color-text-light);
+      margin-bottom: 2px;
+    }
+
+    .jm-card-item .jci-value {
+      font-size: 13px;
+      color: var(--color-slate);
+      line-height: 1.4;
+    }
+
+    /* ===== SLIDE 6 — PHERA ===== */
+    .phera-card {
+      background: var(--color-bg-maroon);
+      min-height: 100%;
+    }
+
+    .ph-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px 8px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      background: none !important;
+    }
+
+    .ph-header .hbtn,
+    .ph-header .hbtn:hover,
+    .ph-header .hbtn:focus,
+    .ph-header .hbtn:active {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-light);
+      text-decoration: none;
+      font-size: 18px;
+      background: none !important;
+      border: none;
+      cursor: pointer;
+      box-shadow: none !important;
+      outline: none;
+    }
+
+    .ph-header .htitle {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--color-text-light);
+    }
+
+    .ph-hero {
+      position: relative;
+      width: 100%;
+      min-height: 440px;
+      height: 62vh;
+      max-height: 560px;
+      overflow: hidden;
+    }
+
+    .ph-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .ph-hero .grad {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30%;
+      background: linear-gradient(to top, var(--color-bg-dark), var(--color-transparent));
+    }
+
+    .ph-dots {
+      position: absolute;
+      top: 72px;
+      left: 24px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 3;
+    }
+
+    .ph-dots .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-red);
+    }
+
+    .ph-dots .dot.dim {
+      opacity: 0.4;
+    }
+
+    .ph-dots .vow-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      color: var(--color-text-light-50);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-left: 8px;
+    }
+
+    .ph-text {
+      text-align: center;
+      padding: 24px 24px 0;
+    }
+
+    .ph-main {
+      font-family: 'Abril Fatface', serif;
+      font-size: clamp(28px, 8vw, 34px);
+      color: var(--color-text-light);
+      line-height: 1.2;
+    }
+
+    .ph-sacred {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: clamp(26px, 7.5vw, 32px);
+      color: var(--color-red);
+      margin-top: 2px;
+    }
+
+    .ph-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: var(--color-slate);
+      line-height: 1.6;
+      margin-top: 14px;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .vow-card {
+      margin: 24px 20px;
+      background: var(--color-red-06);
+      border: 1px solid var(--color-red-12);
+      border-radius: 18px;
+      padding: 20px;
+      position: relative;
+    }
+
+    .vow-card .vc-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      color: var(--color-red);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .vow-card .vc-title {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--color-text-light);
+      margin-bottom: 8px;
+    }
+
+    .vow-card .vc-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: var(--color-slate);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .vow-card .vc-decor {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: var(--color-text-light-15);
+      font-size: 28px;
+    }
+
+    /* ===== SLIDE 7 — VENUE ===== */
+    .venue-card {
+      background: var(--color-bg-maroon);
+      min-height: 100%;
+    }
+
+    .vn-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .vn-header .hbtn {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-light);
+      text-decoration: none;
+      font-size: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .vn-header .htitle {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--color-red);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    .vn-hero {
+      position: relative;
+      margin: 4px 20px 0;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      max-height: 400px;
+    }
+
+    .vn-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .vn-hero .grad {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(to top, var(--color-black-80), var(--color-transparent));
+    }
+
+    .vn-hero .content {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      z-index: 2;
+    }
+
+    .vn-hero .venue-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      color: var(--color-text-light-35);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .vn-hero .venue-name {
+      font-family: 'Abril Fatface', serif;
+      font-size: clamp(26px, 7vw, 32px);
+      color: var(--color-text-light);
+      line-height: 1.15;
+    }
+
+    .vn-hero .decor-tl,
+    .vn-hero .decor-br {
+      position: absolute;
+      z-index: 3;
+      color: var(--color-red-30);
+      font-size: 28px;
+    }
+
+    .vn-hero .decor-tl {
+      top: 10px;
+      left: 10px;
+    }
+
+    .vn-hero .decor-br {
+      bottom: 10px;
+      right: 10px;
+    }
+
+    .vn-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--color-red);
+      border-radius: 1px;
+      margin: 24px auto 20px;
+    }
+
+    .vn-section-title {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--color-text-light);
+    }
+
+    .vn-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: var(--color-slate);
+      font-style: italic;
+      line-height: 1.7;
+      max-width: 340px;
+    }
+
+    .vn-info-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--color-red-06);
+      border: 1px solid var(--color-red-12);
+      border-radius: 16px;
+      padding: 18px 16px;
+      margin-bottom: 12px;
+    }
+
+    .vn-info-card .vic-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--color-red-12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-red);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .vn-info-card .vic-label {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--color-text-light);
+      margin-bottom: 2px;
+    }
+
+    .vn-info-card .vic-value {
+      font-size: 13px;
+      color: var(--color-slate);
+      line-height: 1.4;
+    }
+
+    .dir-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--color-red-bright), var(--color-red-dark));
+      border: none;
+      border-radius: 9999px;
+      color: var(--color-white);
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 14px 36px;
+      cursor: pointer;
+      box-shadow: 0 0 20px var(--color-red-30);
+      transition: transform 0.2s;
+    }
+
+    .dir-btn:hover {
+      transform: scale(1.03);
+      color: var(--color-white);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="swiper main-slider">
+    <div class="swiper-wrapper">
+
+      <!-- SLIDE 0 — GANESH -->
+      <div class="swiper-slide">
+        <div class="card-screen ganesh-card">
+          <div class="ambient">
+            <div class="c c1"></div>
+            <div class="c c2"></div>
+            <div class="c c3"></div>
+            <div class="c c4"></div>
+          </div>
+          <div class="g-topbar">
+            <div class="close-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M1 1L13 13M13 1L1 13" stroke="#f1f5f9" stroke-width="2" stroke-linecap="round" />
+              </svg></div>
+            <span class="title">Ganpati Darshan</span>
+            <div style="width:48px"></div>
+          </div>
+          <div class="g-hero">
+            <div class="g-img-frame">
+              <div class="glow"></div>
+              <img src="images/ganesh.png" alt="Lord Ganesh">
+            </div>
+          </div>
+          <div class="g-text">
+            <div class="sanskrit">&#x0936;&#x094D;&#x0930;&#x0940; &#x0917;&#x0923;&#x0947;&#x0936;&#x093E;&#x092F;
+              &#x0928;&#x092E;&#x0903;</div>
+            <div class="translit">Shri Ganeshaya Namah</div>
+            <div class="blessing">Blessings for a new beginning and a divine<br>journey ahead.</div>
+          </div>
+          <div class="g-cta">
+            <a href="javascript:void(0)" onclick="mainSlider.slideNext(500)" class="gold-btn">Know More</a>
+            <div class="g-decor">
+              <span class="dline"></span>
+              <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
+                <circle cx="9" cy="10" r="3" stroke="#b81414" stroke-width="1.5" opacity="0.5" />
+                <circle cx="9" cy="10" r="7" stroke="#b81414" stroke-width="1" opacity="0.3" />
+                <circle cx="9" cy="4" r="1.5" fill="#b81414" opacity="0.4" />
+                <circle cx="9" cy="16" r="1.5" fill="#b81414" opacity="0.4" />
+                <circle cx="3" cy="10" r="1.5" fill="#b81414" opacity="0.4" />
+                <circle cx="15" cy="10" r="1.5" fill="#b81414" opacity="0.4" />
+              </svg>
+              <span class="dline"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 1 — ENGAGEMENT -->
+      <div class="swiper-slide">
+        <div class="card-screen engagement-card d-flex flex-column">
+          <!-- Background image -->
+          <div class="eng-bg"><img src="images/engagement-bg.png" alt=""></div>
+
+          <!-- Header -->
+          <div class="eng-header">
+            <a href="javascript:void(0)" onclick="mainSlider.slideTo(0)" class="hdr-btn"><i
+                class="bi bi-arrow-left"></i></a>
+            <span class="hdr-title">The Union</span>
+            <a href="#" class="hdr-btn"><i class="bi bi-share"></i></a>
+          </div>
+
+          <!-- Content Card -->
+          <div class="eng-content">
+            <!-- Heart -->
+            <div class="eng-heart">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+
+            <!-- Invite label -->
+            <p class="invite-label mb-0">You Are Invited To</p>
+
+            <!-- Quote -->
+            <p class="eng-quote mt-3 mb-0">&ldquo;Do dilon ka milan,<br>do parivaron ka<br>bandhan&rdquo;</p>
+
+            <!-- Divider -->
+            <div class="eng-divider mt-4"></div>
+
+            <!-- Title -->
+            <h1 class="eng-title mb-3">Engagement<br>Ceremony</h1>
+
+            <!-- Description -->
+            <p class="eng-desc mb-0">Celebrating the beginning of a<br>beautiful journey together.</p>
+          </div>
+
+          <!-- Details Below -->
+          <div class="details-below">
+            <p class="db-label mb-1">Details Below</p>
+            <div class="db-arrow"><i class="bi bi-chevron-down"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2 — MATA PUJAN -->
+      <div class="swiper-slide">
+        <div class="card-screen mata-card">
+          <!-- Header -->
+          <div class="mp-header">
+            <a href="javascript:void(0)" onclick="mainSlider.slideTo(1)" class="hbtn"><i
+                class="bi bi-arrow-left"></i></a>
+            <span class="htitle">Mata & Ganesh Pujan</span>
+            <div style="width:44px"></div>
+          </div>
+
+          <!-- Hero image with badge -->
+          <div class="mp-hero">
+            <img src="images/diya.png" alt="Mata Pujan Ceremony">
+            <div class="grad"></div>
+            <div class="badge-pos">
+              <span class="badge-ritual">Divine Ritual</span>
+            </div>
+          </div>
+
+          <!-- Title — gold gradient italic -->
+          <div class="text-center px-4 mt-4">
+            <h1 class="mp-title">Shubh Mata Pujan<br>evam Ganesh Pujan</h1>
+          </div>
+
+          <!-- Red divider -->
+          <div class="mp-divider"></div>
+
+          <!-- Quote -->
+          <div class="text-center px-4">
+            <p class="mp-quote">
+              &ldquo;Invoking divine blessings for the auspicious beginning of the wedding ceremonies and a life of
+              prosperity.&rdquo;
+            </p>
+          </div>
+
+          <!-- Info cards -->
+          <div class="mp-info-row">
+            <div class="mp-info-card">
+              <div class="mic-icon"><i class="bi bi-clock"></i></div>
+              <div class="mic-label">Muhurat Time</div>
+              <div class="mic-value">09:30 AM IST</div>
+            </div>
+            <div class="mp-info-card">
+              <div class="mic-icon"><i class="bi bi-geo-alt"></i></div>
+              <div class="mic-label">Venue</div>
+              <div class="mic-value">Heritage</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3 — HALDI -->
+      <div class="swiper-slide">
+        <div class="card-screen haldi-card">
+          <!-- Header -->
+          <div class="h-header">
+            <a href="javascript:void(0)" onclick="mainSlider.slideTo(2)" class="hbtn"><i
+                class="bi bi-arrow-left"></i></a>
+            <span class="htitle">Haldi & Mehndi</span>
+            <a href="#" class="hbtn"><i class="bi bi-share"></i></a>
+          </div>
+
+          <!-- Hero card with rounded corners -->
+          <div class="h-hero">
+            <img src="images/mehandi.png" alt="Haldi & Mehndi">
+            <div class="grad"></div>
+            <div class="content">
+              <span class="badge-today">Today's Event</span>
+              <h1 class="h-title">Haldi aur<br>Mehndi ki<br>Rangin Shaam</h1>
+              <p class="h-loc"><i class="bi bi-geo-alt-fill"></i> Royal Orchid Gardens, Jaipur</p>
+            </div>
+          </div>
+
+          <!-- Category thumbnails — rounded rectangles -->
+          <div class="cat-row">
+            <div class="cat-item">
+              <div class="cat-img"><img src="images/moments.png" alt="Moments"></div>
+              <span class="cat-label">Moments</span>
+            </div>
+            <div class="cat-item">
+              <div class="cat-img"><img src="images/Rituals.png" alt="Rituals"></div>
+              <span class="cat-label">Rituals</span>
+            </div>
+            <div class="cat-item">
+              <div class="cat-img"><img src="images/mehandi-art.png" alt="Mehndi Art"></div>
+              <span class="cat-label">Mehndi Art</span>
+            </div>
+            <div class="cat-item">
+              <div class="cat-img"><img src="images/decor.png" alt="Decor"></div>
+              <span class="cat-label">Decor</span>
+            </div>
+          </div>
+
+          <!-- Event Details -->
+          <div class="sec-head">
+            <h2>Event Details</h2>
+            <div class="sec-line"></div>
+          </div>
+
+          <div class="detail-cards">
+            <div class="d-card">
+              <div class="d-icon"><i class="bi bi-clock"></i></div>
+              <div class="d-label">Time</div>
+              <div class="d-value">04:00 PM<br>onwards</div>
+            </div>
+            <div class="d-card">
+              <div class="d-icon"><i class="bi bi-person-arms-up"></i></div>
+              <div class="d-label">Dress Code</div>
+              <div class="d-value">Yellow & Festive</div>
+            </div>
+          </div>
+
+          <!-- Gallery -->
+          <div class="gallery-head">
+            <h2>Gallery</h2>
+            <a href="#" class="view-all">View All</a>
+          </div>
+
+          <div class="gallery-grid">
+            <img src="images/gallery1.png" alt="Marigold Flowers">
+            <img src="images/gallery2.png" alt="Ceremony">
+            <img src="images/gallery3.png" alt="Mehndi Hands">
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4 — SANGEET -->
+      <div class="swiper-slide">
+        <div class="card-screen sangeet-card">
+          <!-- Header -->
+          <div class="sg-header">
+            <a href="javascript:void(0)" onclick="mainSlider.slideTo(3)" class="hbtn"><i
+                class="bi bi-arrow-left"></i></a>
+            <span class="htitle">Wedding Festivities</span>
+            <a href="#" class="hbtn"><i class="bi bi-share"></i></a>
+          </div>
+
+          <!-- Hero -->
+          <div class="sg-hero">
+            <img src="images/dance.png" alt="Sangeet Night">
+            <div class="grad"></div>
+            <div class="content">
+              <span class="grand-badge">The Grand Celebration</span>
+              <h1 class="sg-title">Sangeet aur<br>Music Night</h1>
+              <p class="sg-sub">Dance the night away under the stars</p>
+            </div>
+          </div>
+
+          <!-- Stats — JOY, BEATS, VIBE -->
+          <div class="sg-stats">
+            <div class="sg-stat">
+              <div class="ss-icon"><i class="bi bi-stars"></i></div>
+              <span class="ss-label">Joy</span>
+            </div>
+            <div class="sg-stat">
+              <div class="ss-icon"><i class="bi bi-music-note"></i></div>
+              <span class="ss-label">Beats</span>
+            </div>
+            <div class="sg-stat">
+              <div class="ss-icon"><i class="bi bi-moon"></i></div>
+              <span class="ss-label">Vibe</span>
+            </div>
+          </div>
+
+          <!-- Evening Flow -->
+          <div class="ef-head">
+            <h2>Evening Flow</h2>
+            <div class="ef-line"></div>
+          </div>
+
+          <div class="sg-timeline">
+            <!-- 1 -->
+            <div class="tl-item">
+              <div class="tl-icon"><i class="bi bi-star-fill"></i></div>
+              <div class="tl-card">
+                <div class="tl-head">
+                  <span class="tl-name">Grand Entry of Couple</span>
+                  <span class="tl-time">07:30 PM</span>
+                </div>
+                <p class="tl-desc mb-0">The evening begins with a spectacular entrance under a canopy of cold fire and
+                  floral glitz.</p>
+              </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="tl-item">
+              <div class="tl-icon"><i class="bi bi-tv"></i></div>
+              <div class="tl-card">
+                <div class="tl-head">
+                  <span class="tl-name">Family Performances</span>
+                  <span class="tl-time">08:45 PM</span>
+                </div>
+                <p class="tl-desc mb-0">Witness the battle of the sides! Beautifully choreographed dances by family and
+                  friends.</p>
+              </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="tl-item">
+              <div class="tl-icon"><i class="bi bi-disc"></i></div>
+              <div class="tl-card highlight">
+                <div class="tl-head">
+                  <span class="tl-name">Dhol & Dance Floor</span>
+                  <span class="tl-time">10:00 PM</span>
+                </div>
+                <p class="tl-desc mb-0">The beats drop! Traditional Dhol players take over the floor for a high-energy
+                  dance session.</p>
+              </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="tl-item">
+              <div class="tl-icon"><i class="bi bi-cup-straw"></i></div>
+              <div class="tl-card">
+                <div class="tl-head">
+                  <span class="tl-name">Midnight Feast</span>
+                  <span class="tl-time">11:00 PM</span>
+                </div>
+                <p class="tl-desc mb-0">A curated menu of gourmet street food and signature drinks to keep the energy
+                  high.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- RSVP -->
+          <div class="rsvp-wrap">
+            <button class="rsvp-btn">
+              <i class="bi bi-heart"></i> RSVP for Sangeet
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5 — JAIMALA -->
+      <div class="swiper-slide">
+        <div class="card-screen jm-card">
+          <!-- Header overlaid -->
+          <div class="jm-header">
+            <a href="javascript:void(0)" onclick="mainSlider.slideTo(4)" class="hbtn"><i
+                class="bi bi-arrow-left"></i></a>
+            <span class="htitle">Shubh Jai Mala</span>
+            <a href="#" class="hbtn"><i class="bi bi-share"></i></a>
+          </div>
+
+          <!-- Hero — full bleed couple photo -->
+          <div class="jm-hero">
+            <img src="images/jaymala.png" alt="Jai Mala Ceremony">
+            <div class="grad"></div>
+            <div class="content">
+              <p class="jm-ceremony-label mb-1">The Ceremony</p>
+              <h1 class="jm-title">The Jai Mala</h1>
+              <p class="jm-quote">&ldquo;A beautiful tradition where souls unite, exchanging garlands under the
+                celestial light.&rdquo;</p>
+              <div class="jm-quote-icon"><i class="bi bi-grid-3x3-gap"></i></div>
+              <button class="bless-btn"><i class="bi bi-heart"></i> Send Blessings</button>
+            </div>
+          </div>
+
+          <!-- Couple avatars -->
+          <div class="couple-section">
+            <div class="couple-avatar">
+              <div class="av-img"><img src="images/girl.png" alt="Ananya"></div>
+              <span class="av-name">Ananya</span>
+            </div>
+            <div class="couple-link"><i class="bi bi-link-45deg"></i></div>
+            <div class="couple-avatar">
+              <div class="av-img"><img src="images/boy.png" alt="Rohan"></div>
+              <span class="av-name">Rohan</span>
+            </div>
+          </div>
+
+          <!-- About the Ritual -->
+          <div class="about-sec">
+            <div class="d-flex gap-3">
+              <div class="red-bar"></div>
+              <div>
+                <h2>About the Ritual</h2>
+                <p class="sub mb-0">Sacred Vows & Eternal Love</p>
+              </div>
+            </div>
+            <p class="btxt">
+              The Varmala or Jai Mala ceremony is an ancient Vedic tradition where the bride and groom exchange garlands
+              made of fresh flowers, often roses and jasmines, signifying their formal acceptance of one another as life
+              partners.
+            </p>
+          </div>
+
+          <!-- Timing / Venue cards -->
+          <div class="jm-cards">
+            <div class="jm-card-item">
+              <div class="jci-icon"><i class="bi bi-clock"></i></div>
+              <div class="jci-label">Timing</div>
+              <div class="jci-value">8:30 PM, Tonight</div>
+            </div>
+            <div class="jm-card-item">
+              <div class="jci-icon"><i class="bi bi-geo-alt"></i></div>
+              <div class="jci-label">Venue</div>
+              <div class="jci-value">Grand Mandap, Udaipur</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 6 — PHERA -->
+      <div class="swiper-slide">
+        <div class="card-screen phera-card">
+          <!-- Header overlaid -->
+          <div class="ph-header">
+            <a href="javascript:void(0)" onclick="mainSlider.slideTo(5)" class="hbtn"><i
+                class="bi bi-arrow-left"></i></a>
+            <span class="htitle">Sacred Union</span>
+            <a href="#" class="hbtn"><i class="bi bi-share"></i></a>
+          </div>
+
+          <!-- Hero — full bleed vivah photo -->
+          <div class="ph-hero">
+            <!-- Dots + vow label -->
+            <div class="ph-dots">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot dim"></span>
+              <span class="dot dim"></span>
+              <span class="dot dim"></span>
+              <span class="vow-label">4th Vow</span>
+            </div>
+            <img src="images/vivah.png" alt="Phera Ceremony">
+            <div class="grad"></div>
+          </div>
+
+          <!-- Title -->
+          <div class="ph-text">
+            <h1 class="ph-main mb-0">Saat Pheron ka</h1>
+            <p class="ph-sacred mb-0">Pavitra Bandhan</p>
+            <p class="ph-desc">
+              The seven sacred vows that bind two souls for eternity in a divine and celestial union.
+            </p>
+          </div>
+
+          <!-- Current Vow card -->
+          <div class="vow-card">
+            <div class="vc-decor"><i class="bi bi-grid-3x3-gap"></i></div>
+            <p class="vc-label mb-0">Current Vow</p>
+            <h3 class="vc-title">The Vow of Strength</h3>
+            <p class="vc-text mb-0">&ldquo;To be each other's strength in times of adversity and joy.&rdquo;</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 7 — VENUE -->
+      <div class="swiper-slide">
+        <div class="card-screen venue-card">
+          <!-- Header — above hero -->
+          <div class="vn-header">
+            <a href="javascript:void(0)" onclick="mainSlider.slideTo(6)" class="hbtn"><i
+                class="bi bi-arrow-left"></i></a>
+            <span class="htitle">The Celebration</span>
+            <div style="width:44px"></div>
+          </div>
+
+          <!-- Hero — rounded card with ballroom -->
+          <div class="vn-hero">
+            <div class="decor-tl"><i class="bi bi-grid-3x3-gap"></i></div>
+            <img src="images/location.png" alt="Grand Heritage Ballroom">
+            <div class="grad"></div>
+            <div class="content">
+              <p class="venue-label mb-1">Our Venue</p>
+              <h1 class="venue-name">Grand Heritage<br>Ballroom</h1>
+            </div>
+            <div class="decor-br"><i class="bi bi-grid-3x3-gap"></i></div>
+          </div>
+
+          <!-- Red divider -->
+          <div class="vn-divider"></div>
+
+          <!-- Section -->
+          <div class="text-center px-4">
+            <h2 class="vn-section-title mb-3">Wedding Venue & Location</h2>
+            <p class="vn-quote mx-auto mb-0">
+              &ldquo;A place where love meets elegance. We can't wait to share this magical night with you in the heart
+              of the city.&rdquo;
+            </p>
+          </div>
+
+          <!-- Address card -->
+          <div class="px-4 mt-4">
+            <div class="vn-info-card">
+              <div class="vic-icon"><i class="bi bi-geo-alt"></i></div>
+              <div>
+                <div class="vic-label">Address</div>
+                <div class="vic-value">123 Elegance Blvd, Suite 500<br>San Francisco, CA 94102</div>
+              </div>
+            </div>
+
+            <!-- Timing card -->
+            <div class="vn-info-card">
+              <div class="vic-icon"><i class="bi bi-clock"></i></div>
+              <div>
+                <div class="vic-label">Timing</div>
+                <div class="vic-value">Ceremony: 4:00 PM<br>Reception to follow</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Get Directions -->
+          <div class="text-center px-4 py-4">
+            <button class="dir-btn">
+              <i class="bi bi-signpost-2"></i> Get Directions
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /swiper-wrapper -->
+    <div class="swiper-pagination"></div>
+  </div><!-- /swiper -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    var startX, startY;
+    var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    var mainSlider = new Swiper('.main-slider', {
+      direction: 'horizontal',
+      slidesPerView: 1,
+      spaceBetween: 0,
+      speed: 500,
+      effect: 'slide',
+      resistance: true,
+      resistanceRatio: 0.85,
+      allowTouchMove: true,
+      simulateTouch: true,
+      threshold: 20,
+      touchAngle: 35,
+      grabCursor: false,
+      preventInteractionOnTransition: true,
+      touchStartPreventDefault: false,
+      touchMoveStopPropagation: true,
+      passiveListeners: true,
+      keyboard: { enabled: true, onlyInViewport: true },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      mousewheel: {
+        forceToAxis: true,
+        thresholdDelta: 30,
+        thresholdTime: 300,
+      },
+    });
+
+    mainSlider.on('slideChange', function () {
+      var slide = mainSlider.slides[mainSlider.activeIndex];
+      if (slide) slide.scrollTop = 0;
+    });
+
+    /* Touch conflict resolution — only on real touch devices */
+    if (isTouchDevice) {
+      mainSlider.el.addEventListener('touchstart', function (e) {
+        startY = e.touches[0].clientY;
+        startX = e.touches[0].clientX;
+        mainSlider.allowTouchMove = true;
+      }, { passive: true });
+
+      mainSlider.el.addEventListener('touchmove', function (e) {
+        var dy = Math.abs(e.touches[0].clientY - startY);
+        var dx = Math.abs(e.touches[0].clientX - startX);
+        if (dy > dx && dy > 10) {
+          mainSlider.allowTouchMove = false;
+        }
+      }, { passive: true });
+
+      mainSlider.el.addEventListener('touchend', function () {
+        mainSlider.allowTouchMove = true;
+      }, { passive: true });
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phera Ceremony - Sacred Union</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Serif:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="common.css">
+  <style>
+    .phera-card {
+      background: linear-gradient(180deg, #1a0808 0%, #0d0505 100%);
+      min-height: 100vh;
+    }
+
+    /* Header overlaid on image — transparent */
+    .ph-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 16px 8px;
+      position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+      background: none !important;
+    }
+    .ph-header .hbtn,
+    .ph-header .hbtn:hover,
+    .ph-header .hbtn:focus,
+    .ph-header .hbtn:active {
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      color: #f1f5f9; text-decoration: none; font-size: 18px;
+      background: none !important; border: none; cursor: pointer;
+      box-shadow: none !important; outline: none;
+    }
+    .ph-header .htitle {
+      font-family: 'Noto Serif', serif; font-weight: 700;
+      font-size: 16px; color: #f1f5f9;
+    }
+
+    /* Hero — full bleed from top, tall */
+    .ph-hero {
+      position: relative; width: 100%;
+      min-height: 440px; height: 62vh; max-height: 560px;
+      overflow: hidden;
+    }
+    .ph-hero img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .ph-hero .grad {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 30%;
+      background: linear-gradient(to top, #0d0505, transparent);
+    }
+
+    /* Carousel dots + "4TH VOW" label */
+    .ph-dots {
+      position: absolute; top: 72px; left: 24px;
+      display: flex; align-items: center; gap: 5px; z-index: 3;
+    }
+    .ph-dots .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #b81414;
+    }
+    .ph-dots .dot.dim { opacity: 0.4; }
+    .ph-dots .vow-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px; color: rgba(241,245,249,0.5);
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-left: 8px;
+    }
+
+    /* Title section below image */
+    .ph-text {
+      text-align: center; padding: 24px 24px 0;
+    }
+    .ph-main {
+      font-family: 'Abril Fatface', serif;
+      font-size: clamp(28px, 8vw, 34px);
+      color: #f1f5f9; line-height: 1.2;
+    }
+    .ph-sacred {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700; font-style: italic;
+      font-size: clamp(26px, 7.5vw, 32px);
+      color: #b81414;
+      margin-top: 2px;
+    }
+    .ph-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px; color: #94a3b8;
+      line-height: 1.6; margin-top: 14px;
+      max-width: 320px; margin-left: auto; margin-right: auto;
+    }
+
+    /* Current Vow card */
+    .vow-card {
+      margin: 24px 20px;
+      background: rgba(184, 20, 20, 0.06);
+      border: 1px solid rgba(184, 20, 20, 0.12);
+      border-radius: 18px;
+      padding: 20px;
+      position: relative;
+    }
+    .vow-card .vc-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px; color: #b81414;
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .vow-card .vc-title {
+      font-family: 'Noto Serif', serif; font-weight: 700;
+      font-size: 18px; color: #f1f5f9;
+      margin-bottom: 8px;
+    }
+    .vow-card .vc-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px; color: #94a3b8;
+      font-style: italic; line-height: 1.5;
+    }
+    .vow-card .vc-decor {
+      position: absolute; top: 20px; right: 20px;
+      color: rgba(241,245,249,0.15); font-size: 28px;
+    }
+
+    /* Bottom nav — 5 items with center heart button */
+    .ph-nav {
+      display: flex; justify-content: space-around; align-items: flex-end;
+      padding: 8px 0 max(12px, env(safe-area-inset-bottom));
+      background: rgba(10,5,5,0.95);
+      border-top: 1px solid rgba(184,20,20,0.1);
+      position: sticky; bottom: 0; z-index: 10; margin-top: auto;
+    }
+    .ph-nav a {
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+      text-decoration: none; color: rgba(148,163,184,0.4);
+      font-family: 'Noto Serif', serif; font-size: 9px;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+    .ph-nav a i { font-size: 20px; }
+    .ph-nav a.active { color: #b81414; }
+    .ph-nav a:hover { color: #b81414; }
+
+    /* Center heart — large red circle */
+    .ph-nav .center-heart {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #b81414;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: -20px;
+      box-shadow: 0 0 20px rgba(184,20,20,0.4);
+      color: #fff; font-size: 24px;
+      text-decoration: none;
+      border: 3px solid #0d0505;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card-screen phera-card">
+    <!-- Header overlaid -->
+    <div class="ph-header">
+      <a href="jaimala.html" class="hbtn"><i class="bi bi-arrow-left"></i></a>
+      <span class="htitle">Sacred Union</span>
+      <a href="#" class="hbtn"><i class="bi bi-share"></i></a>
+    </div>
+
+    <!-- Hero — full bleed vivah photo -->
+    <div class="ph-hero">
+      <!-- Dots + vow label -->
+      <div class="ph-dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot dim"></span>
+        <span class="dot dim"></span>
+        <span class="dot dim"></span>
+        <span class="vow-label">4th Vow</span>
+      </div>
+      <img src="images/vivah.png" alt="Phera Ceremony">
+      <div class="grad"></div>
+    </div>
+
+    <!-- Title -->
+    <div class="ph-text">
+      <h1 class="ph-main mb-0">Saat Pheron ka</h1>
+      <p class="ph-sacred mb-0">Pavitra Bandhan</p>
+      <p class="ph-desc">
+        The seven sacred vows that bind two souls for eternity in a divine and celestial union.
+      </p>
+    </div>
+
+    <!-- Current Vow card -->
+    <div class="vow-card">
+      <div class="vc-decor"><i class="bi bi-grid-3x3-gap"></i></div>
+      <p class="vc-label mb-0">Current Vow</p>
+      <h3 class="vc-title">The Vow of Strength</h3>
+      <p class="vc-text mb-0">&ldquo;To be each other's strength in times of adversity and joy.&rdquo;</p>
+    </div>
+
+    <!-- Bottom Nav — 5 items, center heart -->
+    <nav class="ph-nav">
+      <a href="index.html"><i class="bi bi-house"></i><span>Home</span></a>
+      <a href="engagement.html"><i class="bi bi-calendar-event"></i><span>Events</span></a>
+      <a href="#" class="center-heart"><i class="bi bi-heart"></i></a>
+      <a href="jaimala.html"><i class="bi bi-images"></i><span>Gallery</span></a>
+      <a href="#"><i class="bi bi-person"></i><span>Profile</span></a>
+    </nav>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

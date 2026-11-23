@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venue - Grand Heritage Ballroom</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Serif:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="common.css">
+  <style>
+    .venue-card {
+      background: linear-gradient(180deg, #1a0808 0%, #0d0505 100%);
+      min-height: 100vh;
+    }
+
+    /* Header — NOT overlaid, sits above image */
+    .vn-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 16px 8px; position: relative; z-index: 2;
+    }
+    .vn-header .hbtn {
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      color: #f1f5f9; text-decoration: none; font-size: 18px;
+      background: none; border: none; cursor: pointer;
+    }
+    .vn-header .htitle {
+      font-family: 'Noto Serif', serif; font-weight: 700;
+      font-size: 14px; color: #b81414;
+      letter-spacing: 2.5px; text-transform: uppercase;
+    }
+
+    /* Hero — rounded card with ballroom image */
+    .vn-hero {
+      position: relative;
+      margin: 4px 20px 0;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      max-height: 400px;
+    }
+    .vn-hero img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .vn-hero .grad {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 50%;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    }
+    .vn-hero .content {
+      position: absolute; bottom: 20px; left: 20px; right: 20px; z-index: 2;
+    }
+    .vn-hero .venue-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px; color: rgba(241,245,249,0.35);
+      letter-spacing: 3px; text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .vn-hero .venue-name {
+      font-family: 'Abril Fatface', serif;
+      font-size: clamp(26px, 7vw, 32px);
+      color: #f1f5f9; line-height: 1.15;
+    }
+
+    /* Decorative elements on hero corners */
+    .vn-hero .decor-tl,
+    .vn-hero .decor-br {
+      position: absolute; z-index: 3;
+      color: rgba(184,20,20,0.3); font-size: 28px;
+    }
+    .vn-hero .decor-tl { top: 10px; left: 10px; }
+    .vn-hero .decor-br { bottom: 10px; right: 10px; }
+
+    /* Red divider below hero */
+    .vn-divider {
+      width: 40px; height: 2px;
+      background: #b81414; border-radius: 1px;
+      margin: 24px auto 20px;
+    }
+
+    /* Section heading */
+    .vn-section-title {
+      font-family: 'Noto Serif', serif; font-weight: 700;
+      font-size: 22px; color: #f1f5f9;
+    }
+
+    /* Quote/description */
+    .vn-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px; color: #94a3b8;
+      font-style: italic; line-height: 1.7;
+      max-width: 340px;
+    }
+
+    /* Info cards — address & timing */
+    .vn-info-card {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: rgba(184,20,20,0.06);
+      border: 1px solid rgba(184,20,20,0.12);
+      border-radius: 16px;
+      padding: 18px 16px;
+      margin-bottom: 12px;
+    }
+    .vn-info-card .vic-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(184,20,20,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: #b81414; font-size: 18px; flex-shrink: 0;
+    }
+    .vn-info-card .vic-label {
+      font-family: 'Noto Serif', serif; font-weight: 700;
+      font-size: 14px; color: #f1f5f9; margin-bottom: 2px;
+    }
+    .vn-info-card .vic-value {
+      font-size: 13px; color: #94a3b8; line-height: 1.4;
+    }
+
+    /* GET DIRECTIONS button */
+    .dir-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: linear-gradient(135deg, #c41919, #8b0000);
+      border: none; border-radius: 9999px;
+      color: #fff; font-family: 'Noto Serif', serif; font-weight: 700;
+      font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 14px 36px; cursor: pointer;
+      box-shadow: 0 0 20px rgba(184,20,20,0.3);
+      transition: transform 0.2s;
+    }
+    .dir-btn:hover { transform: scale(1.03); color: #fff; }
+
+    /* Bottom nav — 4 icon-only items, no text */
+    .vn-nav {
+      display: flex; justify-content: space-around; align-items: center;
+      padding: 14px 0 max(16px, env(safe-area-inset-bottom));
+      background: rgba(10,5,5,0.95);
+      border-top: 1px solid rgba(184,20,20,0.1);
+      position: sticky; bottom: 0; z-index: 10; margin-top: auto;
+    }
+    .vn-nav a {
+      display: flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px;
+      text-decoration: none; color: rgba(148,163,184,0.35);
+      font-size: 22px; transition: color 0.2s;
+    }
+    .vn-nav a.active { color: #b81414; }
+    .vn-nav a:hover { color: #b81414; }
+  </style>
+</head>
+
+<body>
+  <div class="card-screen venue-card">
+    <!-- Header — above hero -->
+    <div class="vn-header">
+      <a href="phera.html" class="hbtn"><i class="bi bi-arrow-left"></i></a>
+      <span class="htitle">The Celebration</span>
+      <div style="width:44px"></div>
+    </div>
+
+    <!-- Hero — rounded card with ballroom -->
+    <div class="vn-hero">
+      <div class="decor-tl"><i class="bi bi-grid-3x3-gap"></i></div>
+      <img src="images/location.png" alt="Grand Heritage Ballroom">
+      <div class="grad"></div>
+      <div class="content">
+        <p class="venue-label mb-1">Our Venue</p>
+        <h1 class="venue-name">Grand Heritage<br>Ballroom</h1>
+      </div>
+      <div class="decor-br"><i class="bi bi-grid-3x3-gap"></i></div>
+    </div>
+
+    <!-- Red divider -->
+    <div class="vn-divider"></div>
+
+    <!-- Section -->
+    <div class="text-center px-4">
+      <h2 class="vn-section-title mb-3">Wedding Venue & Location</h2>
+      <p class="vn-quote mx-auto mb-0">
+        &ldquo;A place where love meets elegance. We can't wait to share this magical night with you in the heart of the city.&rdquo;
+      </p>
+    </div>
+
+    <!-- Address card -->
+    <div class="px-4 mt-4">
+      <div class="vn-info-card">
+        <div class="vic-icon"><i class="bi bi-geo-alt"></i></div>
+        <div>
+          <div class="vic-label">Address</div>
+          <div class="vic-value">123 Elegance Blvd, Suite 500<br>San Francisco, CA 94102</div>
+        </div>
+      </div>
+
+      <!-- Timing card -->
+      <div class="vn-info-card">
+        <div class="vic-icon"><i class="bi bi-clock"></i></div>
+        <div>
+          <div class="vic-label">Timing</div>
+          <div class="vic-value">Ceremony: 4:00 PM<br>Reception to follow</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Get Directions -->
+    <div class="text-center px-4 py-4">
+      <button class="dir-btn">
+        <i class="bi bi-signpost-2"></i> Get Directions
+      </button>
+    </div>
+
+    <!-- Bottom Nav — 4 icon-only items -->
+    <nav class="vn-nav">
+      <a href="index.html"><i class="bi bi-house"></i></a>
+      <a href="engagement.html"><i class="bi bi-calendar-event"></i></a>
+      <a href="venue.html" class="active"><i class="bi bi-geo-alt-fill"></i></a>
+      <a href="#"><i class="bi bi-heart"></i></a>
+    </nav>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mata & Ganesh Pujan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Serif:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="common.css">
+  <style>
+    .mata-card {
+      background: linear-gradient(180deg, #1a0808 0%, #110606 100%);
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .mp-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 16px 8px; position: relative; z-index: 2;
+    }
+    .mp-header .hbtn {
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      color: #f1f5f9; text-decoration: none; font-size: 18px; background: none; border: none; cursor: pointer;
+    }
+    .mp-header .htitle {
+      font-family: 'Noto Serif', serif; font-weight: 700; font-size: 16px;
+      color: #f1f5f9; letter-spacing: 0.3px;
+    }
+
+    /* Hero — rounded card with diya image */
+    .mp-hero {
+      position: relative;
+      margin: 4px 16px 0;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      max-height: 400px;
+    }
+    .mp-hero img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .mp-hero .grad {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+      background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    }
+
+    /* DIVINE RITUAL badge — solid red bg */
+    .mp-hero .badge-pos {
+      position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); z-index: 2;
+    }
+    .badge-ritual {
+      display: inline-block;
+      background: linear-gradient(135deg, #b81414, #8b0000);
+      color: #fff;
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 8px 22px;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+
+    /* Title — gold/red, italic, large */
+    .mp-title {
+      font-family: 'Playfair Display', 'Abril Fatface', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: clamp(28px, 8vw, 36px);
+      line-height: 1.2;
+      background: linear-gradient(180deg, #e8a530, #b81414);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Small red divider */
+    .mp-divider {
+      width: 40px; height: 2px;
+      background: #b81414;
+      margin: 16px auto;
+      border-radius: 1px;
+    }
+
+    /* Quote text */
+    .mp-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: #94a3b8;
+      line-height: 1.7;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    /* Info cards — reddish tint */
+    .mp-info-row {
+      display: flex;
+      gap: 12px;
+      padding: 0 20px;
+      margin-top: 28px;
+    }
+    .mp-info-card {
+      flex: 1;
+      background: rgba(184, 20, 20, 0.08);
+      border: 1px solid rgba(184, 20, 20, 0.15);
+      border-radius: 16px;
+      padding: 18px 14px 16px;
+      text-align: center;
+    }
+    .mp-info-card .mic-icon {
+      color: #b81414;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .mp-info-card .mic-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      color: rgba(148, 163, 184, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 4px;
+    }
+    .mp-info-card .mic-value {
+      font-family: 'Noto Serif', serif;
+      font-size: 14px;
+      color: #f1f5f9;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    /* Bottom nav — 4 items */
+    .mp-nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 0 max(14px, env(safe-area-inset-bottom));
+      background: rgba(10, 5, 5, 0.95);
+      border-top: 1px solid rgba(184, 20, 20, 0.1);
+      position: sticky; bottom: 0; z-index: 10;
+      margin-top: auto;
+    }
+    .mp-nav a {
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+      text-decoration: none; color: rgba(148,163,184,0.4);
+      font-family: 'Noto Serif', serif; font-size: 10px; transition: color 0.2s;
+    }
+    .mp-nav a i { font-size: 20px; }
+    .mp-nav a.active, .mp-nav a:hover { color: #b81414; }
+
+    @media (max-width: 359px) {
+      .mp-title { font-size: 26px; }
+      .mp-info-row { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card-screen mata-card">
+    <!-- Header -->
+    <div class="mp-header">
+      <a href="engagement.html" class="hbtn"><i class="bi bi-arrow-left"></i></a>
+      <span class="htitle">Mata & Ganesh Pujan</span>
+      <div style="width:44px"></div>
+    </div>
+
+    <!-- Hero image with badge -->
+    <div class="mp-hero">
+      <img src="images/diya.png" alt="Mata Pujan Ceremony">
+      <div class="grad"></div>
+      <div class="badge-pos">
+        <span class="badge-ritual">Divine Ritual</span>
+      </div>
+    </div>
+
+    <!-- Title — gold gradient italic -->
+    <div class="text-center px-4 mt-4">
+      <h1 class="mp-title">Shubh Mata Pujan<br>evam Ganesh Pujan</h1>
+    </div>
+
+    <!-- Red divider -->
+    <div class="mp-divider"></div>
+
+    <!-- Quote -->
+    <div class="text-center px-4">
+      <p class="mp-quote">
+        &ldquo;Invoking divine blessings for the auspicious beginning of the wedding ceremonies and a life of prosperity.&rdquo;
+      </p>
+    </div>
+
+    <!-- Info cards -->
+    <div class="mp-info-row">
+      <div class="mp-info-card">
+        <div class="mic-icon"><i class="bi bi-clock"></i></div>
+        <div class="mic-label">Muhurat Time</div>
+        <div class="mic-value">09:30 AM IST</div>
+      </div>
+      <div class="mp-info-card">
+        <div class="mic-icon"><i class="bi bi-geo-alt"></i></div>
+        <div class="mic-label">Venue</div>
+        <div class="mic-value">Heritage</div>
+      </div>
+    </div>
+
+    <!-- Bottom Nav — 4 items, Rituals active -->
+    <nav class="mp-nav">
+      <a href="engagement.html"><i class="bi bi-calendar-event"></i><span>Events</span></a>
+      <a href="mata-pujan.html" class="active"><i class="bi bi-heart"></i><span>Rituals</span></a>
+      <a href="jaimala.html"><i class="bi bi-images"></i><span>Gallery</span></a>
+      <a href="#"><i class="bi bi-three-dots"></i><span>More</span></a>
+    </nav>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
