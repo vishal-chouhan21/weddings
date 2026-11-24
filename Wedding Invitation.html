@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>॥ शुभ विवाह ॥ Kasandra &amp; Imanule | A Royal Maharashtrian Wedding Invitation</title>
-  <meta name="description" content="A Royal Maharashtrian Hindu Wedding Invitation celebration of Kasandra &amp; Imanule. Saturday, October 19, 2027.">
+  <title>॥ शुभ विवाह ॥ Kasandra &amp; Imanule | Royal Maharashtrian Wedding Invitation</title>
+  <meta name="description" content="Royal Maharashtrian Hindu Wedding Invitation celebration of Kasandra &amp; Imanule. Saturday, October 19, 2027.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
     }
 
     :root {
-      --color-theme-darkest: #18030D;
+      --color-theme-darkest: #16020A;
       --color-theme-bg: #220613;
       --color-theme-bg-soft: #290818;
       --color-card-bg: #320C1C;
@@ -213,7 +213,7 @@
       background: var(--gold-gradient);
       color: var(--color-text-dark);
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.82rem;
       letter-spacing: 0.5px;
       padding: 13px 28px;
       border-radius: 999px;
@@ -221,7 +221,6 @@
       box-shadow: 0 8px 24px rgba(212, 175, 55, 0.25);
       transition: all 0.35s ease;
       text-transform: uppercase;
-      font-size: 0.82rem;
     }
 
     .btn-gold:hover {
@@ -254,148 +253,436 @@
     }
 
     /* ==========================================================================
-       2. INVITATION ENVELOPE OPENING OVERLAY (3D Zareqia Style)
+       2. RESTORED PREVIOUS 3D VINTAGE ENVELOPE (Zareqia Style)
+       With 3D flap, wax seal crack, sliding inside letter card, and fixed Hindi
        ========================================================================== */
-    .envelope-overlay {
+    .envelope-entrance-overlay {
       position: fixed;
       inset: 0;
       z-index: 99999;
-      background: radial-gradient(circle at center, #2C091A 0%, #16020A 100%);
+      background: radial-gradient(circle at 50% 45%, #42101F 0%, #240613 60%, #15020B 100%);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-      transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.85s ease;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 24px 16px;
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.85s;
     }
 
-    .envelope-overlay.opened {
+    .envelope-entrance-overlay.envelope-dismissed {
       opacity: 0;
       visibility: hidden;
+      transform: scale(1.06);
       pointer-events: none;
     }
 
-    .envelope-box {
-      width: 100%;
-      max-width: 440px;
-      background: #FAF5ED;
-      border-radius: 14px;
-      border: 2px solid var(--color-gold);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(212, 175, 55, 0.3);
-      padding: 36px 24px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      color: var(--color-text-dark);
-      transition: transform 0.6s ease;
-    }
-
-    .envelope-box::before {
-      content: "";
-      position: absolute;
-      inset: 6px;
-      border: 1px solid rgba(212, 175, 55, 0.45);
-      border-radius: 10px;
-      pointer-events: none;
-    }
-
-    .envelope-ganesh {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 12px auto;
-      object-fit: contain;
-    }
-
-    .envelope-invoc {
-      font-family: var(--font-devanagari);
-      font-size: 1.15rem;
-      color: #641D2D;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-
-    .envelope-lead {
-      font-size: 0.85rem;
-      color: #69564F;
-      margin-bottom: 12px;
-      font-style: italic;
-    }
-
-    .envelope-names {
-      font-family: var(--font-serif);
-      font-size: 2.25rem;
-      line-height: 1.15;
-      color: #4A1525;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .envelope-parents {
-      font-size: 0.82rem;
-      color: #7A6961;
-      margin-bottom: 14px;
-      font-style: italic;
-    }
-
-    .envelope-details {
-      padding: 10px 0;
-      border-top: 1px solid rgba(212, 175, 55, 0.4);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.4);
-      margin: 14px 0 20px 0;
-      font-size: 0.86rem;
-      color: #4A1525;
-      font-weight: 600;
-    }
-
-    .envelope-seal-btn {
-      width: 72px;
-      height: 72px;
-      margin: 0 auto 16px auto;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #F5DFA0, #D4AF37 60%, #9E7928 100%);
-      border: 2px solid #FFFFFF;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35), 0 0 20px rgba(212, 175, 55, 0.6);
+    .envelope-intro-wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: sealPulse 2.4s infinite ease-in-out;
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+      z-index: 10;
     }
 
-    @keyframes sealPulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 8px 25px rgba(0,0,0,0.35), 0 0 15px rgba(212, 175, 55, 0.4); }
-      50% { transform: scale(1.05); box-shadow: 0 12px 30px rgba(0,0,0,0.45), 0 0 28px rgba(212, 175, 55, 0.8); }
+    .envelope-hint-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(61, 16, 28, 0.95);
+      border: 1px solid var(--color-border-gold-strong);
+      color: var(--color-gold-light);
+      padding: 7px 22px;
+      border-radius: 9999px;
+      font-family: var(--font-devanagari);
+      font-size: 13.5px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+      margin-bottom: 12px;
     }
 
-    .envelope-seal-btn:hover {
-      transform: scale(1.08);
+    .envelope-3d-scene {
+      perspective: 1200px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      position: relative;
     }
 
-    .envelope-seal-monogram {
+    .vintage-envelope {
+      position: relative;
+      width: 100%;
+      max-width: 390px;
+      height: 550px;
+      background: #FAF5EA linear-gradient(155deg, #FFFDF9 0%, #F6EEE0 50%, #ECDCC8 100%);
+      border-radius: 20px;
+      box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.95), 
+        0 0 60px rgba(100, 29, 45, 0.35), 
+        inset 0 0 0 1px rgba(197, 161, 91, 0.6),
+        inset 0 0 0 5px rgba(250, 245, 234, 0.9),
+        inset 0 0 0 7px rgba(197, 161, 91, 0.35);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 20px 20px;
+      box-sizing: border-box;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    @media (max-width: 420px) {
+      .vintage-envelope {
+        height: 520px;
+        padding: 20px 16px 16px;
+      }
+    }
+
+    /* Paithani & Lotus Corner Accents */
+    .envelope-corner-ornament {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      opacity: 0.75;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .corner-tl { top: 12px; left: 12px; border-top: 2px solid var(--color-gold); border-left: 2px solid var(--color-gold); border-top-left-radius: 12px; }
+    .corner-tr { top: 12px; right: 12px; border-top: 2px solid var(--color-gold); border-right: 2px solid var(--color-gold); border-top-right-radius: 12px; }
+    .corner-bl { bottom: 12px; left: 12px; border-bottom: 2px solid var(--color-gold); border-left: 2px solid var(--color-gold); border-bottom-left-radius: 12px; }
+    .corner-br { bottom: 12px; right: 12px; border-bottom: 2px solid var(--color-gold); border-right: 2px solid var(--color-gold); border-bottom-right-radius: 12px; }
+
+    .envelope-floral-bottom {
+      position: absolute;
+      bottom: -10px;
+      right: -10px;
+      width: 190px;
+      opacity: 0.85;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .envelope-floral-bottom img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+    }
+
+    /* Envelope Face Typography */
+    .envelope-face-content {
+      position: relative;
+      z-index: 4;
+      margin-top: 240px;
+      text-align: center;
+      color: #2E0B1B;
+      width: 100%;
+    }
+
+    @media (max-width: 420px) {
+      .envelope-face-content {
+        margin-top: 220px;
+      }
+    }
+
+    .envelope-ganesh-small {
+      font-family: var(--font-devanagari);
+      font-size: 15px;
+      font-weight: 700;
+      color: #A68226;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+
+    .envelope-couple-names {
       font-family: var(--font-serif);
-      font-size: 1.15rem;
+      font-size: 28px;
+      font-weight: 700;
+      color: #541630;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+      line-height: 1.15;
+    }
+
+    .envelope-date-sub {
+      font-family: var(--font-serif);
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #A68226;
+      margin-bottom: 12px;
+    }
+
+    .envelope-filigree-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--color-gold);
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .envelope-filigree-divider .filigree-line {
+      height: 1px;
+      width: 44px;
+      background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    }
+
+    .envelope-invited-title {
+      font-family: var(--font-devanagari);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #541630;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .envelope-invited-caption {
+      font-family: var(--font-devanagari);
+      font-style: italic;
+      font-size: 13px;
+      color: #69564F;
+      max-width: 290px;
+      margin: 0 auto;
+      line-height: 1.45;
+    }
+
+    /* 3D Top Triangular Envelope Flap */
+    .envelope-flap-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 165px;
+      z-index: 10;
+      transform-origin: top center;
+      transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+
+    .envelope-flap-top .flap-outer-tri {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #ECDCC8 0%, #F6EEE0 65%, #EDE2D1 100%);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+      filter: drop-shadow(0 10px 16px rgba(61, 16, 28, 0.4));
+      border-bottom: 1.5px solid rgba(197, 161, 91, 0.55);
+    }
+
+    /* Inside Card Sliding Up */
+    .envelope-inside-card {
+      position: absolute;
+      top: 24px;
+      left: 14px;
+      right: 14px;
+      height: 440px;
+      background: #FFFFFF;
+      border-radius: 14px;
+      border: 1.5px solid var(--color-gold);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      z-index: 5;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 30px 20px;
+      box-sizing: border-box;
+    }
+
+    .inside-card-border {
+      border: 1px solid rgba(197, 161, 91, 0.4);
+      border-radius: 10px;
+      padding: 24px 16px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at center, #FFFFFF 0%, #FAF5EA 100%);
+    }
+
+    .inside-card-invoc {
+      font-family: var(--font-devanagari);
+      font-size: 15px;
+      font-weight: 700;
+      color: #A68226;
+      margin-bottom: 6px;
+    }
+
+    .inside-card-title {
+      font-family: var(--font-devanagari);
+      font-size: 16px;
+      letter-spacing: 2px;
+      color: #541630;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .inside-card-names {
+      font-family: var(--font-serif);
+      font-size: 26px;
       font-weight: 700;
       color: #380C1C;
-      letter-spacing: 1px;
+      margin-bottom: 4px;
     }
 
-    .envelope-tap-hint {
-      font-size: 0.72rem;
-      text-transform: uppercase;
+    .inside-card-date {
+      font-family: var(--font-devanagari);
+      font-size: 14px;
       letter-spacing: 1.5px;
-      color: #7A6961;
-      margin-bottom: 12px;
+      color: #A68226;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .inside-card-church {
+      font-size: 12.5px;
+      color: #69564F;
+    }
+
+    /* 3D Wax Seal Positioned at Flap Apex */
+    .vintage-wax-seal {
+      position: absolute;
+      top: 130px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 25;
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+      user-select: none;
+    }
+
+    .vintage-wax-seal:hover {
+      transform: translateX(-50%) scale(1.08);
+    }
+
+    .wax-seal-outer-rim {
+      width: 100%;
+      height: 100%;
+      border-radius: 49% 51% 52% 48% / 51% 49% 51% 49%;
+      background: radial-gradient(circle at 35% 32%, #A32840 0%, #7D1B2E 35%, #520F1D 70%, #300610 100%);
+      box-shadow: inset 2.5px 2.5px 6px rgba(255, 255, 255, 0.45), inset -3.5px -3.5px 7px rgba(0, 0, 0, 0.75), 0 10px 28px rgba(0, 0, 0, 0.7), 0 0 25px rgba(100, 29, 45, 0.6);
+      border: 2px solid rgba(226, 204, 160, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .wax-seal-inner-emboss {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(226, 204, 160, 0.6);
+      background: radial-gradient(circle at 40% 40%, rgba(100, 29, 45, 0.85) 0%, rgba(61, 16, 28, 0.95) 100%);
+      box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(255, 255, 255, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wax-seal-crest-crown {
+      font-size: 13px;
+      color: var(--color-gold);
+      line-height: 1;
+      margin-bottom: -2px;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
+    }
+
+    .wax-seal-monogram {
+      font-family: var(--font-devanagari);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-gold-light);
+      letter-spacing: 0.5px;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+    }
+
+    .wax-seal-ping {
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid var(--color-gold-light);
+      opacity: 0.6;
+      animation: waxPing 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+      pointer-events: none;
+    }
+
+    @keyframes waxPing {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      80%, 100% { transform: scale(1.4); opacity: 0; }
+    }
+
+    .wax-seal-tooltip {
+      position: absolute;
+      bottom: -32px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(49, 11, 23, 0.95);
+      border: 1px solid var(--color-gold);
+      color: var(--color-gold-light);
+      padding: 3px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
       font-weight: 600;
     }
 
-    .envelope-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      align-items: center;
+    /* Unsealed 3D Animation States */
+    .envelope-3d-scene.unsealed .envelope-flap-top {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+
+    .envelope-3d-scene.unsealed .envelope-flap-top .flap-outer-tri {
+      background: linear-gradient(180deg, #DED0BC 0%, #ECDCC8 100%);
+      filter: drop-shadow(0 -6px 12px rgba(61, 16, 28, 0.3));
+    }
+
+    .envelope-3d-scene.unsealed .vintage-wax-seal {
+      animation: waxCrackBreak 0.7s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+      pointer-events: none;
+    }
+
+    @keyframes waxCrackBreak {
+      0% { transform: translateX(-50%) scale(1); opacity: 1; }
+      40% { transform: translateX(-50%) scale(1.22); filter: brightness(1.4); }
+      100% { transform: translateX(-50%) scale(1.4) translateY(-20px); opacity: 0; visibility: hidden; }
+    }
+
+    .envelope-3d-scene.unsealed .envelope-inside-card {
+      opacity: 1;
+      transform: translateY(-80px);
+      z-index: 15;
     }
 
     /* Floating Shehnai Audio Pill */
@@ -407,7 +694,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(34, 6, 19, 0.85);
+      background: rgba(34, 6, 19, 0.88);
       backdrop-filter: blur(8px);
       border: 1px solid var(--color-border-gold-strong);
       border-radius: 999px;
@@ -585,7 +872,7 @@
        4. DEVOTIONAL GANESH BLESSING SECTION
        ========================================================================== */
     .ganesh-section {
-      background: linear-gradient(180deg, #18030D 0%, #240614 50%, #1A030E 100%);
+      background: linear-gradient(180deg, #16020A 0%, #240614 50%, #1A030E 100%);
       border-top: 1px solid var(--color-border-gold);
       border-bottom: 1px solid var(--color-border-gold);
       text-align: center;
@@ -941,6 +1228,7 @@
       font-weight: 600;
       margin-bottom: 16px;
       align-self: flex-start;
+      letter-spacing: 0.5px;
     }
 
     .schedule-title-mr {
@@ -1154,7 +1442,7 @@
       border: 1px solid var(--color-border-gold);
       cursor: pointer;
       aspect-ratio: 4/5;
-      background: #1A030D;
+      background: #16020A;
     }
 
     .gallery-item img {
@@ -1384,7 +1672,7 @@
 
 <body>
 
-  <!-- Floating Audio Pill -->
+  <!-- Floating Audio Soundwave Capsule -->
   <button type="button" class="audio-pill" id="audioToggleBtn" title="पारंपरिक सनई व तानपुरा">
     <div class="audio-bars">
       <span></span>
@@ -1395,35 +1683,94 @@
   </button>
 
   <!-- ==========================================================================
-       1. INVITATION ENVELOPE OPENING (Zareqia 3D Style)
+       1. RESTORED PREVIOUS 3D VINTAGE ENVELOPE (Zareqia Style)
+       With 3D flap, wax seal with crown & ॥ श्री ॥, sliding inside card, and fixed Hindi
        ========================================================================== -->
-  <div class="envelope-overlay" id="envelopeOverlay">
-    <div class="envelope-box">
-      <img src="images/ganesh.png" alt="श्री गणेश" class="envelope-ganesh">
-      <div class="envelope-invoc">॥ श्री गणेशाय नमः ॥</div>
-      <div class="envelope-lead">श्री गणेशाच्या व कुलदेवतेच्या पावन आशीर्वादाने</div>
+  <div id="envelopeEntranceOverlay" class="envelope-entrance-overlay">
+    <div class="envelope-intro-wrapper">
       
-      <h1 class="envelope-names">Kasandra &amp; Imanule</h1>
-      <p class="envelope-parents">Daughter of Mr. &amp; Mrs. Miller &amp; Son of Mr. &amp; Mrs. David</p>
-      
-      <div class="envelope-details">
-        शनिवार, १९ ऑक्टोबर २०२७<br>
-        The White Church &amp; Grand Heritage Ballroom
+      <!-- Top Hint Badge with Fixed Hindi -->
+      <div class="envelope-hint-badge">
+        ✦ ॥ शुभ विवाह निमंत्रण ॥ • Special Wedding Invitation ✦
       </div>
 
-      <button type="button" class="envelope-seal-btn" id="sealOpenBtn" aria-label="Open Invitation">
-        <span class="envelope-seal-monogram">K&amp;I</span>
-      </button>
-      <div class="envelope-tap-hint">निमंत्रण उघडण्यासाठी स्पर्श करा • TAP TO OPEN</div>
+      <!-- 3D Envelope Scene -->
+      <div class="envelope-3d-scene" id="envelopeScene">
+        <div class="vintage-envelope" id="vintageEnvelope">
+          
+          <!-- Paithani Corner Accents -->
+          <div class="envelope-corner-ornament corner-tl"></div>
+          <div class="envelope-corner-ornament corner-tr"></div>
+          <div class="envelope-corner-ornament corner-bl"></div>
+          <div class="envelope-corner-ornament corner-br"></div>
 
-      <div class="envelope-actions">
-        <button type="button" class="btn-gold" id="btnOpenInvite">
-          पत्रिका उघडा • Open Invitation
+          <!-- Floral Bottom Vignette -->
+          <div class="envelope-floral-bottom">
+            <img src="images/rose_bottom_clean.png" alt="Floral Decoration" onerror="this.style.display='none'">
+          </div>
+
+          <!-- Envelope Face Content -->
+          <div class="envelope-face-content">
+            <div class="envelope-ganesh-small">॥ श्री गणेशाय नमः ॥</div>
+            <div class="envelope-couple-names">Kasandra &amp; Imanule</div>
+            <div class="envelope-date-sub">Saturday, October 19, 2027 • The White Church</div>
+
+            <div class="envelope-filigree-divider">
+              <span class="filigree-line"></span>
+              <span>❧ ❦ ☙</span>
+              <span class="filigree-line"></span>
+            </div>
+
+            <div class="envelope-invited-title">निमंत्रण पत्रिका</div>
+            <p class="envelope-invited-caption">
+              भगवान श्री गणेश और पूज्य कुलदेवता के पावन आशीर्वाद से, हम आपको सपरिवार सादर आमंत्रित करते हैं।
+            </p>
+          </div>
+
+          <!-- Inside Letter Card (Slides Up on Unseal) -->
+          <div class="envelope-inside-card" id="envelopeInsideCard">
+            <div class="inside-card-border">
+              <div class="inside-card-invoc">॥ श्री गणेशाय नमः ॥</div>
+              <div class="inside-card-title">॥ सहर्ष निमंत्रण ॥</div>
+              <p class="inside-card-names">Kasandra &amp; Imanule</p>
+              <div class="inside-card-date">शनिवार, 19 ऑक्टोबर 2027</div>
+              <p class="inside-card-church">The White Church • 125 Rd</p>
+              <div style="color: var(--color-gold); font-size: 13px; letter-spacing: 5px; margin-top: 10px;">✦ ✦ ✦</div>
+            </div>
+          </div>
+
+          <!-- 3D Top Triangular Envelope Flap -->
+          <div class="envelope-flap-top" id="envelopeFlapTop">
+            <div class="flap-outer-tri"></div>
+          </div>
+
+          <!-- 3D Wax Seal Positioned at Flap Apex -->
+          <div class="vintage-wax-seal" id="vintageWaxSeal" role="button" tabindex="0" title="Click to break seal and open invitation">
+            <div class="wax-seal-outer-rim">
+              <div class="wax-seal-inner-emboss">
+                <span class="wax-seal-crest-crown">♔</span>
+                <span class="wax-seal-monogram">॥ श्री ॥</span>
+              </div>
+            </div>
+            <div class="wax-seal-ping"></div>
+            <div class="wax-seal-tooltip">
+              <span>स्पर्श करा • Tap to Open</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bottom Envelope Actions Bar -->
+      <div style="text-align: center; margin-top: 18px; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <button type="button" class="btn-gold" id="btnEnvelopeOpen">
+          ✉️ निमंत्रण पत्रिका खोलें • Open Invitation
         </button>
-        <button type="button" class="btn-outline-gold" id="btnSkipInvite" style="padding: 8px 20px; font-size: 0.78rem;">
-          थेट पुढे जा • Skip to Website
+        <button type="button" class="btn-outline-gold" style="padding: 7px 20px; font-size: 0.8rem;" id="btnEnvelopeSkip">
+          थेट संकेतस्थळावर जा • Skip to Website &rarr;
         </button>
       </div>
+
     </div>
   </div>
 
@@ -1440,12 +1787,12 @@
       <p class="hero-subtitle">Two families, one beautiful beginning. • दोन जीवांचे पावन मीलन</p>
 
       <div class="hero-badge-wrap">
-        <span class="hero-badge-item">शनिवार, १९ ऑक्टोबर २०२७</span>
+        <span class="hero-badge-item">शनिवार, 19 ऑक्टोबर 2027</span>
         <span class="hero-badge-divider">✦</span>
         <span class="hero-badge-item">The White Church, 125 Rd</span>
       </div>
 
-      <!-- Live Countdown -->
+      <!-- Live Countdown with Standard Numerals -->
       <div class="countdown-wrap" id="countdown">
         <div class="countdown-card">
           <div class="countdown-val" id="cdDays">00</div>
@@ -1487,7 +1834,7 @@
           निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥
         </div>
         <p class="ganesh-meaning">
-          विघ्नहर्ता भगवान श्री गणेश आणि कुलदेवतेच्या पावन आशीर्वादाने, तसेच माता-पिता व गुरुजनांच्या कृपाछत्राखाली एका नव्या पवित्र गृहस्थाश्रमाचा शुभारंभ होत आहे. आपले प्रेम व सदिच्छा हीच आमची खरी दौलत.
+          विघ्नहर्ता भगवान श्री गणेश और कुलदेवता के पावन आशीर्वाद से, तथा माता-पिता व गुरुजनों के मंगल कृपाछत्र तले एक नए पवित्र दांपत्य जीवन का शुभारंभ होने जा रहा है। आप सभी का प्रेम और शुभाशीर्वाद ही हमारी सच्ची संपत्ति है।
         </p>
         <div class="ornamental-divider">
           <span>✦</span>
@@ -1505,7 +1852,7 @@
         <div class="section-badge">A TIMELESS ROMANCE</div>
         <h2 class="section-title">आमची प्रेमकथा</h2>
         <div class="section-subtitle-mr">Chapters of Our Journey &amp; Sacred Union</div>
-        <p class="section-subtitle-en">दोन हृदयांचा प्रवास — पहिली भेट, प्रेमाचा पावन संकल्प आणि जन्मोजन्मींचे अतूट नाते.</p>
+        <p class="section-subtitle-en">दो दिलों का पावन सफर — पहली मुलाकात, प्रेम का संकल्प और जन्म-जन्मांतर का अटूट बंधन।</p>
         <div class="ornamental-divider"><span>✦</span></div>
       </div>
 
@@ -1519,13 +1866,13 @@
               <div class="story-card">
                 <div class="story-img-wrap">
                   <img src="images/story_met.jpg" alt="पहिली भेट - The First Encounter">
-                  <div class="story-badge">CHAPTER I • वसंत २०२३</div>
+                  <div class="story-badge">CHAPTER I • Spring 2023</div>
                 </div>
                 <div class="story-content">
                   <div class="story-chapter-title-en">The First Encounter</div>
                   <div class="story-chapter-title-mr">पहिली नजर व शांत संवाद</div>
                   <p class="story-desc">
-                    एका प्रसन्न शांत संध्याकाळी दोन हृदयांची पहिली भेट झाली. साध्या संवादातून सुरू झालेला हा प्रवास हळूहळू अतूट विश्वास, मैत्री आणि एकमेकांना समजून घेण्याच्या गोड नात्यात रूपांतरित झाला.
+                    एक शांत, प्रसन्न संध्याकाळी दोन हृदयांची पहिली भेट झाली. साध्या संवादातून सुरू झालेला हा प्रवास हळूहळू अतूट विश्वास, मैत्री आणि एकमेकांना समजून घेण्याच्या गोड नात्यात रूपांतरित झाला.
                   </p>
                 </div>
               </div>
@@ -1536,7 +1883,7 @@
               <div class="story-card">
                 <div class="story-img-wrap">
                   <img src="images/story_date.jpg" alt="सहवास व स्वप्ने - Growing Together">
-                  <div class="story-badge">CHAPTER II • शरद २०२४</div>
+                  <div class="story-badge">CHAPTER II • Autumn 2024</div>
                 </div>
                 <div class="story-content">
                   <div class="story-chapter-title-en">Growing Together</div>
@@ -1553,7 +1900,7 @@
               <div class="story-card">
                 <div class="story-img-wrap">
                   <img src="images/story_proposal.jpg" alt="पावन संकल्प - The Sacred Promise">
-                  <div class="story-badge">CHAPTER III • हिवाळा २०२५</div>
+                  <div class="story-badge">CHAPTER III • Winter 2025</div>
                 </div>
                 <div class="story-content">
                   <div class="story-chapter-title-en">The Sacred Promise</div>
@@ -1570,7 +1917,7 @@
               <div class="story-card">
                 <div class="story-img-wrap">
                   <img src="images/story_forever.jpg" alt="अतूट बंधन - Forever &amp; Beyond">
-                  <div class="story-badge">CHAPTER IV • १९ ऑक्टोबर २०२७</div>
+                  <div class="story-badge">CHAPTER IV • 19 October 2027</div>
                 </div>
                 <div class="story-content">
                   <div class="story-chapter-title-en">Forever &amp; Beyond</div>
@@ -1598,13 +1945,13 @@
   <!-- ==========================================================================
        5. SLIDER 2: SACRED TRADITIONS | आमचे मंगल सोहळे (Full Hindu Rituals in Hindi)
        ========================================================================== -->
-  <section class="section-wrap" id="rituals" style="background: linear-gradient(180deg, #1A030E 0%, #290818 50%, #1D040F 100%); border-top: 1px solid var(--color-border-gold); border-bottom: 1px solid var(--color-border-gold);">
+  <section class="section-wrap" id="rituals" style="background: linear-gradient(180deg, #16020A 0%, #290818 50%, #1D040F 100%); border-top: 1px solid var(--color-border-gold); border-bottom: 1px solid var(--color-border-gold);">
     <div class="container">
       <div class="section-header">
         <div class="section-badge">SACRED TRADITIONS</div>
         <h2 class="section-title">आमचे मंगल सोहळे</h2>
         <div class="section-subtitle-mr">Celebrating the Traditions &amp; Blessings of a Maharashtrian Wedding</div>
-        <p class="section-subtitle-en">संपूर्ण पारंपारिक हिंदू विवाह संस्कार व विधी — वैदिक मंत्र, मंगल विधी आणि कुलपरंपरेचा दिव्य वारसा.</p>
+        <p class="section-subtitle-en">संपूर्ण पारंपरिक हिंदू विवाह संस्कार व विधी — वैदिक मंत्र, मंगल विधी आणि कुलपरंपरेचा दिव्य वारसा.</p>
         <div class="ornamental-divider"><span>✦</span></div>
       </div>
 
@@ -1617,7 +1964,7 @@
             <div class="slider-slide">
               <div class="ritual-card">
                 <div class="ritual-header-row">
-                  <span class="ritual-step-badge">१</span>
+                  <span class="ritual-step-badge">1</span>
                   <img src="images/diya.png" alt="देवक स्थापना" class="ritual-icon-img">
                 </div>
                 <div class="ritual-title-mr">देवक व कुलदेवता स्थापना</div>
@@ -1632,7 +1979,7 @@
             <div class="slider-slide">
               <div class="ritual-card">
                 <div class="ritual-header-row">
-                  <span class="ritual-step-badge">२</span>
+                  <span class="ritual-step-badge">2</span>
                   <img src="images/ganesh.png" alt="गणेश पूजन" class="ritual-icon-img">
                 </div>
                 <div class="ritual-title-mr">श्री गणेश व मातृका पूजन</div>
@@ -1647,7 +1994,7 @@
             <div class="slider-slide">
               <div class="ritual-card">
                 <div class="ritual-header-row">
-                  <span class="ritual-step-badge">३</span>
+                  <span class="ritual-step-badge">3</span>
                   <img src="images/moments.png" alt="हळद समारंभ" class="ritual-icon-img">
                 </div>
                 <div class="ritual-title-mr">हळद समारंभ (हल्दी महोत्सव)</div>
@@ -1662,7 +2009,7 @@
             <div class="slider-slide">
               <div class="ritual-card">
                 <div class="ritual-header-row">
-                  <span class="ritual-step-badge">४</span>
+                  <span class="ritual-step-badge">4</span>
                   <img src="images/mehandi-art.png" alt="मेहंदी" class="ritual-icon-img">
                 </div>
                 <div class="ritual-title-mr">शुभ मेहंदी उत्सव</div>
@@ -1677,7 +2024,7 @@
             <div class="slider-slide">
               <div class="ritual-card">
                 <div class="ritual-header-row">
-                  <span class="ritual-step-badge">५</span>
+                  <span class="ritual-step-badge">5</span>
                   <img src="images/Rituals.png" alt="सीमांत पूजन" class="ritual-icon-img">
                 </div>
                 <div class="ritual-title-mr">सीमांत पूजन (वर पक्ष स्वागत)</div>
@@ -1692,7 +2039,7 @@
             <div class="slider-slide">
               <div class="ritual-card">
                 <div class="ritual-header-row">
-                  <span class="ritual-step-badge">६</span>
+                  <span class="ritual-step-badge">6</span>
                   <img src="images/dance.png" alt="वरात व मिरवणूक" class="ritual-icon-img">
                 </div>
                 <div class="ritual-title-mr">वरात व भव्य शोभायात्रा</div>
@@ -1707,7 +2054,7 @@
             <div class="slider-slide">
               <div class="ritual-card">
                 <div class="ritual-header-row">
-                  <span class="ritual-step-badge">७</span>
+                  <span class="ritual-step-badge">7</span>
                   <img src="images/decor.png" alt="अंतरपाट" class="ritual-icon-img">
                 </div>
                 <div class="ritual-title-mr">अंतरपाट व मंगल मुहूर्त</div>
@@ -1722,7 +2069,7 @@
             <div class="slider-slide">
               <div class="ritual-card">
                 <div class="ritual-header-row">
-                  <span class="ritual-step-badge">८</span>
+                  <span class="ritual-step-badge">8</span>
                   <img src="images/jaymala.png" alt="मंगलाष्टके व अक्षता" class="ritual-icon-img">
                 </div>
                 <div class="ritual-title-mr">मंगलाष्टके व अक्षतारोपण</div>
@@ -1737,7 +2084,7 @@
             <div class="slider-slide">
               <div class="ritual-card">
                 <div class="ritual-header-row">
-                  <span class="ritual-step-badge">९</span>
+                  <span class="ritual-step-badge">9</span>
                   <img src="images/rings.jpg" alt="कन्यादान" class="ritual-icon-img">
                 </div>
                 <div class="ritual-title-mr">जयमाला व पावन कन्यादान</div>
@@ -1752,7 +2099,7 @@
             <div class="slider-slide">
               <div class="ritual-card">
                 <div class="ritual-header-row">
-                  <span class="ritual-step-badge">१०</span>
+                  <span class="ritual-step-badge">10</span>
                   <img src="images/vivah.png" alt="सप्तपदी" class="ritual-icon-img">
                 </div>
                 <div class="ritual-title-mr">पाणिग्रहण व सप्तपदी</div>
@@ -1767,7 +2114,7 @@
             <div class="slider-slide">
               <div class="ritual-card">
                 <div class="ritual-header-row">
-                  <span class="ritual-step-badge">११</span>
+                  <span class="ritual-step-badge">11</span>
                   <img src="images/boy.png" alt="मंगळसूत्र व सिंदूर" class="ritual-icon-img">
                 </div>
                 <div class="ritual-title-mr">मंगळसूत्र धारण व सिंदूर दान</div>
@@ -1782,7 +2129,7 @@
             <div class="slider-slide">
               <div class="ritual-card">
                 <div class="ritual-header-row">
-                  <span class="ritual-step-badge">१२</span>
+                  <span class="ritual-step-badge">12</span>
                   <img src="images/girl.png" alt="आशीर्वाद व गृहप्रवेश" class="ritual-icon-img">
                 </div>
                 <div class="ritual-title-mr">ज्येष्ठ आशीर्वाद व गृहप्रवेश</div>
@@ -1808,6 +2155,7 @@
 
   <!-- ==========================================================================
        6. SLIDER 3: ITINERARY & TIMELINE | विवाह कार्यक्रम पत्रिका
+       With standard 4455-like digits (09:30 AM, 11:15 AM, 12:30 PM, etc.)
        ========================================================================== -->
   <section class="section-wrap" id="schedule">
     <div class="container">
@@ -1815,7 +2163,7 @@
         <div class="section-badge">ITINERARY &amp; TIMELINE</div>
         <h2 class="section-title">विवाह कार्यक्रम पत्रिका</h2>
         <div class="section-subtitle-mr">Wedding Event Schedule &amp; Sacred Muhurat</div>
-        <p class="section-subtitle-en">शुभ शनिवार, १९ ऑक्टोबर २०२७ रोजी संपन्न होणाऱ्या मंगल सोहळ्यांची रूपरेषा.</p>
+        <p class="section-subtitle-en">शनिवार, 19 ऑक्टोबर 2027 रोजी संपन्न होणाऱ्या मंगल सोहळ्यांची रूपरेषा.</p>
         <div class="ornamental-divider"><span>✦</span></div>
       </div>
 
@@ -1827,7 +2175,7 @@
             <!-- Event 1 -->
             <div class="slider-slide">
               <div class="schedule-card">
-                <div class="schedule-time-badge">⏰ ०९:३० AM</div>
+                <div class="schedule-time-badge">⏰ 09:30 AM</div>
                 <div class="schedule-title-mr">सीमांत पूजन व स्वागत</div>
                 <div class="schedule-title-en">Seemant Pujan &amp; Welcome</div>
                 <p class="schedule-desc">
@@ -1843,7 +2191,7 @@
             <!-- Event 2 -->
             <div class="slider-slide">
               <div class="schedule-card">
-                <div class="schedule-time-badge">⏰ ११:१५ AM</div>
+                <div class="schedule-time-badge">⏰ 11:15 AM</div>
                 <div class="schedule-title-mr">शुभ विवाह मुहूर्त व अंतरपाट</div>
                 <div class="schedule-title-en">Auspicious Vivah Muhurat</div>
                 <p class="schedule-desc">
@@ -1859,7 +2207,7 @@
             <!-- Event 3 -->
             <div class="slider-slide">
               <div class="schedule-card">
-                <div class="schedule-time-badge">⏰ १२:३० PM</div>
+                <div class="schedule-time-badge">⏰ 12:30 PM</div>
                 <div class="schedule-title-mr">सप्तपदी व कन्यादान</div>
                 <div class="schedule-title-en">Saptapadi &amp; Vows</div>
                 <p class="schedule-desc">
@@ -1875,7 +2223,7 @@
             <!-- Event 4 -->
             <div class="slider-slide">
               <div class="schedule-card">
-                <div class="schedule-time-badge">⏰ ०१:३० PM</div>
+                <div class="schedule-time-badge">⏰ 01:30 PM</div>
                 <div class="schedule-title-mr">पारंपरिक महाराष्ट्रीयन पंगत</div>
                 <div class="schedule-title-en">Traditional Wedding Feast</div>
                 <p class="schedule-desc">
@@ -1891,7 +2239,7 @@
             <!-- Event 5 -->
             <div class="slider-slide">
               <div class="schedule-card">
-                <div class="schedule-time-badge">⏰ ०७:०० PM</div>
+                <div class="schedule-time-badge">⏰ 07:00 PM</div>
                 <div class="schedule-title-mr">स्वागत समारंभ व स्नेहभोज</div>
                 <div class="schedule-title-en">Swagat Samarambh (Reception)</div>
                 <p class="schedule-desc">
@@ -1920,7 +2268,7 @@
   <!-- ==========================================================================
        7. SLIDER 4: ATTIRE & STYLING GUIDE | पोषाख मार्गदर्शिका
        ========================================================================== -->
-  <section class="section-wrap" id="dresscode" style="background: linear-gradient(180deg, #1A030E 0%, #290818 50%, #1D040F 100%); border-top: 1px solid var(--color-border-gold); border-bottom: 1px solid var(--color-border-gold);">
+  <section class="section-wrap" id="dresscode" style="background: linear-gradient(180deg, #16020A 0%, #290818 50%, #1D040F 100%); border-top: 1px solid var(--color-border-gold); border-bottom: 1px solid var(--color-border-gold);">
     <div class="container">
       <div class="section-header">
         <div class="section-badge">ATTIRE &amp; STYLING GUIDE</div>
@@ -2101,7 +2449,7 @@
   <!-- ==========================================================================
        9. VENUE & DIRECTIONS SECTION
        ========================================================================== -->
-  <section class="section-wrap" id="venue" style="background: linear-gradient(180deg, #1A030E 0%, #290818 50%, #1D040F 100%); border-top: 1px solid var(--color-border-gold);">
+  <section class="section-wrap" id="venue" style="background: linear-gradient(180deg, #16020A 0%, #290818 50%, #1D040F 100%); border-top: 1px solid var(--color-border-gold);">
     <div class="container">
       <div class="section-header">
         <div class="section-badge">LOCATION &amp; DIRECTIONS</div>
@@ -2154,7 +2502,7 @@
       </div>
 
       <div class="footer-bottom">
-        शनिवार, १९ ऑक्टोबर २०२७ &bull; The White Church, 125 Rd &bull; Royal Maharashtrian Wedding
+        शनिवार, 19 ऑक्टोबर 2027 &bull; The White Church, 125 Rd &bull; Royal Maharashtrian Wedding
       </div>
     </div>
   </footer>
@@ -2163,31 +2511,67 @@
   <div class="toast-msg" id="toastMsg">Notification</div>
 
   <!-- ==========================================================================
-       JAVASCRIPT: SLIDERS, ENVELOPE, AUDIO SYNTHESIZER, CALENDAR, LIGHTBOX
+       JAVASCRIPT: ENVELOPE UNSEALING, SLIDERS, SHEHNAI AUDIO, CALENDAR, LIGHTBOX
        ========================================================================== -->
   <script>
     /* ==========================================================================
-       1. ENVELOPE OPENING ENGINE
+       1. RESTORED PREVIOUS 3D VINTAGE ENVELOPE (Zareqia Interaction & Audio Crackle)
        ========================================================================== */
-    var envelopeOverlay = document.getElementById('envelopeOverlay');
-    var sealOpenBtn = document.getElementById('sealOpenBtn');
-    var btnOpenInvite = document.getElementById('btnOpenInvite');
-    var btnSkipInvite = document.getElementById('btnSkipInvite');
+    var envelopeOverlay = document.getElementById('envelopeEntranceOverlay');
+    var envelopeScene = document.getElementById('envelopeScene');
+    var waxSealBtn = document.getElementById('vintageWaxSeal');
+    var btnEnvOpen = document.getElementById('btnEnvelopeOpen');
+    var btnEnvSkip = document.getElementById('btnEnvelopeSkip');
 
-    function openInvitation() {
-      envelopeOverlay.classList.add('opened');
-      playShehnaiAudio();
-      showToast("॥ शुभमंगल सावधान ॥ आपले सहर्ष स्वागत आहे!");
+    function playWaxCrackle() {
+      try {
+        if (!audioCtx) {
+          var AudioContext = window.AudioContext || window.webkitAudioContext;
+          audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        var t = audioCtx.currentTime;
+        var freqs = [587.33, 880.00, 1174.66, 1760.00];
+        freqs.forEach(function(f, idx) {
+          var osc = audioCtx.createOscillator();
+          var g = audioCtx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(f, t + idx * 0.04);
+          g.gain.setValueAtTime(0.001, t + idx * 0.04);
+          g.gain.linearRampToValueAtTime(0.06, t + idx * 0.04 + 0.015);
+          g.gain.exponentialRampToValueAtTime(0.0001, t + idx * 0.04 + 0.28);
+          osc.connect(g);
+          g.connect(audioCtx.destination);
+          osc.start(t + idx * 0.04);
+          osc.stop(t + idx * 0.04 + 0.3);
+        });
+      } catch (err) {}
     }
 
-    if (sealOpenBtn) sealOpenBtn.addEventListener('click', openInvitation);
-    if (btnOpenInvite) btnOpenInvite.addEventListener('click', openInvitation);
-    if (btnSkipInvite) btnSkipInvite.addEventListener('click', function() {
-      envelopeOverlay.classList.add('opened');
-    });
+    function openWeddingEnvelope() {
+      if (!envelopeScene || envelopeScene.classList.contains('unsealed')) return;
+      playWaxCrackle();
+      envelopeScene.classList.add('unsealed');
+      setTimeout(function() {
+        playShehnaiAudio();
+      }, 400);
+      setTimeout(function() {
+        if (envelopeOverlay) envelopeOverlay.classList.add('envelope-dismissed');
+        showToast("॥ शुभमंगल सावधान ॥ आपले सहर्ष स्वागत आहे!");
+      }, 950);
+    }
+
+    if (waxSealBtn) waxSealBtn.addEventListener('click', openWeddingEnvelope);
+    if (btnEnvOpen) btnEnvOpen.addEventListener('click', openWeddingEnvelope);
+    if (btnEnvSkip) {
+      btnEnvSkip.addEventListener('click', function() {
+        if (envelopeOverlay) envelopeOverlay.classList.add('envelope-dismissed');
+      });
+    }
 
     function replayEnvelope() {
-      envelopeOverlay.classList.remove('opened');
+      if (envelopeScene) envelopeScene.classList.remove('unsealed');
+      if (envelopeOverlay) envelopeOverlay.classList.remove('envelope-dismissed');
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
@@ -2209,7 +2593,6 @@
       var totalSlides = slides.length;
       var currentIndex = 0;
       var startX = 0;
-      var currentTranslate = 0;
       var isDragging = false;
 
       function getVisibleCount() {
@@ -2246,16 +2629,13 @@
         if (currentIndex < 0) currentIndex = 0;
 
         var slideWidthPct = 100 / visibleCount;
-        var gap = 20; // 20px gap
         var movePercent = currentIndex * slideWidthPct;
         
         track.style.transform = 'translateX(-' + movePercent + '%)';
 
-        // Update nav buttons
         if (prevBtn) prevBtn.disabled = (currentIndex === 0);
         if (nextBtn) nextBtn.disabled = (currentIndex >= maxIndex);
 
-        // Update dots
         if (dotsContainer) {
           var dots = dotsContainer.querySelectorAll('.slider-dot');
           dots.forEach(function(dot, idx) {
@@ -2287,7 +2667,6 @@
         });
       }
 
-      // Touch Events
       track.addEventListener('touchstart', function(e) {
         startX = e.touches[0].clientX;
         isDragging = true;
@@ -2299,13 +2678,11 @@
         var endX = e.changedTouches[0].clientX;
         var diffX = startX - endX;
         if (diffX > 45) {
-          // Swipe left -> next
           if (currentIndex < getMaxIndex()) {
             currentIndex++;
             updateSlider();
           }
         } else if (diffX < -45) {
-          // Swipe right -> prev
           if (currentIndex > 0) {
             currentIndex--;
             updateSlider();
@@ -2313,7 +2690,6 @@
         }
       }, { passive: true });
 
-      // Resize event
       window.addEventListener('resize', function() {
         createDots();
         updateSlider();
@@ -2332,7 +2708,7 @@
     });
 
     /* ==========================================================================
-       3. LIVE WEDDING COUNTDOWN TIMER
+       3. LIVE WEDDING COUNTDOWN TIMER (Standard 4455-like Numerals)
        ========================================================================== */
     var weddingTimestamp = new Date("October 19, 2027 11:15:00").getTime();
     function updateCountdown() {
@@ -2358,7 +2734,6 @@
        ========================================================================== */
     var audioCtx = null;
     var isPlaying = false;
-    var shehnaiOsc = null;
     var droneOsc1 = null;
     var droneOsc2 = null;
     var masterGain = null;
@@ -2385,7 +2760,7 @@
         // Tanpura Drone (Sa & Pa)
         droneOsc1 = audioCtx.createOscillator();
         droneOsc1.type = 'triangle';
-        droneOsc1.frequency.setValueAtTime(146.83, audioCtx.currentTime); // D3 Sa
+        droneOsc1.frequency.setValueAtTime(146.83, audioCtx.currentTime);
         var droneGain1 = audioCtx.createGain();
         droneGain1.gain.setValueAtTime(0.4, audioCtx.currentTime);
         droneOsc1.connect(droneGain1);
@@ -2394,7 +2769,7 @@
 
         droneOsc2 = audioCtx.createOscillator();
         droneOsc2.type = 'sine';
-        droneOsc2.frequency.setValueAtTime(220.00, audioCtx.currentTime); // A3 Pa
+        droneOsc2.frequency.setValueAtTime(220.00, audioCtx.currentTime);
         var droneGain2 = audioCtx.createGain();
         droneGain2.gain.setValueAtTime(0.3, audioCtx.currentTime);
         droneOsc2.connect(droneGain2);
