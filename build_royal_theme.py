@@ -1,0 +1,2531 @@
+# -*- coding: utf-8 -*-
+"""
+Generator for Royal Marathi Hindu Wedding Website
+Theme: Dark brownish-red / dark reddish-purple (#240814, #320C1C, #D4AF37)
+Sections:
+  1. Envelope Opening Overlay (3D Wax-sealed, Paithani border, Shehnai audio)
+  2. Hero Section (॥ श्री गणेशाय नमः ॥, ॥ शुभ विवाह ॥, Kasandra & Imanule, Countdown)
+  3. Devotional Ganesh Blessing (Lord Ganesha shloka, brass diya)
+  4. SLIDER 1: A Timeless Romance | आमची प्रेमकथा (Chapters of Our Journey)
+  5. SLIDER 2: Sacred Traditions | आमचे मंगल सोहळे (पूर्ण हिंदू विवाह संस्कार व विधी in Hindi)
+  6. SLIDER 3: Itinerary & Timeline | विवाह कार्यक्रम पत्रिका (Wedding Event Schedule)
+  7. SLIDER 4: Attire & Styling Guide | पोषाख मार्गदर्शिका (Maharashtrian Wedding Dress Code)
+  8. Photo Moments & Lightbox Modal
+  9. Venue & Directions (The White Church, 125 Rd & Grand Heritage Ballroom)
+  10. Closing Finale: ॥ शुभमंगल सावधान ॥
+  * RSVP FORM COMPLETELY REMOVED *
+  * 100% MOBILE RESPONSIVE WITH TOUCH SLIDERS *
+"""
+
+import sys
+
+def build_html():
+    html = '''<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>॥ शुभ विवाह ॥ Kasandra &amp; Imanule | A Royal Maharashtrian Wedding Invitation</title>
+  <meta name="description" content="A Royal Maharashtrian Hindu Wedding Invitation celebration of Kasandra &amp; Imanule. Saturday, October 19, 2027.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. CSS RESET & ROYAL DARK THEME VARIABLES
+       Dark brownish-red & dark reddish-purple palette with antique gold accents
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-theme-darkest: #18030D;
+      --color-theme-bg: #220613;
+      --color-theme-bg-soft: #290818;
+      --color-card-bg: #320C1C;
+      --color-card-elevated: #3E1024;
+      --color-card-hover: #48142B;
+      --color-accent-maroon: #541630;
+      
+      --color-gold: #D4AF37;
+      --color-gold-light: #F5DFA0;
+      --color-gold-deep: #A68226;
+      --color-gold-muted: #BFA163;
+      
+      --color-text-primary: #FAF3E8;
+      --color-text-secondary: #EADBCE;
+      --color-text-muted: #C0A994;
+      --color-text-dark: #2B0A18;
+      
+      --color-border-gold: rgba(212, 175, 55, 0.28);
+      --color-border-gold-strong: rgba(212, 175, 55, 0.6);
+      --color-glow-gold: rgba(212, 175, 55, 0.18);
+
+      --font-serif: 'Cormorant Garamond', 'Noto Serif Devanagari', Georgia, serif;
+      --font-devanagari: 'Noto Serif Devanagari', 'Cormorant Garamond', serif;
+      --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+      --gold-gradient: linear-gradient(135deg, #F5DFA0 0%, #D4AF37 50%, #A68226 100%);
+      --card-gradient: linear-gradient(145deg, #360D1E 0%, #260716 100%);
+      --card-hover-gradient: linear-gradient(145deg, #441227 0%, #2F091C 100%);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      background-color: var(--color-theme-darkest);
+      color: var(--color-text-primary);
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-theme-bg);
+      color: var(--color-text-primary);
+      line-height: 1.65;
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      position: relative;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding: 0 32px;
+      }
+    }
+
+    /* Section Spacing */
+    .section-wrap {
+      padding: 85px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .section-wrap {
+        padding: 60px 0;
+      }
+    }
+
+    /* Typography Utilities */
+    .font-devanagari {
+      font-family: var(--font-devanagari);
+    }
+
+    .font-serif {
+      font-family: var(--font-serif);
+    }
+
+    .gold-gradient-text {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 48px auto;
+      position: relative;
+    }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--color-border-gold);
+      border-radius: 999px;
+      font-size: 0.76rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-gold-light);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      line-height: 1.2;
+      color: var(--color-text-primary);
+      margin-bottom: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .section-subtitle-mr {
+      font-family: var(--font-devanagari);
+      font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+      color: var(--color-gold-light);
+      margin-bottom: 10px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .section-subtitle-en {
+      font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+      color: var(--color-text-muted);
+      line-height: 1.55;
+    }
+
+    .ornamental-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 18px auto 0 auto;
+      max-width: 220px;
+    }
+
+    .ornamental-divider::before,
+    .ornamental-divider::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    }
+
+    .ornamental-divider span {
+      color: var(--color-gold);
+      font-size: 14px;
+    }
+
+    /* Buttons */
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--gold-gradient);
+      color: var(--color-text-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      padding: 13px 28px;
+      border-radius: 999px;
+      border: 1px solid var(--color-gold-light);
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.25);
+      transition: all 0.35s ease;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+      filter: brightness(1.08);
+    }
+
+    .btn-outline-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(212, 175, 55, 0.08);
+      color: var(--color-gold-light);
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      border: 1px solid var(--color-border-gold);
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-gold:hover {
+      background: rgba(212, 175, 55, 0.16);
+      border-color: var(--color-gold);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       2. INVITATION ENVELOPE OPENING OVERLAY (3D Zareqia Style)
+       ========================================================================== */
+    .envelope-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: radial-gradient(circle at center, #2C091A 0%, #16020A 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.85s ease;
+    }
+
+    .envelope-overlay.opened {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .envelope-box {
+      width: 100%;
+      max-width: 440px;
+      background: #FAF5ED;
+      border-radius: 14px;
+      border: 2px solid var(--color-gold);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(212, 175, 55, 0.3);
+      padding: 36px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      color: var(--color-text-dark);
+      transition: transform 0.6s ease;
+    }
+
+    .envelope-box::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 10px;
+      pointer-events: none;
+    }
+
+    .envelope-ganesh {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 12px auto;
+      object-fit: contain;
+    }
+
+    .envelope-invoc {
+      font-family: var(--font-devanagari);
+      font-size: 1.15rem;
+      color: #641D2D;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .envelope-lead {
+      font-size: 0.85rem;
+      color: #69564F;
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    .envelope-names {
+      font-family: var(--font-serif);
+      font-size: 2.25rem;
+      line-height: 1.15;
+      color: #4A1525;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .envelope-parents {
+      font-size: 0.82rem;
+      color: #7A6961;
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+
+    .envelope-details {
+      padding: 10px 0;
+      border-top: 1px solid rgba(212, 175, 55, 0.4);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+      margin: 14px 0 20px 0;
+      font-size: 0.86rem;
+      color: #4A1525;
+      font-weight: 600;
+    }
+
+    .envelope-seal-btn {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 16px auto;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #F5DFA0, #D4AF37 60%, #9E7928 100%);
+      border: 2px solid #FFFFFF;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35), 0 0 20px rgba(212, 175, 55, 0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: sealPulse 2.4s infinite ease-in-out;
+    }
+
+    @keyframes sealPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 8px 25px rgba(0,0,0,0.35), 0 0 15px rgba(212, 175, 55, 0.4); }
+      50% { transform: scale(1.05); box-shadow: 0 12px 30px rgba(0,0,0,0.45), 0 0 28px rgba(212, 175, 55, 0.8); }
+    }
+
+    .envelope-seal-btn:hover {
+      transform: scale(1.08);
+    }
+
+    .envelope-seal-monogram {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #380C1C;
+      letter-spacing: 1px;
+    }
+
+    .envelope-tap-hint {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #7A6961;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .envelope-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+
+    /* Floating Shehnai Audio Pill */
+    .audio-pill {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 9999;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(34, 6, 19, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--color-border-gold-strong);
+      border-radius: 999px;
+      padding: 7px 15px;
+      color: var(--color-gold-light);
+      font-size: 0.78rem;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .audio-pill:hover {
+      background: rgba(50, 12, 28, 0.95);
+      border-color: var(--color-gold);
+      transform: translateY(-1px);
+    }
+
+    .audio-pill.playing .audio-bars span {
+      animation: audioWave 1s ease infinite alternate;
+    }
+
+    .audio-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 12px;
+    }
+
+    .audio-bars span {
+      width: 2px;
+      height: 4px;
+      background: var(--color-gold);
+      border-radius: 1px;
+      display: block;
+    }
+
+    .audio-bars span:nth-child(2) { height: 8px; animation-delay: 0.2s; }
+    .audio-bars span:nth-child(3) { height: 12px; animation-delay: 0.4s; }
+
+    @keyframes audioWave {
+      0% { height: 3px; }
+      100% { height: 12px; }
+    }
+
+    /* ==========================================================================
+       3. HERO SECTION
+       ========================================================================== */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 20px 60px 20px;
+      background: radial-gradient(circle at center 30%, #350D20 0%, #200613 60%, #15020B 100%);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .hero-invocation {
+      font-family: var(--font-devanagari);
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      color: var(--color-gold-light);
+      margin-bottom: 8px;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+    }
+
+    .hero-auspicious {
+      font-family: var(--font-devanagari);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: var(--color-gold);
+      margin-bottom: 18px;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 7.5vw, 5.6rem);
+      line-height: 1.08;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.92rem, 2vw, 1.15rem);
+      color: var(--color-text-secondary);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 24px;
+      background: rgba(50, 12, 28, 0.7);
+      border: 1px solid var(--color-border-gold-strong);
+      border-radius: 999px;
+      margin-bottom: 34px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-badge-item {
+      font-size: 0.88rem;
+      color: var(--color-gold-light);
+      font-weight: 500;
+    }
+
+    .hero-badge-divider {
+      color: var(--color-border-gold-strong);
+    }
+
+    /* Live Countdown */
+    .countdown-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 0 auto 36px auto;
+      max-width: 480px;
+    }
+
+    @media (max-width: 480px) {
+      .countdown-wrap {
+        gap: 8px;
+      }
+    }
+
+    .countdown-card {
+      flex: 1;
+      background: var(--card-gradient);
+      border: 1px solid var(--color-border-gold);
+      border-radius: 12px;
+      padding: 14px 8px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      min-width: 68px;
+    }
+
+    .countdown-val {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      color: var(--color-gold-light);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .countdown-lbl {
+      font-size: 0.68rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       4. DEVOTIONAL GANESH BLESSING SECTION
+       ========================================================================== */
+    .ganesh-section {
+      background: linear-gradient(180deg, #18030D 0%, #240614 50%, #1A030E 100%);
+      border-top: 1px solid var(--color-border-gold);
+      border-bottom: 1px solid var(--color-border-gold);
+      text-align: center;
+    }
+
+    .ganesh-card {
+      max-width: 740px;
+      margin: 0 auto;
+      background: var(--card-gradient);
+      border: 1px solid var(--color-border-gold);
+      border-radius: 20px;
+      padding: 44px 28px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 175, 55, 0.08);
+      position: relative;
+    }
+
+    .ganesh-icon-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .ganesh-diya {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+    }
+
+    .ganesh-main-img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 16px rgba(212, 175, 55, 0.4));
+    }
+
+    .ganesh-shloka {
+      font-family: var(--font-devanagari);
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+      color: var(--color-gold-light);
+      line-height: 1.6;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .ganesh-meaning {
+      font-family: var(--font-devanagari);
+      font-size: clamp(0.92rem, 1.8vw, 1.05rem);
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* ==========================================================================
+       5. SLIDER SYSTEM (Reusable, Responsive, Touch-Enabled)
+       ========================================================================== */
+    .slider-container {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .slider-viewport {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+      border-radius: 16px;
+      padding: 10px 0;
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform;
+      gap: 20px;
+    }
+
+    .slider-slide {
+      flex: 0 0 100%;
+      box-sizing: border-box;
+      user-select: none;
+    }
+
+    @media (min-width: 640px) {
+      .slider-slide {
+        flex: 0 0 calc(50% - 10px);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .slider-slide {
+        flex: 0 0 calc(33.333% - 13.333px);
+      }
+    }
+
+    /* Slider Controls */
+    .slider-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 28px;
+      gap: 16px;
+    }
+
+    .slider-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .slider-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.25);
+      border: 1px solid var(--color-border-gold);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .slider-dot.active {
+      width: 26px;
+      border-radius: 999px;
+      background: var(--gold-gradient);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    }
+
+    .slider-nav-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(50, 12, 28, 0.8);
+      border: 1px solid var(--color-border-gold);
+      color: var(--color-gold-light);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .slider-nav-btn:hover {
+      background: var(--gold-gradient);
+      color: var(--color-text-dark);
+      border-color: var(--color-gold-light);
+      transform: scale(1.06);
+    }
+
+    .slider-nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ==========================================================================
+       6. SLIDER 1: A TIMELESS ROMANCE | आमची प्रेमकथा (Chapters of Our Journey)
+       ========================================================================== */
+    .story-card {
+      background: var(--card-gradient);
+      border: 1px solid var(--color-border-gold);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .story-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--color-gold);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.15);
+    }
+
+    .story-img-wrap {
+      width: 100%;
+      height: 230px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .story-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .story-card:hover .story-img-wrap img {
+      transform: scale(1.06);
+    }
+
+    .story-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(34, 6, 19, 0.85);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--color-border-gold);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 0.72rem;
+      color: var(--color-gold-light);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .story-content {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .story-chapter-title-en {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      color: var(--color-text-primary);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .story-chapter-title-mr {
+      font-family: var(--font-devanagari);
+      font-size: 1.05rem;
+      color: var(--color-gold-light);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .story-desc {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    /* ==========================================================================
+       7. SLIDER 2: SACRED TRADITIONS | आमचे मंगल सोहळे (Full Hindu Rituals in Hindi)
+       ========================================================================== */
+    .ritual-card {
+      background: var(--card-gradient);
+      border: 1px solid var(--color-border-gold);
+      border-radius: 16px;
+      padding: 26px 22px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      transition: transform 0.35s ease, border-color 0.35s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .ritual-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--color-gold);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.15);
+    }
+
+    .ritual-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .ritual-step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid var(--color-gold);
+      color: var(--color-gold-light);
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .ritual-icon-img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.3));
+    }
+
+    .ritual-title-mr {
+      font-family: var(--font-devanagari);
+      font-size: 1.3rem;
+      color: var(--color-gold-light);
+      margin-bottom: 4px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .ritual-title-en {
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    .ritual-desc-hi {
+      font-family: var(--font-devanagari);
+      font-size: 0.92rem;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    /* ==========================================================================
+       8. SLIDER 3: ITINERARY & TIMELINE | विवाह कार्यक्रम पत्रिका
+       ========================================================================== */
+    .schedule-card {
+      background: var(--card-gradient);
+      border: 1px solid var(--color-border-gold);
+      border-radius: 16px;
+      padding: 26px 22px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      transition: transform 0.35s ease, border-color 0.35s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .schedule-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--color-gold);
+    }
+
+    .schedule-time-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(212, 175, 55, 0.14);
+      border: 1px solid var(--color-gold);
+      border-radius: 999px;
+      padding: 5px 14px;
+      color: var(--color-gold-light);
+      font-size: 0.84rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      align-self: flex-start;
+    }
+
+    .schedule-title-mr {
+      font-family: var(--font-devanagari);
+      font-size: 1.25rem;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .schedule-title-en {
+      font-size: 0.82rem;
+      color: var(--color-gold-light);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .schedule-desc {
+      font-family: var(--font-devanagari);
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .schedule-venue {
+      font-size: 0.82rem;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .schedule-cal-btn {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid var(--color-border-gold);
+      border-radius: 8px;
+      color: var(--color-gold-light);
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .schedule-cal-btn:hover {
+      background: var(--gold-gradient);
+      color: var(--color-text-dark);
+      border-color: var(--color-gold-light);
+    }
+
+    /* ==========================================================================
+       9. SLIDER 4: ATTIRE & STYLING GUIDE | पोषाख मार्गदर्शिका
+       ========================================================================== */
+    .attire-card {
+      background: var(--card-gradient);
+      border: 1px solid var(--color-border-gold);
+      border-radius: 16px;
+      padding: 26px 22px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      transition: transform 0.35s ease, border-color 0.35s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .attire-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--color-gold);
+    }
+
+    .attire-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-gold-light);
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid var(--color-border-gold);
+      border-radius: 999px;
+      padding: 4px 12px;
+      margin-bottom: 14px;
+      align-self: flex-start;
+      font-weight: 600;
+    }
+
+    .attire-title-mr {
+      font-family: var(--font-devanagari);
+      font-size: 1.25rem;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .attire-title-en {
+      font-size: 0.82rem;
+      color: var(--color-gold-light);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .attire-desc {
+      font-family: var(--font-devanagari);
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .attire-elements {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+
+    .attire-element-pill {
+      font-family: var(--font-devanagari);
+      font-size: 0.78rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 6px;
+      padding: 4px 10px;
+      color: var(--color-text-secondary);
+    }
+
+    /* Guest Color Palette Swatches */
+    .palette-box {
+      margin-top: 40px;
+      background: var(--card-gradient);
+      border: 1px solid var(--color-border-gold);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .palette-title {
+      font-family: var(--font-devanagari);
+      font-size: 1.15rem;
+      color: var(--color-gold-light);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .palette-sub {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      margin-bottom: 18px;
+    }
+
+    .swatches-row {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .swatch-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .swatch-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--color-border-gold-strong);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .swatch-name {
+      font-size: 0.72rem;
+      color: var(--color-text-secondary);
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       10. PHOTO MOMENTS & LIGHTBOX MODAL
+       ========================================================================== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--color-border-gold);
+      cursor: pointer;
+      aspect-ratio: 4/5;
+      background: #1A030D;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery-hover-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(34, 6, 19, 0.85) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+
+    .gallery-item:hover .gallery-hover-overlay {
+      opacity: 1;
+    }
+
+    .gallery-caption-text {
+      color: var(--color-gold-light);
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100000;
+      background: rgba(18, 3, 10, 0.94);
+      backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-img-wrap {
+      max-width: 900px;
+      max-height: 85vh;
+      position: relative;
+      text-align: center;
+    }
+
+    .lightbox-img-wrap img {
+      max-width: 100%;
+      max-height: 75vh;
+      border-radius: 8px;
+      border: 1px solid var(--color-gold);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+      margin: 0 auto;
+    }
+
+    .lightbox-caption {
+      margin-top: 14px;
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      color: var(--color-gold-light);
+    }
+
+    .lightbox-close-btn {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      color: #FFFFFF;
+      font-size: 32px;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(50, 12, 28, 0.7);
+      border: 1px solid var(--color-border-gold);
+    }
+
+    /* ==========================================================================
+       11. VENUE & DIRECTIONS SECTION
+       ========================================================================== */
+    .venue-card {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--card-gradient);
+      border: 1px solid var(--color-border-gold);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .venue-img-wrap {
+      width: 100%;
+      height: 280px;
+      position: relative;
+    }
+
+    .venue-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .venue-content {
+      padding: 36px 28px;
+      text-align: center;
+    }
+
+    .venue-name {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+
+    .venue-addr {
+      font-size: 1rem;
+      color: var(--color-gold-light);
+      margin-bottom: 24px;
+    }
+
+    .venue-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* ==========================================================================
+       12. CLOSING FINALE & FOOTER
+       ========================================================================== */
+    .closing-section {
+      text-align: center;
+      padding: 90px 20px 40px 20px;
+      background: radial-gradient(circle at center top, #2C091A 0%, #16020A 100%);
+      border-top: 1px solid var(--color-border-gold);
+    }
+
+    .closing-ganesh {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 16px auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.4));
+    }
+
+    .closing-shubhmangal {
+      font-family: var(--font-devanagari);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      color: var(--color-gold-light);
+      margin-bottom: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .closing-names {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: #FFFFFF;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .closing-msg {
+      font-family: var(--font-devanagari);
+      font-size: 1.05rem;
+      color: var(--color-text-secondary);
+      max-width: 620px;
+      margin: 0 auto 32px auto;
+      line-height: 1.6;
+    }
+
+    .closing-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(212, 175, 55, 0.15);
+      padding-top: 24px;
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(34, 6, 19, 0.95);
+      border: 1px solid var(--color-gold);
+      color: var(--color-gold-light);
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      z-index: 1000000;
+      opacity: 0;
+      transition: all 0.35s ease;
+      pointer-events: none;
+    }
+
+    .toast-msg.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Floating Audio Pill -->
+  <button type="button" class="audio-pill" id="audioToggleBtn" title="पारंपरिक सनई व तानपुरा">
+    <div class="audio-bars">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <span id="audioLabel">सनई व तानपुरा</span>
+  </button>
+
+  <!-- ==========================================================================
+       1. INVITATION ENVELOPE OPENING (Zareqia 3D Style)
+       ========================================================================== -->
+  <div class="envelope-overlay" id="envelopeOverlay">
+    <div class="envelope-box">
+      <img src="images/ganesh.png" alt="श्री गणेश" class="envelope-ganesh">
+      <div class="envelope-invoc">॥ श्री गणेशाय नमः ॥</div>
+      <div class="envelope-lead">श्री गणेशाच्या व कुलदेवतेच्या पावन आशीर्वादाने</div>
+      
+      <h1 class="envelope-names">Kasandra &amp; Imanule</h1>
+      <p class="envelope-parents">Daughter of Mr. &amp; Mrs. Miller &amp; Son of Mr. &amp; Mrs. David</p>
+      
+      <div class="envelope-details">
+        शनिवार, १९ ऑक्टोबर २०२७<br>
+        The White Church &amp; Grand Heritage Ballroom
+      </div>
+
+      <button type="button" class="envelope-seal-btn" id="sealOpenBtn" aria-label="Open Invitation">
+        <span class="envelope-seal-monogram">K&amp;I</span>
+      </button>
+      <div class="envelope-tap-hint">निमंत्रण उघडण्यासाठी स्पर्श करा • TAP TO OPEN</div>
+
+      <div class="envelope-actions">
+        <button type="button" class="btn-gold" id="btnOpenInvite">
+          पत्रिका उघडा • Open Invitation
+        </button>
+        <button type="button" class="btn-outline-gold" id="btnSkipInvite" style="padding: 8px 20px; font-size: 0.78rem;">
+          थेट पुढे जा • Skip to Website
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       2. HERO SECTION
+       ========================================================================== -->
+  <section class="hero-section" id="hero">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-invocation">॥ श्री गणेशाय नमः ॥</div>
+      <div class="hero-auspicious">॥ शुभ विवाह ॥</div>
+      
+      <h1 class="hero-title gold-gradient-text">Kasandra &amp; Imanule</h1>
+      <p class="hero-subtitle">Two families, one beautiful beginning. • दोन जीवांचे पावन मीलन</p>
+
+      <div class="hero-badge-wrap">
+        <span class="hero-badge-item">शनिवार, १९ ऑक्टोबर २०२७</span>
+        <span class="hero-badge-divider">✦</span>
+        <span class="hero-badge-item">The White Church, 125 Rd</span>
+      </div>
+
+      <!-- Live Countdown -->
+      <div class="countdown-wrap" id="countdown">
+        <div class="countdown-card">
+          <div class="countdown-val" id="cdDays">00</div>
+          <div class="countdown-lbl">दिवस / Days</div>
+        </div>
+        <div class="countdown-card">
+          <div class="countdown-val" id="cdHours">00</div>
+          <div class="countdown-lbl">तास / Hours</div>
+        </div>
+        <div class="countdown-card">
+          <div class="countdown-val" id="cdMinutes">00</div>
+          <div class="countdown-lbl">मिनिटे / Mins</div>
+        </div>
+        <div class="countdown-card">
+          <div class="countdown-val" id="cdSeconds">00</div>
+          <div class="countdown-lbl">सेकंद / Secs</div>
+        </div>
+      </div>
+
+      <a href="#ganesh" class="btn-gold">
+        मंगल दर्शन • Explore Celebration
+      </a>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       3. DEVOTIONAL GANESH BLESSING
+       ========================================================================== -->
+  <section class="section-wrap ganesh-section" id="ganesh">
+    <div class="container">
+      <div class="ganesh-card">
+        <div class="ganesh-icon-row">
+          <img src="images/diya.png" alt="शुभ दिवा" class="ganesh-diya">
+          <img src="images/ganesh.png" alt="श्री गणेश" class="ganesh-main-img">
+          <img src="images/diya1.png" alt="शुभ दिवा" class="ganesh-diya">
+        </div>
+        <div class="ganesh-shloka">
+          ॥ वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।<br>
+          निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥
+        </div>
+        <p class="ganesh-meaning">
+          विघ्नहर्ता भगवान श्री गणेश आणि कुलदेवतेच्या पावन आशीर्वादाने, तसेच माता-पिता व गुरुजनांच्या कृपाछत्राखाली एका नव्या पवित्र गृहस्थाश्रमाचा शुभारंभ होत आहे. आपले प्रेम व सदिच्छा हीच आमची खरी दौलत.
+        </p>
+        <div class="ornamental-divider">
+          <span>✦</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. SLIDER 1: A TIMELESS ROMANCE | आमची प्रेमकथा (Chapters of Our Journey)
+       ========================================================================== -->
+  <section class="section-wrap" id="romance">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">A TIMELESS ROMANCE</div>
+        <h2 class="section-title">आमची प्रेमकथा</h2>
+        <div class="section-subtitle-mr">Chapters of Our Journey &amp; Sacred Union</div>
+        <p class="section-subtitle-en">दोन हृदयांचा प्रवास — पहिली भेट, प्रेमाचा पावन संकल्प आणि जन्मोजन्मींचे अतूट नाते.</p>
+        <div class="ornamental-divider"><span>✦</span></div>
+      </div>
+
+      <!-- Slider Component -->
+      <div class="slider-container" id="sliderRomance">
+        <div class="slider-viewport">
+          <div class="slider-track">
+            
+            <!-- Slide 1 -->
+            <div class="slider-slide">
+              <div class="story-card">
+                <div class="story-img-wrap">
+                  <img src="images/story_met.jpg" alt="पहिली भेट - The First Encounter">
+                  <div class="story-badge">CHAPTER I • वसंत २०२३</div>
+                </div>
+                <div class="story-content">
+                  <div class="story-chapter-title-en">The First Encounter</div>
+                  <div class="story-chapter-title-mr">पहिली नजर व शांत संवाद</div>
+                  <p class="story-desc">
+                    एका प्रसन्न शांत संध्याकाळी दोन हृदयांची पहिली भेट झाली. साध्या संवादातून सुरू झालेला हा प्रवास हळूहळू अतूट विश्वास, मैत्री आणि एकमेकांना समजून घेण्याच्या गोड नात्यात रूपांतरित झाला.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slider-slide">
+              <div class="story-card">
+                <div class="story-img-wrap">
+                  <img src="images/story_date.jpg" alt="सहवास व स्वप्ने - Growing Together">
+                  <div class="story-badge">CHAPTER II • शरद २०२४</div>
+                </div>
+                <div class="story-content">
+                  <div class="story-chapter-title-en">Growing Together</div>
+                  <div class="story-chapter-title-mr">सुमधुर सहवास व स्वप्नांची साथ</div>
+                  <p class="story-desc">
+                    हसत-खेळत घालवलेले अनमोल क्षण, एकमेकांच्या स्वप्नांना दिलेली साथ आणि सुख-दुःखात एकमेकांचे आधारस्तंभ बनणे. प्रेम आता केवळ भावना न राहता दोन कुटुंबांची सुंदर वीण बनले होते.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slider-slide">
+              <div class="story-card">
+                <div class="story-img-wrap">
+                  <img src="images/story_proposal.jpg" alt="पावन संकल्प - The Sacred Promise">
+                  <div class="story-badge">CHAPTER III • हिवाळा २०२५</div>
+                </div>
+                <div class="story-content">
+                  <div class="story-chapter-title-en">The Sacred Promise</div>
+                  <div class="story-chapter-title-mr">वाग्दान व पावन संकल्प</div>
+                  <p class="story-desc">
+                    चांदण्यांच्या साक्षीने एकमेकांच्या हातात हात देऊन आयुष्यभर सोबत चालण्याचे पवित्र वचन दिले. कुटुंबीयांच्या मंगल आशीर्वादाने व आनंदाने लग्नाचा पवित्र निश्चय पक्का झाला.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="slider-slide">
+              <div class="story-card">
+                <div class="story-img-wrap">
+                  <img src="images/story_forever.jpg" alt="अतूट बंधन - Forever &amp; Beyond">
+                  <div class="story-badge">CHAPTER IV • १९ ऑक्टोबर २०२७</div>
+                </div>
+                <div class="story-content">
+                  <div class="story-chapter-title-en">Forever &amp; Beyond</div>
+                  <div class="story-chapter-title-mr">सप्तपदी व जन्मांतरीचे नाते</div>
+                  <p class="story-desc">
+                    पवित्र अग्नी, वेदमंत्र आणि आप्तस्वकीयांच्या साक्षीने दोन जीवांचे एक होणे. सप्तपदीची सात पावले आणि मंगळसूत्राच्या पावन धाग्याने सुरू होणारा अखंड वैवाहिक प्रवास.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="slider-controls">
+          <button type="button" class="slider-nav-btn prev" aria-label="मागे">&larr;</button>
+          <div class="slider-dots"></div>
+          <button type="button" class="slider-nav-btn next" aria-label="पुढे">&rarr;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       5. SLIDER 2: SACRED TRADITIONS | आमचे मंगल सोहळे (Full Hindu Rituals in Hindi)
+       ========================================================================== -->
+  <section class="section-wrap" id="rituals" style="background: linear-gradient(180deg, #1A030E 0%, #290818 50%, #1D040F 100%); border-top: 1px solid var(--color-border-gold); border-bottom: 1px solid var(--color-border-gold);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">SACRED TRADITIONS</div>
+        <h2 class="section-title">आमचे मंगल सोहळे</h2>
+        <div class="section-subtitle-mr">Celebrating the Traditions &amp; Blessings of a Maharashtrian Wedding</div>
+        <p class="section-subtitle-en">संपूर्ण पारंपारिक हिंदू विवाह संस्कार व विधी — वैदिक मंत्र, मंगल विधी आणि कुलपरंपरेचा दिव्य वारसा.</p>
+        <div class="ornamental-divider"><span>✦</span></div>
+      </div>
+
+      <!-- Slider Component -->
+      <div class="slider-container" id="sliderRituals">
+        <div class="slider-viewport">
+          <div class="slider-track">
+
+            <!-- Ritual 1 -->
+            <div class="slider-slide">
+              <div class="ritual-card">
+                <div class="ritual-header-row">
+                  <span class="ritual-step-badge">१</span>
+                  <img src="images/diya.png" alt="देवक स्थापना" class="ritual-icon-img">
+                </div>
+                <div class="ritual-title-mr">देवक व कुलदेवता स्थापना</div>
+                <div class="ritual-title-en">Devak Sthapana</div>
+                <p class="ritual-desc-hi">
+                  हिन्दू विवाह का प्रथम मांगलिक अनुष्ठान। कुलदेवता, कुलस्वामिनी और पूर्वजों का सत्कारपूर्वक आह्वान कर मंडप में पवित्रता व रक्षा का आशीर्वाद स्थापित किया जाता है। आम के पत्तों, कलश, सुपारी और अक्षत से कुलदेवता की विधिवत प्रतिष्ठा की जाती है।
+                </p>
+              </div>
+            </div>
+
+            <!-- Ritual 2 -->
+            <div class="slider-slide">
+              <div class="ritual-card">
+                <div class="ritual-header-row">
+                  <span class="ritual-step-badge">२</span>
+                  <img src="images/ganesh.png" alt="गणेश पूजन" class="ritual-icon-img">
+                </div>
+                <div class="ritual-title-mr">श्री गणेश व मातृका पूजन</div>
+                <div class="ritual-title-en">Ganesh Pujan &amp; Matrika</div>
+                <p class="ritual-desc-hi">
+                  ॥ निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥ किसी भी मंगल कार्य का प्रारंभ विघ्नहर्ता भगवान श्री गणेश और कुलमातृकाओं की आराधना से होता है, ताकि संपूर्ण विवाह संस्कार निर्विघ्न, शुभ, कल्याणकारी और मंगलमय संपन्न हो।
+                </p>
+              </div>
+            </div>
+
+            <!-- Ritual 3 -->
+            <div class="slider-slide">
+              <div class="ritual-card">
+                <div class="ritual-header-row">
+                  <span class="ritual-step-badge">३</span>
+                  <img src="images/moments.png" alt="हळद समारंभ" class="ritual-icon-img">
+                </div>
+                <div class="ritual-title-mr">हळद समारंभ (हल्दी महोत्सव)</div>
+                <div class="ritual-title-en">Halad Samarambh</div>
+                <p class="ritual-desc-hi">
+                  सुगंधित पीली हल्दी, चंदन, उबटन और गुलाब जल का पावन लेप वर और वधू को लगाया जाता है। परिजनों के मंगल गीतों, हास-परिहास और उल्लास से सराबोर यह रस्म नवदंपति के जीवन में सौंदर्य, कांति, उत्तम स्वास्थ्य और सौभाग्य का संचार करती है।
+                </p>
+              </div>
+            </div>
+
+            <!-- Ritual 4 -->
+            <div class="slider-slide">
+              <div class="ritual-card">
+                <div class="ritual-header-row">
+                  <span class="ritual-step-badge">४</span>
+                  <img src="images/mehandi-art.png" alt="मेहंदी" class="ritual-icon-img">
+                </div>
+                <div class="ritual-title-mr">शुभ मेहंदी उत्सव</div>
+                <div class="ritual-title-en">Mehendi Celebration</div>
+                <p class="ritual-desc-hi">
+                  वधू के कोमल हाथों और पैरों पर रची गहरी लाल मेहंदी वैवाहिक जीवन के अटूट प्रेम, समृद्धि और अखंड सौभाग्य की पावन प्रतीक है। सखी-सहेलियों और परिवारजनों के संग लोकगीत, संगीत व नृत्य का आनंदमय उत्सव।
+                </p>
+              </div>
+            </div>
+
+            <!-- Ritual 5 -->
+            <div class="slider-slide">
+              <div class="ritual-card">
+                <div class="ritual-header-row">
+                  <span class="ritual-step-badge">५</span>
+                  <img src="images/Rituals.png" alt="सीमांत पूजन" class="ritual-icon-img">
+                </div>
+                <div class="ritual-title-mr">सीमांत पूजन (वर पक्ष स्वागत)</div>
+                <div class="ritual-title-en">Seemant Pujan</div>
+                <p class="ritual-desc-hi">
+                  विवाह स्थल पर वर और उसके परिवार के आगमन पर वधू के माता-पिता द्वारा अक्षत, पुष्प, धूप-दीप, आरती और श्रीफल (नारियल) अर्पित कर वर राजा का आत्मीय, गरिमामयी और वैदिक सत्कार किया जाता है।
+                </p>
+              </div>
+            </div>
+
+            <!-- Ritual 6 -->
+            <div class="slider-slide">
+              <div class="ritual-card">
+                <div class="ritual-header-row">
+                  <span class="ritual-step-badge">६</span>
+                  <img src="images/dance.png" alt="वरात व मिरवणूक" class="ritual-icon-img">
+                </div>
+                <div class="ritual-title-mr">वरात व भव्य शोभायात्रा</div>
+                <div class="ritual-title-en">Varat &amp; Baraat Swagat</div>
+                <p class="ritual-desc-hi">
+                  पारंपरिक ढोल-ताशे, तुतारी और मंगल वाद्य-संगीत की गूंज के साथ वर की भव्य शोभायात्रा। वधू पक्ष द्वारा द्वार पर मंगल तिलक लगाकर, अक्षत छिड़क कर और पुष्पमालाओं से वर का मंडप में भव्य प्रवेश कराया जाता है।
+                </p>
+              </div>
+            </div>
+
+            <!-- Ritual 7 -->
+            <div class="slider-slide">
+              <div class="ritual-card">
+                <div class="ritual-header-row">
+                  <span class="ritual-step-badge">७</span>
+                  <img src="images/decor.png" alt="अंतरपाट" class="ritual-icon-img">
+                </div>
+                <div class="ritual-title-mr">अंतरपाट व मंगल मुहूर्त</div>
+                <div class="ritual-title-en">Antarpat Ceremony</div>
+                <p class="ritual-desc-hi">
+                  वर और वधू के मध्य पवित्र रेशमी वस्त्र (अंतरपाट) रखा जाता है। जब तक शुभ मंगल मुहूर्त नहीं आता, दोनों एक-दूसरे को नहीं देख सकते। यह पल उत्सुकता, भक्ति और पवित्र मर्यादा का परिचायक है।
+                </p>
+              </div>
+            </div>
+
+            <!-- Ritual 8 -->
+            <div class="slider-slide">
+              <div class="ritual-card">
+                <div class="ritual-header-row">
+                  <span class="ritual-step-badge">८</span>
+                  <img src="images/jaymala.png" alt="मंगलाष्टके व अक्षता" class="ritual-icon-img">
+                </div>
+                <div class="ritual-title-mr">मंगलाष्टके व अक्षतारोपण</div>
+                <div class="ritual-title-en">Mangalashtake &amp; Akshata</div>
+                <p class="ritual-desc-hi">
+                  पुरोहितों व गुरुजनों द्वारा मंगलकारी मंगलाष्टके श्लोकों का सस्वर गायन। "शुभमंगल सावधान" की गूंज के साथ अंतरपाट हटाया जाता है और उपस्थित सभी स्नेहीजन अक्षत (चावल) की वर्षा कर नवदंपति को मंगल आशीष देते हैं।
+                </p>
+              </div>
+            </div>
+
+            <!-- Ritual 9 -->
+            <div class="slider-slide">
+              <div class="ritual-card">
+                <div class="ritual-header-row">
+                  <span class="ritual-step-badge">९</span>
+                  <img src="images/rings.jpg" alt="कन्यादान" class="ritual-icon-img">
+                </div>
+                <div class="ritual-title-mr">जयमाला व पावन कन्यादान</div>
+                <div class="ritual-title-en">Jaymala &amp; Kanyadaan</div>
+                <p class="ritual-desc-hi">
+                  वर-वधू द्वारा एक-दूसरे को सुगंधित पुष्पमालाएं पहनाई जाती हैं। तत्पश्चात वधू के माता-पिता अपनी स्नेहमयी कन्या का हाथ वर के हाथ में सौंपकर धर्म, अर्थ और काम में सहधर्मिणी बनाने का महादान संकल्प करते हैं।
+                </p>
+              </div>
+            </div>
+
+            <!-- Ritual 10 -->
+            <div class="slider-slide">
+              <div class="ritual-card">
+                <div class="ritual-header-row">
+                  <span class="ritual-step-badge">१०</span>
+                  <img src="images/vivah.png" alt="सप्तपदी" class="ritual-icon-img">
+                </div>
+                <div class="ritual-title-mr">पाणिग्रहण व सप्तपदी</div>
+                <div class="ritual-title-en">Saptapadi &amp; Seven Vows</div>
+                <p class="ritual-desc-hi">
+                  पवित्र अग्नि को साक्षी मानकर वर-वधू सात पवित्र कदम साथ चलते हैं और जीवनपर्यंत परस्पर प्रेम, निष्ठा, स्वास्थ्य, धन-धान्य, धर्म और कर्तव्य-पालन के सात दिव्य वचनों को निभाने का पावन संकल्प लेते हैं।
+                </p>
+              </div>
+            </div>
+
+            <!-- Ritual 11 -->
+            <div class="slider-slide">
+              <div class="ritual-card">
+                <div class="ritual-header-row">
+                  <span class="ritual-step-badge">११</span>
+                  <img src="images/boy.png" alt="मंगळसूत्र व सिंदूर" class="ritual-icon-img">
+                </div>
+                <div class="ritual-title-mr">मंगळसूत्र धारण व सिंदूर दान</div>
+                <div class="ritual-title-en">Mangalsutra &amp; Sindoor</div>
+                <p class="ritual-desc-hi">
+                  वर द्वारा वधू के गले में काले मोतियों व सोने का पवित्र मंगलसूत्र पहनाया जाता है तथा उसकी मांग में अमिट लाल सिंदूर भरा जाता है, जो अखंड सौभाग्य, समर्पण और जीवनसंगिनी होने का सबसे पावन वैदिक प्रतीक है।
+                </p>
+              </div>
+            </div>
+
+            <!-- Ritual 12 -->
+            <div class="slider-slide">
+              <div class="ritual-card">
+                <div class="ritual-header-row">
+                  <span class="ritual-step-badge">१२</span>
+                  <img src="images/girl.png" alt="आशीर्वाद व गृहप्रवेश" class="ritual-icon-img">
+                </div>
+                <div class="ritual-title-mr">ज्येष्ठ आशीर्वाद व गृहप्रवेश</div>
+                <div class="ritual-title-en">Aashirwad &amp; Grihapravesh</div>
+                <p class="ritual-desc-hi">
+                  नवदंपति माता-पिता और गुरुजनों के चरण स्पर्श कर चिरंजीव वैवाहिक जीवन का आशीर्वाद लेते हैं। तत्पश्चात नववधू ससुराल की चौखट पर रखे चावल के कलश को दाहिने पैर से ढुलकाकर साक्षात लक्ष्मी स्वरूप गृहप्रवेश करती है।
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="slider-controls">
+          <button type="button" class="slider-nav-btn prev" aria-label="मागे">&larr;</button>
+          <div class="slider-dots"></div>
+          <button type="button" class="slider-nav-btn next" aria-label="पुढे">&rarr;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. SLIDER 3: ITINERARY & TIMELINE | विवाह कार्यक्रम पत्रिका
+       ========================================================================== -->
+  <section class="section-wrap" id="schedule">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">ITINERARY &amp; TIMELINE</div>
+        <h2 class="section-title">विवाह कार्यक्रम पत्रिका</h2>
+        <div class="section-subtitle-mr">Wedding Event Schedule &amp; Sacred Muhurat</div>
+        <p class="section-subtitle-en">शुभ शनिवार, १९ ऑक्टोबर २०२७ रोजी संपन्न होणाऱ्या मंगल सोहळ्यांची रूपरेषा.</p>
+        <div class="ornamental-divider"><span>✦</span></div>
+      </div>
+
+      <!-- Slider Component -->
+      <div class="slider-container" id="sliderSchedule">
+        <div class="slider-viewport">
+          <div class="slider-track">
+
+            <!-- Event 1 -->
+            <div class="slider-slide">
+              <div class="schedule-card">
+                <div class="schedule-time-badge">⏰ ०९:३० AM</div>
+                <div class="schedule-title-mr">सीमांत पूजन व स्वागत</div>
+                <div class="schedule-title-en">Seemant Pujan &amp; Welcome</div>
+                <p class="schedule-desc">
+                  वर पक्षाचे आणि सर्व सन्माननीय पाहुण्यांचे पारंपरिक औक्षण, पुष्पवृष्टी आणि तुतारीच्या मंगल स्वरात स्वागत.
+                </p>
+                <div class="schedule-venue">📍 Mandap Entrance, Grand Heritage</div>
+                <button type="button" class="schedule-cal-btn" onclick="downloadIcs('Seemant Pujan', '20271019T093000', '20271019T103000', 'Grand Heritage Ballroom', 'Varat Swagat & Seemant Pujan')">
+                  📅 कॅलेंडरमध्ये नोंदवा (Add to Calendar)
+                </button>
+              </div>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="slider-slide">
+              <div class="schedule-card">
+                <div class="schedule-time-badge">⏰ ११:१५ AM</div>
+                <div class="schedule-title-mr">शुभ विवाह मुहूर्त व अंतरपाट</div>
+                <div class="schedule-title-en">Auspicious Vivah Muhurat</div>
+                <p class="schedule-desc">
+                  पवित्र विवाह मुहूर्त, मंगलाष्टके गायन, अंतरपाट अपसारण, अक्षतारोपण आणि जयमाला समारंभ.
+                </p>
+                <div class="schedule-venue">📍 Central Vivah Mandap, The White Church</div>
+                <button type="button" class="schedule-cal-btn" onclick="downloadIcs('Vivah Muhurat', '20271019T111500', '20271019T123000', 'The White Church', 'Mangalashtake & Akshata')">
+                  📅 कॅलेंडरमध्ये नोंदवा (Add to Calendar)
+                </button>
+              </div>
+            </div>
+
+            <!-- Event 3 -->
+            <div class="slider-slide">
+              <div class="schedule-card">
+                <div class="schedule-time-badge">⏰ १२:३० PM</div>
+                <div class="schedule-title-mr">सप्तपदी व कन्यादान</div>
+                <div class="schedule-title-en">Saptapadi &amp; Vows</div>
+                <p class="schedule-desc">
+                  अग्नीप्रदक्षिणा, सप्तपदीची सात पावले, पावन कन्यादान आणि मंगळसूत्र धारण विधी.
+                </p>
+                <div class="schedule-venue">📍 Central Vivah Mandap</div>
+                <button type="button" class="schedule-cal-btn" onclick="downloadIcs('Saptapadi Ceremony', '20271019T123000', '20271019T133000', 'The White Church', 'Saptapadi & Mangalsutra')">
+                  📅 कॅलेंडरमध्ये नोंदवा (Add to Calendar)
+                </button>
+              </div>
+            </div>
+
+            <!-- Event 4 -->
+            <div class="slider-slide">
+              <div class="schedule-card">
+                <div class="schedule-time-badge">⏰ ०१:३० PM</div>
+                <div class="schedule-title-mr">पारंपरिक महाराष्ट्रीयन पंगत</div>
+                <div class="schedule-title-en">Traditional Wedding Feast</div>
+                <p class="schedule-desc">
+                  पुरणपोळी, आमटी, मोदक, मसालेभात आणि पारंपरिक पंगतीचे स्वादिष्ट भोजन व स्नेहसंभाषण.
+                </p>
+                <div class="schedule-venue">📍 Grand Dining Pavilion</div>
+                <button type="button" class="schedule-cal-btn" onclick="downloadIcs('Traditional Feast', '20271019T133000', '20271019T150000', 'Dining Pavilion', 'Maharashtrian Pangat Feast')">
+                  📅 कॅलेंडरमध्ये नोंदवा (Add to Calendar)
+                </button>
+              </div>
+            </div>
+
+            <!-- Event 5 -->
+            <div class="slider-slide">
+              <div class="schedule-card">
+                <div class="schedule-time-badge">⏰ ०७:०० PM</div>
+                <div class="schedule-title-mr">स्वागत समारंभ व स्नेहभोज</div>
+                <div class="schedule-title-en">Swagat Samarambh (Reception)</div>
+                <p class="schedule-desc">
+                  नवदांपत्यास आशीर्वाद, संगीत, आनंदोत्सव, छायाचित्रे आणि भव्य स्वागत स्नेहभोजन.
+                </p>
+                <div class="schedule-venue">📍 Royal Ballroom, Grand Heritage</div>
+                <button type="button" class="schedule-cal-btn" onclick="downloadIcs('Reception Swagat Samarambh', '20271019T190000', '20271019T220000', 'Grand Heritage Ballroom', 'Wedding Reception & Dinner')">
+                  📅 कॅलेंडरमध्ये नोंदवा (Add to Calendar)
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="slider-controls">
+          <button type="button" class="slider-nav-btn prev" aria-label="मागे">&larr;</button>
+          <div class="slider-dots"></div>
+          <button type="button" class="slider-nav-btn next" aria-label="पुढे">&rarr;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       7. SLIDER 4: ATTIRE & STYLING GUIDE | पोषाख मार्गदर्शिका
+       ========================================================================== -->
+  <section class="section-wrap" id="dresscode" style="background: linear-gradient(180deg, #1A030E 0%, #290818 50%, #1D040F 100%); border-top: 1px solid var(--color-border-gold); border-bottom: 1px solid var(--color-border-gold);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">ATTIRE &amp; STYLING GUIDE</div>
+        <h2 class="section-title">पोषाख मार्गदर्शिका</h2>
+        <div class="section-subtitle-mr">Maharashtrian Wedding Dress Code</div>
+        <p class="section-subtitle-en">पारंपरिक महाराष्ट्रीयन राजेशाही पोशाख, दागिन्यांची शोभा आणि रंगसंगती.</p>
+        <div class="ornamental-divider"><span>✦</span></div>
+      </div>
+
+      <!-- Slider Component -->
+      <div class="slider-container" id="sliderDresscode">
+        <div class="slider-viewport">
+          <div class="slider-track">
+
+            <!-- Card 1 -->
+            <div class="slider-slide">
+              <div class="attire-card">
+                <span class="attire-tag">स्त्रियांसाठी • LADIES</span>
+                <div class="attire-title-mr">पारंपरिक नऊवारी व पैठणी साडी</div>
+                <div class="attire-title-en">Nauvari &amp; Paithani Saree</div>
+                <p class="attire-desc">
+                  काठ-पदराची अस्सल जरीची पैठणी अथवा नऊवारी रेशमी साडी. मोर-पोपट व कमळाच्या नक्षीदार पदरासह पारंपरिक राजेशाही महाराष्ट्रीयन रूप.
+                </p>
+                <div class="attire-elements">
+                  <span class="attire-element-pill">नऊवारी साडी</span>
+                  <span class="attire-element-pill">जरी पैठणी</span>
+                  <span class="attire-element-pill">कंबरपट्टा</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="slider-slide">
+              <div class="attire-card">
+                <span class="attire-tag">अलंकार • JEWELLERY</span>
+                <div class="attire-title-mr">मोत्याची नथ व कोल्हापुरी साज</div>
+                <div class="attire-title-en">Nath &amp; Heritage Jewels</div>
+                <p class="attire-desc">
+                  मोत्यांची पारंपरिक चंद्रकोर नथ, कोल्हापुरी साज, ठुशी, मोहनमाळा आणि हातात हिरवा चुडा — सुहाग आणि सौंदर्याची नजाकत.
+                </p>
+                <div class="attire-elements">
+                  <span class="attire-element-pill">मोत्याची नथ</span>
+                  <span class="attire-element-pill">कोल्हापुरी साज</span>
+                  <span class="attire-element-pill">हिरवा चुडा</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="slider-slide">
+              <div class="attire-card">
+                <span class="attire-tag">पुरुषांसाठी • GENTLEMEN</span>
+                <div class="attire-title-mr">कुर्ता, धोतर व पेशवाई फेटा</div>
+                <div class="attire-title-en">Kurta, Dhoti &amp; Pheta</div>
+                <p class="attire-desc">
+                  जरी बॉर्डरचे रेशमी धोतर किंवा चुडीदार, सिल्क कुर्ता आणि डोक्यावर मानाचा राजेशाही पेशवाई फेटा किंवा साफा.
+                </p>
+                <div class="attire-elements">
+                  <span class="attire-element-pill">सिल्क कुर्ता</span>
+                  <span class="attire-element-pill">जरी धोतर</span>
+                  <span class="attire-element-pill">पेशवाई फेटा</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="slider-slide">
+              <div class="attire-card">
+                <span class="attire-tag">मंगल प्रतीक • SACRED</span>
+                <div class="attire-title-mr">मुंडावळ्या व पारंपरिक शेला</div>
+                <div class="attire-title-en">Mundavalya &amp; Shela</div>
+                <p class="attire-desc">
+                  लग्नाच्या मंडपात वर आणि वधू दोघांच्याही कपाळावर बांधल्या जाणाऱ्या मोत्यांच्या पवित्र मुंडावळ्या आणि खांद्यावरील रेशमी शेला.
+                </p>
+                <div class="attire-elements">
+                  <span class="attire-element-pill">मोत्यांच्या मुंडावळ्या</span>
+                  <span class="attire-element-pill">जरी शेला</span>
+                  <span class="attire-element-pill">उत्तरिय</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="slider-controls">
+          <button type="button" class="slider-nav-btn prev" aria-label="मागे">&larr;</button>
+          <div class="slider-dots"></div>
+          <button type="button" class="slider-nav-btn next" aria-label="पुढे">&rarr;</button>
+        </div>
+      </div>
+
+      <!-- Color Palette Swatches -->
+      <div class="palette-box">
+        <div class="palette-title">शुभ रंगसंगती • Auspicious Wedding Palette</div>
+        <p class="palette-sub">पाहुण्यांसाठी सुचवलेले पारंपरिक महाराष्ट्रीयन रंगछटा</p>
+        <div class="swatches-row">
+          <div class="swatch-item">
+            <div class="swatch-circle" style="background: #641D2D;"></div>
+            <span class="swatch-name">महारानी लाल (Maroon)</span>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-circle" style="background: #C5A059;"></div>
+            <span class="swatch-name">जरी सुवर्ण (Gold)</span>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-circle" style="background: #255C41;"></div>
+            <span class="swatch-name">हिरवा शालू (Emerald)</span>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-circle" style="background: #4A154B;"></div>
+            <span class="swatch-name">पैठणी जांभळा (Purple)</span>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-circle" style="background: #E5A93C;"></div>
+            <span class="swatch-name">हळदी पिवळा (Haldi)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       8. PHOTO MOMENTS & LIGHTBOX
+       ========================================================================== -->
+  <section class="section-wrap" id="moments">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">CELEBRATION MOMENTS</div>
+        <h2 class="section-title">आनंदाचे क्षण</h2>
+        <div class="section-subtitle-mr">Festive Memories &amp; Visual Glimpses</div>
+        <p class="section-subtitle-en">हळद, मेहंदी, साखरपुडा आणि मांगल्याच्या क्षणांची सुंदर छायाचित्रे.</p>
+        <div class="ornamental-divider"><span>✦</span></div>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox('images/engagement-bg.png', 'साखरपुडा समारंभ • The Engagement Union')">
+          <img src="images/engagement-bg.png" alt="साखरपुडा" loading="lazy">
+          <div class="gallery-hover-overlay">
+            <div class="gallery-caption-text">साखरपुडा समारंभ</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('images/gallery_1.jpg', 'हळदीचा रंग • Haldi Auspices')">
+          <img src="images/gallery_1.jpg" alt="हळद" loading="lazy">
+          <div class="gallery-hover-overlay">
+            <div class="gallery-caption-text">हळदीचा रंग व उल्लास</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('images/mehandi.png', 'मेहंदीची कला • Henna Blessings')">
+          <img src="images/mehandi.png" alt="मेहंदी" loading="lazy">
+          <div class="gallery-hover-overlay">
+            <div class="gallery-caption-text">शुभ मेहंदी व सखींचा मेळा</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('images/gallery_3.jpg', 'पावन अक्षता • Sacred Vows')">
+          <img src="images/gallery_3.jpg" alt="लग्न सोहळा" loading="lazy">
+          <div class="gallery-hover-overlay">
+            <div class="gallery-caption-text">पावन विधी व अक्षतारोपण</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox(event)">
+    <button type="button" class="lightbox-close-btn" onclick="closeLightbox()" aria-label="Close">&times;</button>
+    <div class="lightbox-img-wrap" onclick="event.stopPropagation()">
+      <img src="" alt="" id="lightboxImg">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       9. VENUE & DIRECTIONS SECTION
+       ========================================================================== -->
+  <section class="section-wrap" id="venue" style="background: linear-gradient(180deg, #1A030E 0%, #290818 50%, #1D040F 100%); border-top: 1px solid var(--color-border-gold);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">LOCATION &amp; DIRECTIONS</div>
+        <h2 class="section-title">मंगल स्थळ व मार्ग</h2>
+        <div class="section-subtitle-mr">Venue, Address &amp; Navigation</div>
+        <p class="section-subtitle-en">आपली सन्माननीय उपस्थिती आमच्यासाठी अत्यंत मोलाची आहे.</p>
+        <div class="ornamental-divider"><span>✦</span></div>
+      </div>
+
+      <div class="venue-card">
+        <div class="venue-img-wrap">
+          <img src="images/white_church.jpg" alt="The White Church Venue">
+        </div>
+        <div class="venue-content">
+          <h3 class="venue-name">The White Church &amp; Grand Ballroom</h3>
+          <p class="venue-addr">📍 The White Church, 125 Rd &bull; Grand Heritage Ballroom</p>
+          <div class="venue-actions">
+            <button type="button" class="btn-gold" onclick="copyAddress()">
+              📋 पत्ता कॉपी करा (Copy Address)
+            </button>
+            <a href="https://maps.google.com/?q=The+White+Church+125+Rd" target="_blank" rel="noopener noreferrer" class="btn-outline-gold">
+              🗺️ Google Maps वर पहा (Open Maps)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       10. CLOSING FINALE & FOOTER
+       ========================================================================== -->
+  <footer class="closing-section">
+    <div class="container">
+      <img src="images/ganesh.png" alt="श्री गणेश" class="closing-ganesh">
+      <div class="closing-shubhmangal">॥ शुभमंगल सावधान ॥</div>
+      <h2 class="closing-names gold-gradient-text">Kasandra &amp; Imanule</h2>
+      <p class="closing-msg">
+        आमच्या आनंदात सहभागी होऊन नवदांपत्यास भरभरून आशीर्वाद दिल्याबद्दल सर्व आप्तस्वकीय, स्नेहीजन आणि मित्रांचे मनापासून शतशः आभार!<br>
+        <span style="font-size: 0.9rem; color: var(--color-gold-light);">— मिलर आणि डेव्हिड परिवार —</span>
+      </p>
+
+      <div class="closing-buttons">
+        <button type="button" class="btn-outline-gold" onclick="replayEnvelope()">
+          ✉️ निमंत्रण पुन्हा पहा (Replay Invitation)
+        </button>
+        <button type="button" class="btn-outline-gold" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+          ▲ वर जा (Back to Top)
+        </button>
+      </div>
+
+      <div class="footer-bottom">
+        शनिवार, १९ ऑक्टोबर २०२७ &bull; The White Church, 125 Rd &bull; Royal Maharashtrian Wedding
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Element -->
+  <div class="toast-msg" id="toastMsg">Notification</div>
+
+  <!-- ==========================================================================
+       JAVASCRIPT: SLIDERS, ENVELOPE, AUDIO SYNTHESIZER, CALENDAR, LIGHTBOX
+       ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       1. ENVELOPE OPENING ENGINE
+       ========================================================================== */
+    var envelopeOverlay = document.getElementById('envelopeOverlay');
+    var sealOpenBtn = document.getElementById('sealOpenBtn');
+    var btnOpenInvite = document.getElementById('btnOpenInvite');
+    var btnSkipInvite = document.getElementById('btnSkipInvite');
+
+    function openInvitation() {
+      envelopeOverlay.classList.add('opened');
+      playShehnaiAudio();
+      showToast("॥ शुभमंगल सावधान ॥ आपले सहर्ष स्वागत आहे!");
+    }
+
+    if (sealOpenBtn) sealOpenBtn.addEventListener('click', openInvitation);
+    if (btnOpenInvite) btnOpenInvite.addEventListener('click', openInvitation);
+    if (btnSkipInvite) btnSkipInvite.addEventListener('click', function() {
+      envelopeOverlay.classList.add('opened');
+    });
+
+    function replayEnvelope() {
+      envelopeOverlay.classList.remove('opened');
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    /* ==========================================================================
+       2. REUSABLE TOUCH-ENABLED SLIDER ENGINE
+       Zero overflow, buttery touch-swipe, arrows & dots
+       ========================================================================== */
+    function setupSlider(containerId) {
+      var container = document.getElementById(containerId);
+      if (!container) return;
+
+      var viewport = container.querySelector('.slider-viewport');
+      var track = container.querySelector('.slider-track');
+      var slides = container.querySelectorAll('.slider-slide');
+      var prevBtn = container.querySelector('.slider-nav-btn.prev');
+      var nextBtn = container.querySelector('.slider-nav-btn.next');
+      var dotsContainer = container.querySelector('.slider-dots');
+
+      var totalSlides = slides.length;
+      var currentIndex = 0;
+      var startX = 0;
+      var currentTranslate = 0;
+      var isDragging = false;
+
+      function getVisibleCount() {
+        var w = window.innerWidth;
+        if (w >= 1024) return 3;
+        if (w >= 640) return 2;
+        return 1;
+      }
+
+      function getMaxIndex() {
+        return Math.max(0, totalSlides - getVisibleCount());
+      }
+
+      function createDots() {
+        if (!dotsContainer) return;
+        dotsContainer.innerHTML = '';
+        var maxIdx = getMaxIndex();
+        var dotCount = maxIdx + 1;
+        for (var i = 0; i < dotCount; i++) {
+          var dot = document.createElement('div');
+          dot.className = 'slider-dot' + (i === currentIndex ? ' active' : '');
+          dot.dataset.index = i;
+          dot.addEventListener('click', function() {
+            goToSlide(parseInt(this.dataset.index, 10));
+          });
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      function updateSlider() {
+        var visibleCount = getVisibleCount();
+        var maxIndex = getMaxIndex();
+        if (currentIndex > maxIndex) currentIndex = maxIndex;
+        if (currentIndex < 0) currentIndex = 0;
+
+        var slideWidthPct = 100 / visibleCount;
+        var gap = 20; // 20px gap
+        var movePercent = currentIndex * slideWidthPct;
+        
+        track.style.transform = 'translateX(-' + movePercent + '%)';
+
+        // Update nav buttons
+        if (prevBtn) prevBtn.disabled = (currentIndex === 0);
+        if (nextBtn) nextBtn.disabled = (currentIndex >= maxIndex);
+
+        // Update dots
+        if (dotsContainer) {
+          var dots = dotsContainer.querySelectorAll('.slider-dot');
+          dots.forEach(function(dot, idx) {
+            dot.classList.toggle('active', idx === currentIndex);
+          });
+        }
+      }
+
+      function goToSlide(idx) {
+        currentIndex = idx;
+        updateSlider();
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+          if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+          }
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+          if (currentIndex < getMaxIndex()) {
+            currentIndex++;
+            updateSlider();
+          }
+        });
+      }
+
+      // Touch Events
+      track.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+      }, { passive: true });
+
+      track.addEventListener('touchend', function(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        var endX = e.changedTouches[0].clientX;
+        var diffX = startX - endX;
+        if (diffX > 45) {
+          // Swipe left -> next
+          if (currentIndex < getMaxIndex()) {
+            currentIndex++;
+            updateSlider();
+          }
+        } else if (diffX < -45) {
+          // Swipe right -> prev
+          if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+          }
+        }
+      }, { passive: true });
+
+      // Resize event
+      window.addEventListener('resize', function() {
+        createDots();
+        updateSlider();
+      });
+
+      createDots();
+      updateSlider();
+    }
+
+    // Initialize all 4 sliders
+    window.addEventListener('DOMContentLoaded', function() {
+      setupSlider('sliderRomance');
+      setupSlider('sliderRituals');
+      setupSlider('sliderSchedule');
+      setupSlider('sliderDresscode');
+    });
+
+    /* ==========================================================================
+       3. LIVE WEDDING COUNTDOWN TIMER
+       ========================================================================== */
+    var weddingTimestamp = new Date("October 19, 2027 11:15:00").getTime();
+    function updateCountdown() {
+      var now = new Date().getTime();
+      var diff = weddingTimestamp - now;
+      if (diff > 0) {
+        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        var secs = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById('cdDays').innerText = days < 10 ? '0' + days : days;
+        document.getElementById('cdHours').innerText = hours < 10 ? '0' + hours : hours;
+        document.getElementById('cdMinutes').innerText = mins < 10 ? '0' + mins : mins;
+        document.getElementById('cdSeconds').innerText = secs < 10 ? '0' + secs : secs;
+      }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    /* ==========================================================================
+       4. TRADITIONAL SHEHNAI & TANPURA SYNTHESIZER (Web Audio API)
+       ========================================================================== */
+    var audioCtx = null;
+    var isPlaying = false;
+    var shehnaiOsc = null;
+    var droneOsc1 = null;
+    var droneOsc2 = null;
+    var masterGain = null;
+
+    function initAudioSynth() {
+      if (!audioCtx) {
+        var AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playShehnaiAudio() {
+      try {
+        initAudioSynth();
+        if (isPlaying) return;
+
+        masterGain = audioCtx.createGain();
+        masterGain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        masterGain.connect(audioCtx.destination);
+
+        // Tanpura Drone (Sa & Pa)
+        droneOsc1 = audioCtx.createOscillator();
+        droneOsc1.type = 'triangle';
+        droneOsc1.frequency.setValueAtTime(146.83, audioCtx.currentTime); // D3 Sa
+        var droneGain1 = audioCtx.createGain();
+        droneGain1.gain.setValueAtTime(0.4, audioCtx.currentTime);
+        droneOsc1.connect(droneGain1);
+        droneGain1.connect(masterGain);
+        droneOsc1.start();
+
+        droneOsc2 = audioCtx.createOscillator();
+        droneOsc2.type = 'sine';
+        droneOsc2.frequency.setValueAtTime(220.00, audioCtx.currentTime); // A3 Pa
+        var droneGain2 = audioCtx.createGain();
+        droneGain2.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        droneOsc2.connect(droneGain2);
+        droneGain2.connect(masterGain);
+        droneOsc2.start();
+
+        isPlaying = true;
+        var btn = document.getElementById('audioToggleBtn');
+        if (btn) btn.classList.add('playing');
+        document.getElementById('audioLabel').innerText = "ध्वनी सुरू • Playing";
+      } catch (e) {
+        console.log("Audio synth note:", e);
+      }
+    }
+
+    function stopShehnaiAudio() {
+      if (droneOsc1) { droneOsc1.stop(); droneOsc1.disconnect(); droneOsc1 = null; }
+      if (droneOsc2) { droneOsc2.stop(); droneOsc2.disconnect(); droneOsc2 = null; }
+      isPlaying = false;
+      var btn = document.getElementById('audioToggleBtn');
+      if (btn) btn.classList.remove('playing');
+      document.getElementById('audioLabel').innerText = "सनई व तानपुरा";
+    }
+
+    document.getElementById('audioToggleBtn').addEventListener('click', function() {
+      if (isPlaying) {
+        stopShehnaiAudio();
+      } else {
+        playShehnaiAudio();
+      }
+    });
+
+    /* ==========================================================================
+       5. LIGHTBOX MODAL
+       ========================================================================== */
+    function openLightbox(src, caption) {
+      var modal = document.getElementById('lightboxModal');
+      var img = document.getElementById('lightboxImg');
+      var cap = document.getElementById('lightboxCaption');
+      img.src = src;
+      cap.innerText = caption;
+      modal.classList.add('active');
+    }
+
+    function closeLightbox(e) {
+      var modal = document.getElementById('lightboxModal');
+      modal.classList.remove('active');
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    /* ==========================================================================
+       6. CALENDAR ICS DOWNLOAD & ADDRESS COPY
+       ========================================================================== */
+    function downloadIcs(title, startIso, endIso, location, desc) {
+      var ics = "BEGIN:VCALENDAR\\nVERSION:2.0\\nPRODID:-//Kasandra Imanule Marathi Wedding//EN\\n" +
+                "BEGIN:VEVENT\\n" +
+                "SUMMARY:" + title + " - Kasandra & Imanule Wedding\\n" +
+                "DESCRIPTION:" + desc + "\\n" +
+                "LOCATION:" + location + "\\n" +
+                "DTSTART:" + startIso + "\\n" +
+                "DTEND:" + endIso + "\\n" +
+                "STATUS:CONFIRMED\\n" +
+                "END:VEVENT\\n" +
+                "END:VCALENDAR";
+      var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', title.replace(/\\s+/g, '_') + '.ics');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+      showToast("कॅलेंडर इव्हेंट सेव्ह झाला: " + title);
+    }
+
+    function copyAddress() {
+      var addr = "The White Church, 125 Rd, Grand Heritage Ballroom";
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(addr).then(function() {
+          showToast("पत्ता कॉपी केला: " + addr);
+        }, function() {
+          showToast("पत्ता: " + addr);
+        });
+      } else {
+        showToast("पत्ता: " + addr);
+      }
+    }
+
+    function showToast(msg) {
+      var toast = document.getElementById('toastMsg');
+      toast.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(function() { toast.classList.remove('show'); }, 2800);
+    }
+  </script>
+</body>
+</html>'''
+
+    with open('Wedding Invitation.html', 'w', encoding='utf-8') as f:
+        f.write(html)
+    print('Wrote Wedding Invitation.html successfully')
+
+    with open('index.html', 'w', encoding='utf-8') as f:
+        f.write(html)
+    print('Wrote index.html successfully')
+
+if __name__ == '__main__':
+    build_html()
