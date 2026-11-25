@@ -685,57 +685,7 @@
     }
 
     /* Floating Shehnai Audio Pill */
-    .audio-pill {
-      position: fixed;
-      top: 18px;
-      right: 18px;
-      z-index: 9999;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(34, 6, 19, 0.88);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--color-border-gold-strong);
-      border-radius: 999px;
-      padding: 7px 15px;
-      color: var(--color-gold-light);
-      font-size: 0.78rem;
-      letter-spacing: 0.5px;
-      cursor: pointer;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-      transition: all 0.3s ease;
-    }
-
-    .audio-pill:hover {
-      background: rgba(50, 12, 28, 0.95);
-      border-color: var(--color-gold);
-      transform: translateY(-1px);
-    }
-
-    .audio-pill.playing .audio-bars span {
-      animation: audioWave 1s ease infinite alternate;
-    }
-
-    .audio-bars {
-      display: flex;
-      align-items: flex-end;
-      gap: 2px;
-      height: 12px;
-    }
-
-    .audio-bars span {
-      width: 2px;
-      height: 4px;
-      background: var(--color-gold);
-      border-radius: 1px;
-      display: block;
-    }
-
-    .audio-bars span:nth-child(2) { height: 8px; animation-delay: 0.2s; }
-    .audio-bars span:nth-child(3) { height: 12px; animation-delay: 0.4s; }
-
-    @keyframes audioWave {
-      0% { height: 3px; }
+    .audio-pill { display: none !important; }
       100% { height: 12px; }
     }
 
@@ -971,38 +921,8 @@
     }
 
     /* Slider Controls */
-    .slider-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 24px;
-      gap: 12px;
-      width: 100%;
-    }
-    .slider-nav-btn {
+    .slider-controls, .slider-dots, .slider-dot {
       display: none !important;
-    }
-    .slider-dots {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .slider-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(212, 175, 55, 0.35);
-      border: 1px solid var(--color-border-gold);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      touch-action: manipulation;
-    }
-    .slider-dot.active {
-      width: 28px;
-      border-radius: 999px;
-      background: var(--gold-gradient);
-      box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
     }
 
     /* ==========================================================================
@@ -1587,16 +1507,6 @@
 </head>
 
 <body>
-
-  <!-- Floating Audio Soundwave Capsule -->
-  <button type="button" class="audio-pill" id="audioToggleBtn" title="शहनाई एवं तानपुरा">
-    <div class="audio-bars">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <span id="audioLabel">शहनाई एवं तानपुरा</span>
-  </button>
 
   <!-- ==========================================================================
        1. 3D VINTAGE ENVELOPE (Pure Hindi & Sanskrit)
@@ -2465,8 +2375,6 @@
       var viewport = container.querySelector('.slider-viewport');
       var track = container.querySelector('.slider-track');
       var slides = container.querySelectorAll('.slider-slide');
-      var prevBtn = container.querySelector('.slider-nav-btn.prev');
-      var nextBtn = container.querySelector('.slider-nav-btn.next');
       var dotsContainer = container.querySelector('.slider-dots');
 
       var totalSlides = slides.length;
@@ -2475,6 +2383,7 @@
       var startY = 0;
       var isDragging = false;
       var isMouseDown = false;
+      var autoSlideTimer = null;
 
       function getVisibleCount() {
         var w = window.innerWidth;
@@ -2485,22 +2394,6 @@
 
       function getMaxIndex() {
         return Math.max(0, totalSlides - getVisibleCount());
-      }
-
-      function createDots() {
-        if (!dotsContainer) return;
-        dotsContainer.innerHTML = '';
-        var maxIdx = getMaxIndex();
-        var dotCount = maxIdx + 1;
-        for (var i = 0; i < dotCount; i++) {
-          var dot = document.createElement('div');
-          dot.className = 'slider-dot' + (i === currentIndex ? ' active' : '');
-          dot.dataset.index = i;
-          dot.addEventListener('click', function() {
-            goToSlide(parseInt(this.dataset.index, 10));
-          });
-          dotsContainer.appendChild(dot);
-        }
       }
 
       function updateSlider() {
@@ -2515,43 +2408,39 @@
           offset = currentSlide.offsetLeft - firstSlide.offsetLeft;
         }
         track.style.transform = 'translateX(-' + offset + 'px)';
-
-        if (prevBtn) prevBtn.disabled = (currentIndex === 0);
-        if (nextBtn) nextBtn.disabled = (currentIndex >= maxIndex);
-
-        if (dotsContainer) {
-          var dots = dotsContainer.querySelectorAll('.slider-dot');
-          dots.forEach(function(dot, idx) {
-            dot.classList.toggle('active', idx === currentIndex);
-          });
-        }
       }
 
-      function goToSlide(idx) {
-        currentIndex = idx;
+      function advanceSlide() {
+        var maxIndex = getMaxIndex();
+        if (currentIndex < maxIndex) {
+          currentIndex++;
+        } else {
+          currentIndex = 0;
+        }
         updateSlider();
       }
 
-      if (prevBtn) {
-        prevBtn.addEventListener('click', function() {
-          if (currentIndex > 0) {
-            currentIndex--;
-            updateSlider();
-          }
-        });
+      function startAutoSlide() {
+        stopAutoSlide();
+        autoSlideTimer = setInterval(advanceSlide, 3200);
       }
 
-      if (nextBtn) {
-        nextBtn.addEventListener('click', function() {
-          if (currentIndex < getMaxIndex()) {
-            currentIndex++;
-            updateSlider();
-          }
-        });
+      function stopAutoSlide() {
+        if (autoSlideTimer) {
+          clearInterval(autoSlideTimer);
+          autoSlideTimer = null;
+        }
       }
+
+      startAutoSlide();
+
+      // Pause auto-sliding on touch or hover
+      track.addEventListener('mouseenter', stopAutoSlide);
+      track.addEventListener('mouseleave', startAutoSlide);
 
       // Touch swipe with vertical scroll tolerance
       track.addEventListener('touchstart', function(e) {
+        stopAutoSlide();
         if (e.touches && e.touches.length > 0) {
           startX = e.touches[0].clientX;
           startY = e.touches[0].clientY;
@@ -2577,10 +2466,12 @@
             }
           }
         }
+        setTimeout(startAutoSlide, 2000);
       }, { passive: true });
 
       // Desktop mouse drag support
       track.addEventListener('mousedown', function(e) {
+        stopAutoSlide();
         isMouseDown = true;
         startX = e.clientX;
       });
@@ -2598,16 +2489,19 @@
             updateSlider();
           }
         }
+        setTimeout(startAutoSlide, 2000);
       });
 
       window.addEventListener('resize', function() {
-        createDots();
         updateSlider();
       });
 
-      createDots();
       updateSlider();
     }
+
+    
+
+    
 
     // Initialize all 4 sliders
     window.addEventListener('DOMContentLoaded', function() {
@@ -2642,75 +2536,8 @@
     /* ==========================================================================
        4. TRADITIONAL SHEHNAI & TANPURA SYNTHESIZER (Web Audio API)
        ========================================================================== */
-    var audioCtx = null;
-    var isPlaying = false;
-    var droneOsc1 = null;
-    var droneOsc2 = null;
-    var masterGain = null;
+    // Shehnai audio removed
 
-    function initAudioSynth() {
-      if (!audioCtx) {
-        var AudioContext = window.AudioContext || window.webkitAudioContext;
-        audioCtx = new AudioContext();
-      }
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-    }
-
-    function playShehnaiAudio() {
-      try {
-        initAudioSynth();
-        if (isPlaying) return;
-
-        masterGain = audioCtx.createGain();
-        masterGain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-        masterGain.connect(audioCtx.destination);
-
-        // Tanpura Drone (Sa & Pa)
-        droneOsc1 = audioCtx.createOscillator();
-        droneOsc1.type = 'triangle';
-        droneOsc1.frequency.setValueAtTime(146.83, audioCtx.currentTime);
-        var droneGain1 = audioCtx.createGain();
-        droneGain1.gain.setValueAtTime(0.4, audioCtx.currentTime);
-        droneOsc1.connect(droneGain1);
-        droneGain1.connect(masterGain);
-        droneOsc1.start();
-
-        droneOsc2 = audioCtx.createOscillator();
-        droneOsc2.type = 'sine';
-        droneOsc2.frequency.setValueAtTime(220.00, audioCtx.currentTime);
-        var droneGain2 = audioCtx.createGain();
-        droneGain2.gain.setValueAtTime(0.3, audioCtx.currentTime);
-        droneOsc2.connect(droneGain2);
-        droneGain2.connect(masterGain);
-        droneOsc2.start();
-
-        isPlaying = true;
-        var btn = document.getElementById('audioToggleBtn');
-        if (btn) btn.classList.add('playing');
-        document.getElementById('audioLabel').innerText = "संगीत चालू • Playing";
-      } catch (e) {
-        console.log("Audio synth note:", e);
-      }
-    }
-
-    function stopShehnaiAudio() {
-      if (droneOsc1) { droneOsc1.stop(); droneOsc1.disconnect(); droneOsc1 = null; }
-      if (droneOsc2) { droneOsc2.stop(); droneOsc2.disconnect(); droneOsc2 = null; }
-      isPlaying = false;
-      var btn = document.getElementById('audioToggleBtn');
-      if (btn) btn.classList.remove('playing');
-      document.getElementById('audioLabel').innerText = "शहनाई एवं तानपुरा";
-    }
-
-    document.getElementById('audioToggleBtn').addEventListener('click', function() {
-      if (isPlaying) {
-        stopShehnaiAudio();
-      } else {
-        playShehnaiAudio();
-      }
-    });
 
     /* ==========================================================================
        5. LIGHTBOX MODAL
