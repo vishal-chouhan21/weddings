@@ -974,63 +974,35 @@
     .slider-controls {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-top: 28px;
-      gap: 16px;
+      justify-content: center;
+      margin-top: 24px;
+      gap: 12px;
+      width: 100%;
     }
-
+    .slider-nav-btn {
+      display: none !important;
+    }
     .slider-dots {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      flex: 1;
     }
-
     .slider-dot {
-      width: 10px;
-      height: 10px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
-      background: rgba(212, 175, 55, 0.25);
+      background: rgba(212, 175, 55, 0.35);
       border: 1px solid var(--color-border-gold);
       cursor: pointer;
       transition: all 0.3s ease;
+      touch-action: manipulation;
     }
-
     .slider-dot.active {
-      width: 26px;
+      width: 28px;
       border-radius: 999px;
       background: var(--gold-gradient);
       box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-    }
-
-    .slider-nav-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(50, 12, 28, 0.8);
-      border: 1px solid var(--color-border-gold);
-      color: var(--color-gold-light);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .slider-nav-btn:hover {
-      background: var(--gold-gradient);
-      color: var(--color-text-dark);
-      border-color: var(--color-gold-light);
-      transform: scale(1.06);
-    }
-
-    .slider-nav-btn:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-      transform: none;
     }
 
     /* ==========================================================================
@@ -1361,61 +1333,6 @@
       border-radius: 6px;
       padding: 4px 10px;
       color: var(--color-text-secondary);
-    }
-
-    /* Guest Color Palette Swatches */
-    .palette-box {
-      margin-top: 40px;
-      background: var(--card-gradient);
-      border: 1px solid var(--color-border-gold);
-      border-radius: 16px;
-      padding: 24px;
-      text-align: center;
-      max-width: 780px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .palette-title {
-      font-family: var(--font-devanagari);
-      font-size: 1.15rem;
-      color: var(--color-gold-light);
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
-
-    .palette-sub {
-      font-size: 0.85rem;
-      color: var(--color-text-muted);
-      margin-bottom: 18px;
-    }
-
-    .swatches-row {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .swatch-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .swatch-circle {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 2px solid var(--color-border-gold-strong);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    }
-
-    .swatch-name {
-      font-size: 0.72rem;
-      color: var(--color-text-secondary);
-      font-weight: 500;
     }
 
     /* ==========================================================================
@@ -1932,9 +1849,7 @@
 
         <!-- Slider Controls -->
         <div class="slider-controls">
-          <button type="button" class="slider-nav-btn prev" aria-label="पिछला / Previous">&larr;</button>
           <div class="slider-dots"></div>
-          <button type="button" class="slider-nav-btn next" aria-label="अगला / Next">&rarr;</button>
         </div>
       </div>
     </div>
@@ -2143,9 +2058,7 @@
 
         <!-- Slider Controls -->
         <div class="slider-controls">
-          <button type="button" class="slider-nav-btn prev" aria-label="पिछला / Previous">&larr;</button>
           <div class="slider-dots"></div>
-          <button type="button" class="slider-nav-btn next" aria-label="अगला / Next">&rarr;</button>
         </div>
       </div>
     </div>
@@ -2254,9 +2167,7 @@
 
         <!-- Slider Controls -->
         <div class="slider-controls">
-          <button type="button" class="slider-nav-btn prev" aria-label="पिछला / Previous">&larr;</button>
           <div class="slider-dots"></div>
-          <button type="button" class="slider-nav-btn next" aria-label="अगला / Next">&rarr;</button>
         </div>
       </div>
     </div>
@@ -2353,38 +2264,9 @@
 
         <!-- Slider Controls -->
         <div class="slider-controls">
-          <button type="button" class="slider-nav-btn prev" aria-label="पिछला / Previous">&larr;</button>
           <div class="slider-dots"></div>
-          <button type="button" class="slider-nav-btn next" aria-label="अगला / Next">&rarr;</button>
         </div>
       </div>
-
-      <!-- Color Palette Swatches -->
-      <div class="palette-box">
-        <div class="palette-title">शुभ रंग-संयोजन • Auspicious Wedding Palette</div>
-        <p class="palette-sub">अतिथियों के लिए सुझाई गई पारंपरिक शुभ रंग-योजना</p>
-        <div class="swatches-row">
-          <div class="swatch-item">
-            <div class="swatch-circle" style="background: #641D2D;"></div>
-            <span class="swatch-name">महारानी लाल (Maroon)</span>
-          </div>
-          <div class="swatch-item">
-            <div class="swatch-circle" style="background: #C5A059;"></div>
-            <span class="swatch-name">जरी सुवर्ण (Gold)</span>
-          </div>
-          <div class="swatch-item">
-            <div class="swatch-circle" style="background: #255C41;"></div>
-            <span class="swatch-name">पन्ना हरा (Emerald)</span>
-          </div>
-          <div class="swatch-item">
-            <div class="swatch-circle" style="background: #4A154B;"></div>
-            <span class="swatch-name">राजसी जामुनी (Purple)</span>
-          </div>
-          <div class="swatch-item">
-            <div class="swatch-circle" style="background: #E5A93C;"></div>
-            <span class="swatch-name">हल्दी पीला (Haldi)</span>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -2590,7 +2472,9 @@
       var totalSlides = slides.length;
       var currentIndex = 0;
       var startX = 0;
+      var startY = 0;
       var isDragging = false;
+      var isMouseDown = false;
 
       function getVisibleCount() {
         var w = window.innerWidth;
@@ -2620,15 +2504,17 @@
       }
 
       function updateSlider() {
-        var visibleCount = getVisibleCount();
         var maxIndex = getMaxIndex();
         if (currentIndex > maxIndex) currentIndex = maxIndex;
         if (currentIndex < 0) currentIndex = 0;
 
-        var slideWidthPct = 100 / visibleCount;
-        var movePercent = currentIndex * slideWidthPct;
-        
-        track.style.transform = 'translateX(-' + movePercent + '%)';
+        var currentSlide = slides[currentIndex];
+        var firstSlide = slides[0];
+        var offset = 0;
+        if (currentSlide && firstSlide) {
+          offset = currentSlide.offsetLeft - firstSlide.offsetLeft;
+        }
+        track.style.transform = 'translateX(-' + offset + 'px)';
 
         if (prevBtn) prevBtn.disabled = (currentIndex === 0);
         if (nextBtn) nextBtn.disabled = (currentIndex >= maxIndex);
@@ -2664,28 +2550,55 @@
         });
       }
 
+      // Touch swipe with vertical scroll tolerance
       track.addEventListener('touchstart', function(e) {
-        startX = e.touches[0].clientX;
-        isDragging = true;
+        if (e.touches && e.touches.length > 0) {
+          startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+          isDragging = true;
+        }
       }, { passive: true });
 
       track.addEventListener('touchend', function(e) {
         if (!isDragging) return;
         isDragging = false;
-        var endX = e.changedTouches[0].clientX;
-        var diffX = startX - endX;
-        if (diffX > 45) {
-          if (currentIndex < getMaxIndex()) {
+        if (e.changedTouches && e.changedTouches.length > 0) {
+          var endX = e.changedTouches[0].clientX;
+          var endY = e.changedTouches[0].clientY;
+          var diffX = startX - endX;
+          var diffY = startY - endY;
+          if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 35) {
+            if (diffX > 0 && currentIndex < getMaxIndex()) {
+              currentIndex++;
+              updateSlider();
+            } else if (diffX < 0 && currentIndex > 0) {
+              currentIndex--;
+              updateSlider();
+            }
+          }
+        }
+      }, { passive: true });
+
+      // Desktop mouse drag support
+      track.addEventListener('mousedown', function(e) {
+        isMouseDown = true;
+        startX = e.clientX;
+      });
+
+      window.addEventListener('mouseup', function(e) {
+        if (!isMouseDown) return;
+        isMouseDown = false;
+        var diffX = startX - e.clientX;
+        if (Math.abs(diffX) > 40) {
+          if (diffX > 0 && currentIndex < getMaxIndex()) {
             currentIndex++;
             updateSlider();
-          }
-        } else if (diffX < -45) {
-          if (currentIndex > 0) {
+          } else if (diffX < 0 && currentIndex > 0) {
             currentIndex--;
             updateSlider();
           }
         }
-      }, { passive: true });
+      });
 
       window.addEventListener('resize', function() {
         createDots();
